@@ -1,7 +1,7 @@
 package Leetcode.testCs;
 
 /**
- * @Description
+ * @Description 回文数两种方法
  * @Author XuShen
  * @Date 2021/12/2 16:16
  */
