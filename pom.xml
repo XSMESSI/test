@@ -11,7 +11,7 @@
     <groupId>com.campsg</groupId>
     <artifactId>baseteaching</artifactId>
     <version>1.0</version>
-    <name>baseteaching</name>
+    <name>testMaven</name>
     <packaging>jar</packaging>
     <description>基层教学组织管理系统</description>
 
@@ -208,6 +208,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <!--suppress UnresolvedMavenProperty -->
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>

@@ -148,22 +148,13 @@ public class test_01 {
                 }
                 resList.add(temp);
             }
-
-//            System.out.println(resList);
         }
-
-//        System.out.println(resultSet);
 
         for (Integer var:resultSet){
             List<jsmyd> tempList1 = jsyearList.get(var);
             if (CollectionUtils.isNotEmpty(tempList)){
-//                System.out.println(tempList);
             }else {
-//                System.out.println("----"+var+"不存在该年份下面的数据");
             }
         }
-//        System.out.println(jsyearList.get(1998));//这里返回的是null,不是空集合所以不存在输出对应的集合size值
-
-
     }
 }
