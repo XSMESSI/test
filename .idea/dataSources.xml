@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="tryDatabases" uuid="4812f65b-b1cc-48db-884a-91dbb35ecb7b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>本地测试使用</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://sh-cynosdbmysql-grp-hci6otyw.sql.tencentcdb.com:21410</jdbc-url>
+    </data-source>
+  </component>
+</project>

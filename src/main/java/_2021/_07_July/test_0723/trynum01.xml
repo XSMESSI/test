@@ -1,0 +1,52 @@
+
+
+
+<!-- in查询所有，不分页 -->
+<select id="selectIn" resultMap="BaseResultMap">
+    select name,hobby from student where id in
+    <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+        #{item}
+    </foreach>
+</select>
+
+
+
+
+<select id="getStudentListChoose" parameterType="Student" resultMap="BaseResultMap">
+SELECT * from STUDENT WHERE 1=1
+<where>
+    <choose>
+        <!--choose根据when的条件选择，哪一个条件-->
+        <when test="Name!=null and student!='' ">
+            AND name LIKE CONCAT(CONCAT('%', #{student}),'%')
+        </when>
+        <when test="hobby!= null and hobby!= '' ">
+            AND hobby = #{hobby}
+        </when>
+        <otherwise>
+            AND AGE = 15
+        </otherwise>
+    </choose>
+</where>
+</select>
+
+
+
+<select id="getUserByWhere2" parameterType="user" resultType="com.pipi.mybatis.pojo.User">
+<!-- include:引入sql片段,refid引入片段id -->
+SELECT
+*
+FROM USER
+<!-- where会自动加上where同处理多余的and -->
+<where>
+    <!-- if标签的使用 -->
+    <if test="id != null">
+        and id = #{id}
+    </if>
+    <if test="username != null and username != ''">
+        and username LIKE '%${username}%'
+    </if>
+</where>
+</select>
+
+
