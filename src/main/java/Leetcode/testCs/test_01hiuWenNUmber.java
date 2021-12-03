@@ -21,9 +21,4 @@ public class test_01hiuWenNUmber {
         }
 
     }
-
-
-//    public static boolean isPalindrome(int x) {
-//
-//    }
 }
