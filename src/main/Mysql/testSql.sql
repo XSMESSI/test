@@ -1,7 +1,6 @@
 
 //总结日常编写代码中的sql语句集合
 
-
 //1.查找两张关联表格中在其中一张表存在,不在另一张表存在的结果
 SELECT
 	`number`
@@ -9,7 +8,6 @@ FROM
 	t_mb_point_member a
 WHERE
 	NOT EXISTS ( SELECT login_name AS number FROM t_mms2_usr_account b WHERE a.id = b.people_id AND people_type = 3 )
-
 
 //2.画像排行榜计算信息直接返回数据
 
@@ -23,3 +21,4 @@ WHERE
     (SELECT @rank:=0,@r_integral:=null) AS B) AS AA;
 
 //3.
+
