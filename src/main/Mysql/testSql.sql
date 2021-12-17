@@ -20,5 +20,11 @@ WHERE
     GROUP BY org ORDER BY score DESC) AS A,
     (SELECT @rank:=0,@r_integral:=null) AS B) AS AA;
 
-//3.
+//3.查询表格中是否存在重复数据
+SELECT
+	*
+FROM
+	test_org_info a
+WHERE
+	( a.`code` ) IN ( SELECT `code` FROM test_org_info GROUP BY `code` HAVING count( * ) > 1 )
 
