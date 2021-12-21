@@ -39,3 +39,8 @@ WHERE
 		COMPANY_REMARK = #{company}
 </select>
 
+//5.mybatis清楚缓存
+<select id="queryUcfUserBatchImportId" resultType="java.lang.String" useCache="false" flushCache="true">
+	SELECT UCF_USER_BATCH_IMPORT_SEQ.NEXTVAL FROM DUAL
+</select>
+
