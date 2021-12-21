@@ -28,3 +28,14 @@ FROM
 WHERE
 	( a.`code` ) IN ( SELECT `code` FROM test_org_info GROUP BY `code` HAVING count( * ) > 1 )
 
+
+//4.动态传入字段名,表名
+<select id ="getUser" resultType ="java.util.Map" parameterType ="java.lang.String" statementType ="STATEMENT">
+    select
+		${columns}
+    from
+		${tableName}
+    where
+		COMPANY_REMARK = #{company}
+</select>
+
