@@ -44,3 +44,28 @@ WHERE
 	SELECT UCF_USER_BATCH_IMPORT_SEQ.NEXTVAL FROM DUAL
 </select>
 
+//6.sql查询字段连接,IF(条件判断输出结果)
+   SELECT
+        id AS syncId,
+        CONCAT(XN,'学年 ',IF(XQ = 1,"第一学期","第二学期")) AS term,
+        KCDM AS courseCode,
+        KCMC AS course,
+        BJMC AS className,
+        JSZGH AS code,
+        XM AS `name`,
+        ZS AS zs,
+        KS AS ks,
+        KHFS AS examType,
+        XF AS basicScore,
+        RS AS num,
+        kkdw AS dept,
+        SKXS AS classHours
+        FROM
+        vi_teachingarr_sel_time
+        <if test="now != null">
+            WHERE DATE_FORMAT(create_time,'%Y-%m-%d') = #{now}
+        </if>
+        <if test="upNow != null">
+            WHERE DATE_FORMAT(update_time,'%Y-%m-%d') = #{upNow}
+        </if>
+
