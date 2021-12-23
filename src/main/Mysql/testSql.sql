@@ -68,4 +68,30 @@ WHERE
         <if test="upNow != null">
             WHERE DATE_FORMAT(update_time,'%Y-%m-%d') = #{upNow}
         </if>
+//6.条件用主键进行更新可以更快
+<update id="updateBtoStudentAppraise">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE t_ts_customer_student_appraise_follow_202112230001
+            <set>
+                tea_name = #{item.teaName},
+                tea_code = #{item.teaCode},
+                term = #{item.term},
+                week_no = #{item.weekNo},
+                week = #{item.week},
+                week_dur = #{item.weekDur},
+                session_dur = #{item.sessionDur},
+                course_code = #{item.courseCode},
+                course_name = #{item.courseName},
+                stu_name = #{item.stuName},
+                stu_code = #{item.stuCode},
+                teacher_order = #{item.teacherOrder},
+                class_atom = #{item.classAtom},
+                teach_effect = #{item.teachEffect},
+                remark = #{item.remark},
+                modify_time = NOW()
+            </set>
+            <!--用id（主键）,而不是sync_id，可以更快-->
+            WHERE id = #{item.id} AND delete_flag = 0
+        </foreach>
+</update>
 
