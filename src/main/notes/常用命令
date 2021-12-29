@@ -1,0 +1,14 @@
+
+
+1.git：
+  查看
+  git用户名:git config user.name
+  邮箱:git config user.email
+
+  修改：
+  git用户名:git config --global user.name "xxx"
+  邮箱:git config --global user.email "xxx"
+
+
+2.cmd
+  查看本地IP地址：ipconfig

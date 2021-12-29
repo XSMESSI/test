@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sqlModelDao">
+
+    <!--插入单条数据-->
+    <insert id="inserAlone">
+        INSERT INTO `table`(columnM,columnM,columnM,columnM,columnM,columnM,columnM,
+        columnM,columnM,columnM,create_time,modify_time)
+        VALUES(#{param.columnM},#{param.columnM},#{param.columnM},#{param.columnM},#{param.columnM},#{param.columnM},#{param.columnM},
+        #{param.columnM},#{param.columnM},#{param.columnM},NOW(),NOW())
+    </insert>
+
+    <!--插入多条数据-->
+    <insert id="insertList">
+        INSERT INTO `table`(columnM,columnM,columnM,columnM,columnM,columnM,columnM,
+        columnM,columnM,columnM,create_time,update_time)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.columnM},#{item.columnM},#{item.columnM},#{item.columnM},#{item.columnM},
+            #{item.columnM},#{item.columnM},#{item.columnM},NOW(),NOW())
+        </foreach>
+    </insert>
+
+    <!--查询-->
+    <!--附带条件进行查询-->
+    <select id="selectBySearch">
+        SELECT `columnM`,columnM,columnM,columnM,columnM,columnM,columnM,columnM,columnM
+        FROM `table`
+        WHERE delete_flag = 0
+        <if test="param.columnM != null">
+            AND columnM = #{param.columnM}
+        </if>
+        <if test="param.columnM != null">
+            AND columnM = #{param.columnM}
+        </if>
+        <if test="param.key != null">
+            AND (`columnM` LIKE CONCAT('%',#{param.key},'%')
+            OR columnM LIKE CONCAT('%',#{param.key},'%'))
+        </if>
+        <if test="param.id != null">
+            AND columnM = #{param.columnM}
+        </if>
+        ORDER BY modify_time DESC
+        <if test="param.pageNum != null and param.pageSize != null">
+            LIMIT #{param.pageNum}, #{param.pageSize}
+        </if>
+    </select>
+
+    <!--计算查询结果数量-->
+    <select id="countProjectListOfEstablishId" resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM t_ts_project
+        WHERE delete_flag = 0
+        <if test="param.columnM != null">
+            AND columnM = #{param.columnM}
+        </if>
+        <if test="param.columnM != null">
+            AND columnM = #{param.columnM}
+        </if>
+        <if test="param.key != null">
+            AND (`columnM` LIKE CONCAT('%',#{param.key},'%')
+            OR columnM LIKE CONCAT('%',#{param.key},'%'))
+        </if>
+        <if test="param.id != null">
+            AND columnM = #{param.columnM}
+        </if>
+    </select>
+
+    <!--查询主键id在某一个集合中的数据-->
+    <select id="getRevTemIds" resultType="java.lang.Integer">
+        SELECT a.id AS reviewId,b.id AS expertId,d.id AS itemId
+        FROM `t_ts_project_review` a
+        LEFT JOIN t_ts_project_expert b ON a.id = b.review_id AND b.delete_flag = 0
+        LEFT JOIN t_ts_project_template_item d ON d.template_id = a.template_id AND d.delete_flag = 0
+        WHERE a.delete_flag = 0
+        AND a.id IN
+        <foreach collection="list" item="ids" open="(" close=")" separator=",">
+            #{ids}
+        </foreach>
+    </select>
+
+    <!--根据集合中的信息进行逐条更新-->
+    <update id="updateStatusByList">
+        <foreach collection="indexInfos" item="indexInfo" separator=";">
+            UPDATE `t_ts_evaluate_index_info`
+            <set>
+                <if test="indexInfo.indexStatus != null ">
+                    index_status=#{indexInfo.indexStatus}
+                </if>
+            </set>
+            WHERE id = #{indexInfo.id}
+        </foreach>
+    </update>
+</mapper>
