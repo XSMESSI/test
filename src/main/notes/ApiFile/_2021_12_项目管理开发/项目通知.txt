@@ -1,0 +1,143 @@
+项目通知
+
+1.左侧通知信息
+接口路径URL:/projectNotice/getLeftInfo
+请求方式：GET
+
+入参：
+无
+出参：
+{
+
+  主键id
+    private Long id;
+通知标题
+    private String title;
+ 通知内容
+   
+    private String context;
+ 下发部门
+   
+    private String noticeDept;
+下发部门id
+   
+    private String noticeDeptId;
+ 项目类型
+   
+    private String projectType;
+ 通知对象
+   
+    private String noticeObject;
+ 立项开始时间
+   
+    private LocalDate establishBeginTime;
+立项结束时间
+   
+    private LocalDate establishEndTime;
+结项开始时间
+   
+    private LocalDate closingBeginTime;
+ 结项结束时间
+   
+    private LocalDate closingEndTime;
+ 通知类型(0:立项通知，1:结项通知)
+   
+    private Integer noticeType;
+ 通知对象部门的id集合
+   
+    private List<Long> objectDeptIds;
+ 结项通知对应的立项通知id
+   
+    private Long establishId;
+ 页数
+   
+    private Integer pageNum;
+ 条数
+   
+    private Integer pageSize;
+ 申报部门id
+   
+    private String deptId;
+ 专业id
+   
+    private String majorId;
+ 关键字
+   
+    private String key;
+ 达标数量
+   
+    private Integer num;
+ 该通知下的所有项目数量
+   
+    private Integer sum;
+完成比例
+   
+    private BigDecimal rate;
+}
+2.顶层具体通知信息
+接口路径URL:/projectNotice/getTopInfo
+请求方式：GET
+
+入参：id
+
+出参：
+
+3.查询立项通知对应的项目列表信息
+接口路径URL:/projectNotice/getProjectList
+请求方式：POST
+
+入参：
+deptId
+majorId
+key
+id
+pageNum
+pageSize
+出参：
+`name`,
+department,
+major_name,
+principal,
+start_time,
+end_time,
+project_status,
+progress_rate,
+
+4.新增立项通知
+接口路径URL:/projectNotice/createEstablishNotice
+请求方式：POST
+
+入参：
+
+title
+context
+noticeDept
+noticeDeptId}
+projectType
+noticeObject
+establishBeginTime
+establishEndTime
+noticeType
+出参：
+
+5.查询结项通知
+ 接口路径URL:/projectNotice/getCloseNotice
+ 请求方式：POST
+
+ 入参：
+id
+ 出参：
+noticeDept
+projectType
+noticeObject
+
+6.完善结项通知
+ 接口路径URL:/projectNotice/updateCloseNotice
+ 请求方式：POST
+
+ 入参：
+title
+context
+closingBeginTime
+closingEndTime
+ 出参：

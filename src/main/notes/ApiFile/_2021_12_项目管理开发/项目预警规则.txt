@@ -1,0 +1,70 @@
+项目预警规则
+1.查询预警规则列表信息
+接口路径URL:/projectConfig/getWarnList
+请求方式：POST
+
+入参：
+pageNum,pageSize
+出参
+{
+
+    /**
+     * 主键id
+     */
+    private  String id;
+
+    /**
+     * 编码id
+     */
+    private  String code;
+
+    /**
+     * 预警类型
+     */
+    private  String type;
+
+    /**
+     * 预警策略 0：事前，1：事后
+     */
+    private  Integer strategy;
+
+    /**
+     * 预警天数
+     */
+    private  Integer dayNum;
+
+    /**
+     * 备注信息
+     */
+    private  String remark;
+
+    /**
+     * 是否启用 0:否，1：是
+     */
+    private  Integer validFlag;
+
+    /**
+     * 页数
+     */
+    private Integer pageNum;
+
+    /**
+     * 条数
+     */
+    private Integer pageSize;
+}
+
+2.新建/编辑项目预警规则信息
+接口路径URL:/projectConfig/createOrUpdateWarnInfo
+请求方式：POST
+
+入参：
+  code   
+  type   
+  strategy   
+  dayNum   
+  remark   
+  validFlag   
+
+
+

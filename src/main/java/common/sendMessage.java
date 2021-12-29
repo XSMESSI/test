@@ -15,7 +15,7 @@ import java.util.Properties;
 public class sendMessage {
     public static void main(String[] args) {
         // 收件人电子邮箱
-        String to = "2532413887@qq.com";
+        String to = "xsmessi301910@163.com";
 
         // 发件人电子邮箱
         String from = "2532413887@qq.com";
