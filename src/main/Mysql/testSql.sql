@@ -95,3 +95,6 @@ WHERE
         </foreach>
 </update>
 
+//7.查询不在一定范围内的数据量
+SELECT COUNT(1) FROM `t_ts_project` WHERE notice_id NOT IN (673943072229638144,673979434446176256) and delete_flag = 0
+

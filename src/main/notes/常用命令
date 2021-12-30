@@ -12,3 +12,8 @@
 
 2.cmd
   查看本地IP地址：ipconfig
+
+3.mysql
+
+清除表格中的自增id记录：
+truncate table aa
