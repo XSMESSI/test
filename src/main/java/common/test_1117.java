@@ -21,8 +21,12 @@ public class test_1117 {
                 new bysmyd(0, null, "德甲", 86.2)
         );
 
+
+
         xsList = xsList.stream().sorted(Comparator.comparing(bysmyd::getYear).thenComparing(bysmyd::getRate).reversed()).collect(Collectors.toList());
-        System.out.println(xsList);
+        System.out.println("xsList = " + xsList);
+
+//        System.out.println(xsList.);
 
 
     }
