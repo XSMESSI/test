@@ -1,6 +1,6 @@
 package _2021._12_December.test_1231;
 
-import common.ComCalculate;
+import common.CommonCalculate.ComCalculate;
 
 import java.util.*;
 

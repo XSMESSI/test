@@ -1,6 +1,7 @@
 
 
 1.git：
+
   查看
   git用户名:git config user.name
   邮箱:git config user.email

@@ -7,6 +7,6 @@ package _2022._01_January.test_0104;
  */
 public class test_01 {
     public static void main(String[] args) {
-
+        String str = "leomessi";
     }
 }

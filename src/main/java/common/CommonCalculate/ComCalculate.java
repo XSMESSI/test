@@ -1,4 +1,6 @@
-package common;
+package common.CommonCalculate;
+
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -28,6 +30,31 @@ public class ComCalculate {
         }else{
             for (T var:arr){
                 map.put(var,list.contains(var)?Collections.frequency(list,var):0);
+            }
+        }
+        return map;
+    }
+
+    /**
+     * Map<key1,Map<key2,Integer>对应的两个键值的数量
+     * @param list
+     * @param type
+     * @param classes
+     * @return
+     */
+    public static  Map< String,Map<String,Integer>> countTwokey(List<Prize> list,String[] type,String[] classes){
+        Map<String,Map<String, Integer>> map = new LinkedHashMap<>();
+        Map<String,List<Prize>> groupMap = list.stream().collect(Collectors.groupingBy(Prize::getType));
+        for (String varT : type){
+            Map<String,Integer> mapC = new LinkedHashMap<>();
+            List<Prize> temp = groupMap.get(varT);
+            List<String> listC = new ArrayList<>();
+            for (String varC : classes){
+                if (CollectionUtils.isNotEmpty(temp)){
+                    listC = temp.stream().map(Prize::getClasses).collect(Collectors.toList());
+                }
+                mapC.put(varC,Collections.frequency(listC,varC));
+                map.put(varT,mapC);
             }
         }
         return map;
