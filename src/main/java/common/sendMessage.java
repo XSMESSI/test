@@ -15,7 +15,7 @@ import java.util.Properties;
 public class sendMessage {
     public static void main(String[] args) {
         // 收件人电子邮箱
-        String to = "xsmessi301910@163.com";
+        String to = "2532413887@qq.com";
 
         // 发件人电子邮箱
         String from = "2532413887@qq.com";
@@ -60,7 +60,13 @@ public class sendMessage {
             message.setSubject("开发邮箱发送信息!");
 
             // 设置消息体
-            message.setText("开发邮箱发送信息，可忽略。--徐慎");
+            StringBuilder reUrl = new StringBuilder();
+            reUrl.append("http://192.168.10.13/bto/gdnh/#/module-pubilc-config/expert-database");
+
+
+            message.setContent("<span style='color:black;'>点击这里" +
+                    "<a href = \"http://192.168.10.13/bto/gdnh/#/module-pubilc-config/expert-database\"> 网页链接 </a>> " +
+                    "参与（部署学校名称）《XXXX》（项目名称）立项评审（评审类型）</span>","text/html;charset=gbk");
 
             // 发送消息
             Transport.send(message);

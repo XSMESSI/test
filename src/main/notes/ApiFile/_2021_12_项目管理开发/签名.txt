@@ -1,0 +1,19 @@
+1.获取签名
+URL:projectNotice/getSign
+请求方式：Get
+
+入参：id（专家id）
+mdId(加密id)
+
+
+
+2.保存专家签字：
+URL:projectNotice/saveSign
+请求方式：Post
+
+入参：
+     * 存储专家签字信息
+     private List<ProjectExpert> signList;
+
+包括：mdId,signature(专家id，签名)
+

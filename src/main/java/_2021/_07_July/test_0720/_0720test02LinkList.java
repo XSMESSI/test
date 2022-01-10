@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class _0720test02LinkList {
     public static void main(String[] args) {
-        List<String> list = new LinkedList<String>();
+        List<String> list = new LinkedList<>();
         System.out.println(list.size());
 
         list.add("My");
@@ -19,7 +19,7 @@ public class _0720test02LinkList {
         list.add("messi");
 
         System.out.println(list.size());
-        System.out.println(list.toString());
+        System.out.println("list = " + list);
 
         list.set(0,"YOUR");
         list.set(1,"sex");

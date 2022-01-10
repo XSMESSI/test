@@ -1,0 +1,54 @@
+接口文档的模板：
+
+1.分配/批量分配专家
+接口路径URL:/projectNotice/assignExpert
+请求方式：POST
+
+入参：
+/**
+   * 评审列表id，模板id集合
+    */
+    private List<ExpertContainer> refIds;
+
+    reviewId(评审id)
+    templateId（模板id）
+
+   /**
+   * 勾选专家的信息集合
+     */
+    private List<ExpertContainer> batchList;
+
+        leaderFlag（是否专家组长）
+        id（专家id）
+        name（专家姓名）
+        email（专家邮箱）
+
+
+
+3.发送/批量发送消息
+接口路径URL:projectNotice/sendEmailInfo
+请求方式：Post
+
+
+入参：
+
+    //请求头
+    link;
+
+
+     * 发送消息拿到信息:Map<reviewId,List<专家信息>>
+     */
+    private Map<String,List<ProjectExpert>> revExpMap;
+
+    包括内容；
+    reviewId;(评审列表id)
+
+    containerId;（专家id）
+    containerEmail;（专家邮箱）
+    projectName;（项目名称）
+
+
+
+入参：
+
+出参：

@@ -37,7 +37,9 @@ public class _0719test1 {
         String a = "3";
         System.out.println(a+1);
         int a1 = Integer.parseInt(a);
+        int a2 = Integer.valueOf("2");
         System.out.println(a1+1);
+        System.out.println("a2 = " + a2);
 
 
     }

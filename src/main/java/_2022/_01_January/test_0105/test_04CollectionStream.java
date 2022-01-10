@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
- * @Description
+ * @Description Collection的stream使用
  * @Author XuShen
  * @Date 2022/1/5 10:36
  */

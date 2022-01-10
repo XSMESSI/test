@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
  * @Date 2021/12/31 10:52
  */
 public class ComCalculate {
+
+
     /**
      * 存储list集合中的不同对象的数量 Map<对象,数量>
      * 也可以提供数组，存储数组中的变量在list集合中的个数

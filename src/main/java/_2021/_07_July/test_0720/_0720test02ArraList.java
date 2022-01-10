@@ -21,25 +21,32 @@ import java.util.List;
  */
 public class _0720test02ArraList {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         System.out.println("ArrayList初始化集合容量="+list.size());
 
         //添加功能：
         list.add("Leo ");
         list.add("Messi");
         list.add(2,"!");
+        list.add(2,"!");
+        list.add(2,"!");
 
         System.out.println("ArrayList当前容量"+list.size());
+        System.out.println("list = " + list);
+        //集合转换为字符串形式
+        String str1 = list.toString().substring(0,1);
+        System.out.println("str1 = " + str1);
         System.out.println(list.toString());
 
         //修改功能：
         list.set(0,"Xu ");
         list.set(1,"Shen");
-        System.out.println("ArrayList当前内容："+list.toString());
+        System.out.println("修改之后:ArrayList当前内容："+list.toString());
+        System.out.println("list.isEmpty = " + list.isEmpty());
 
         //获取功能：
-        String elemnt = list.get(0);
-        System.out.println(elemnt);
+        String list_0 = list.get(0);
+        System.out.println("list_0 = " + list_0);
 
         //迭代器遍历集合：
         Iterator<String> iterator = list.iterator();
@@ -51,6 +58,7 @@ public class _0720test02ArraList {
             System.out.println("··········");
         }
         //for循环
+        //for(数据类型 每个变量：循环对象)
         for (String str:list){
             System.out.println("for循环遍历"+str);
         }
@@ -58,13 +66,16 @@ public class _0720test02ArraList {
         //判断功能
         boolean isempty= list.isEmpty();
         boolean isContains = list.contains("Cluo");
-        System.out.println(isempty+"  "+isContains);
+        System.out.println("isempty = " + isempty);
+        System.out.println("isContains = " + isContains);
 
         int size = list.size();
         System.out.println(size);
 
 
         list.clear();
+        System.out.println("清除list集合");
+        System.out.println("list = " + list);
         System.out.println(list.size());
 
 

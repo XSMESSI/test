@@ -32,8 +32,7 @@ SELECT * from STUDENT WHERE 1=1
 
 
 
-<select id="getUserByWhere2" parameterType="user" resultType="com.pipi.mybatis.pojo.User">
-<!-- include:引入sql片段,refid引入片段id -->
+<select id="getUserByWhere2" resultType="com.pipi.mybatis.pojo.User">
 SELECT
 *
 FROM USER

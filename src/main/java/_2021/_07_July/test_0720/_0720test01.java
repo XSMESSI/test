@@ -15,13 +15,14 @@ public class _0720test01 {
         list1.add("abc0");
         list1.add("abc1");
         list1.add("abc2");
-
-        // while循环方式遍历
+        System.out.println("while》》》》》》》》》");
+        // while循环方式遍历（Iterator迭代器）
         Iterator it1 = list1.iterator();
         while (it1.hasNext()) {
             System.out.println(it1.next());
         }
 
+        System.out.println("for>>>>>>>");
         // for循环方式遍历
         for (Iterator a = list1.iterator(); a.hasNext(); ) {
             System.out.println(a.next());
