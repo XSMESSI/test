@@ -1,6 +1,6 @@
 package _2021._10_October.test_1027;
 
-import java.util.Scanner;
+import org.junit.Test;
 
 /**
  * @Description
@@ -9,20 +9,19 @@ import java.util.Scanner;
  */
 public class test_01Switch {
     public static void main(String[] args) {
-        Scanner cin = new Scanner(System.in);
+        int num = 2;
 
-        int i = 3;
-
-        switch (i){
+        switch (num){
             case 1:
-                System.out.println(1);
+                System.out.println("num = " + num);
                 break;
             case 2:
-                System.out.println(2);
+                System.out.println("num = " + num);
                 break;
             case 3:
-                System.out.println(3);
+                System.out.println("num = " + num);
                 break;
         }
+        System.out.println("num最后输出结果 = " + num);
     }
 }

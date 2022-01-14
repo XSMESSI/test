@@ -14,15 +14,13 @@ public class _0721test02 {
 
 
 
-        builder.insert(1,"LEO");
+        builder.insert(5,"LEO");
         System.out.println("insert方法：："+builder);
 
         StringBuilder builder1 = new StringBuilder();
         builder1.append("0123456789");
-        System.out.println(builder1);
+        System.out.println("builder1 = " + builder1);
 
-//        builder1.deleteCharAt(3);
-//        System.out.println("deleteCharAt方法"+builder1);
         builder1.delete(2,5);//delete方法左闭右开
         System.out.println("delete方法"+builder1);
         System.out.println(builder1.toString());//字符串的转换成字符输出

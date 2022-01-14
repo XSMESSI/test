@@ -1,0 +1,21 @@
+接口名称：消息通知跳转
+URL:projectNotice/getUserItemInfo
+请求方式：POST
+
+
+入参：
+noticeId（通知id）
+type（消息类型）
+
+
+出参：
+ id,
+ title,(通知消息标题)
+ project_type,(项目类型)
+ project_type_id,（项目类型id）
+ notice_object,（通知对象部门）
+ notice_object_id,（通知对象部门id）
+ establish_begin_time,（立项开始时间）
+ establish_end_time,（立项结束时间）
+ closing_begin_time,（结项开始时间）
+ closing_end_time（结项结束时间）

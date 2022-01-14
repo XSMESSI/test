@@ -98,3 +98,28 @@ WHERE
 //7.查询不在一定范围内的数据量
 SELECT COUNT(1) FROM `t_ts_project` WHERE notice_id NOT IN (673943072229638144,673979434446176256) and delete_flag = 0
 
+
+//8.自定义排序
+review_type  根据review_type 值进行自定义排序
+SELECT review_type FROM `t_ts_project_review`
+	ORDER BY FIELD(review_type,0,2,1,3)
+
+
+/*
+2.自定义排序
+自定义排序是根据自己想要的特定字符串（数字）顺序进行排序。
+
+主要是使用函数 FIELD(str,str1,str2,str3,...)
+
+MySQL的自定义排序，str与str1、str2、str3...进行比较，并按照str1,str2,str3...的顺序输出，
+如果遇到str为null或者不存在str1,str2,str3...中的情况的则序列为0，
+
+eg:
+
+SELECT * FROM TEST ORDER BY FIELD(value,'test1','test2','test3','test4') ASC/DESC
+eg2:
+
+SELECT * FROM TEST WHERE VALUE IN('test1','test2','test3','test4')
+ORDER BY FIELD(value,'test1','test2','test3','test4') ASC/DESC # 保证只满足条件的进行排序
+ */
+

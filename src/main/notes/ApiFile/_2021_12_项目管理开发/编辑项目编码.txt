@@ -1,0 +1,7 @@
+1.接口名称：根据项目id
+URL:project/updateProjectCode
+请求方式：Get
+
+入参：（两个都是必传）
+id，code
+
