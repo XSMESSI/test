@@ -13,12 +13,14 @@ public class test_05 {
     int data = 50;
 
     public static void main(String[] args) {
+
+        m = m+34;
+        System.out.println("m = " + m);
         /**
          * 下面两种对于m的计算输出的结果是不一样的
          */
-        m = m+34;
-        System.out.println("m = " + m);
         System.out.println("m = " + m+34);
+        System.out.println("m = " + (m+34));
 
 
         int a = 9;
