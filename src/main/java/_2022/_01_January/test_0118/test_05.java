@@ -24,8 +24,8 @@ public class test_05 {
                 new bysmyd(2025, null, "德甲", 86.2)
         );
         //为了防止null进行比较的时候报错，固定值写在前面，第二个是报错的
-//        xsList = xsList.stream().filter(o->("萨拉赫").equals(o.getName())).collect(Collectors.toList());
-        xsList = xsList.stream().filter(o->o.getName().equals("萨拉赫")).collect(Collectors.toList());
+        xsList = xsList.stream().filter(o->("萨拉赫").equals(o.getName())).collect(Collectors.toList());
+//        xsList = xsList.stream().filter(o->o.getName().equals("萨拉赫")).collect(Collectors.toList());
         System.out.println("xsList = " + xsList);
 
     }
