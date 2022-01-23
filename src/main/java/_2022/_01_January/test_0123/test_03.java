@@ -1,6 +1,7 @@
 package _2022._01_January.test_0123;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -11,7 +12,8 @@ import java.util.*;
  */
 
 public class test_03 {
-    public static void main(String[] args) {
+    @Test
+    public void testDataList(){
         List<ExpertContainer> list = new ArrayList<>();
         Map<String,Integer> map1 = new LinkedHashMap<>();
         map1.put("园林艺术",1);
@@ -39,8 +41,8 @@ public class test_03 {
 
         List<List<String>> dataList = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(list)){
-            for (int i = 1;i < list.size()+1;i++){
-                ExpertContainer info = list.get(i-1);
+            for (int i = 0;i < list.size();i++){
+                ExpertContainer info = list.get(i);
                 Map<String,Integer> map = info.getMap();
                 List<String> list1 = new ArrayList<>(map.keySet());
                 String[] arr = new String[list1.size()+3];
