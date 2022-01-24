@@ -1,0 +1,53 @@
+1.列表信息：
+URL:/teaWorkLabEvaluate/getOrgFillList
+请求方式：POST
+入参：
+/**
+     * 学院id
+     */
+    private Integer deptId;
+
+    /**
+         * 教研室名称
+         */
+        private String orgName;
+
+
+出参：
+
+列表信息
+orgFills;
+{
+/**
+     * 表单名称
+     */
+     formName;
+
+    /**
+     * 类型
+     */
+     type;
+
+    /**
+     * 数据来源
+     */
+     source;
+
+    教研室填报情况集合：
+    infoList{
+    orgName：教研室名称
+    flag:是否填报
+    }
+
+}
+orgNames;
+表头上教研室名称集合
+
+2.导出列表信息：
+URL:/teaWorkLabEvaluate/exportOrgFills
+请求方式：POST
+入参：
+btoAuthToken
+deptId
+orgName
+
