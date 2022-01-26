@@ -41,6 +41,8 @@ public class test_03 {
         temp2.setMap(map2);
         list.add(temp2);
 
+        System.out.println("list = " + list);
+
         List<List<String>> dataList = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(list)){
             for (int i = 0;i < list.size();i++){
@@ -57,7 +59,6 @@ public class test_03 {
                 dataList.add(Arrays.asList(arr));
             }
         }
-
         System.out.println("dataList = " + dataList);
     }
 }
