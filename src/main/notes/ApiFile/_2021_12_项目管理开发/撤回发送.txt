@@ -1,0 +1,9 @@
+
+
+1.撤回发送
+
+接口路径URL:/projectNotice/rollBackSend
+请求方式：GET
+
+入参：reviewId
+
