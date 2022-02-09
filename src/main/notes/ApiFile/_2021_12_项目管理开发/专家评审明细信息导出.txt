@@ -1,0 +1,13 @@
+
+1.专家评审明细导出
+接口路径URL:/projectNotice/exportReviewInfo
+请求方式：POST
+
+入参：
+btoAuthToken
+projectStatus
+level
+deptName
+majorName
+key
+

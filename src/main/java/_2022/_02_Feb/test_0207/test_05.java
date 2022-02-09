@@ -1,4 +1,4 @@
-package _2022._02_Feb.test_0227;
+package _2022._02_Feb.test_0207;
 
 import _2021._11_November.test_1110.Person;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @Description
+ * @Description 获取类中的属性
  * @Author XuShen
  * @Date 2022/2/7 18:08
  */

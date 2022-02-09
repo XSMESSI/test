@@ -1,4 +1,4 @@
-package _2022._02_Feb.test_0227;
+package _2022._02_Feb.test_0207;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import common.mySelf.LeoException;
@@ -17,6 +17,7 @@ public class test_02 {
         list.add("3");
         list.add("2");
         list.add("ce");
+        System.out.println("list = " + list);
         //集合转换为数组   也可以借鉴(全局搜索后面内容)：集合->对象数组->原始类型数组
         String[] arr = list.toArray(new String[list.size()]);
         for (int i = 0;i<arr.length;i++){
@@ -45,9 +46,9 @@ public class test_02 {
         tree.add("9");
         System.out.println("tree = " + tree);
 
-        List<String> list1 = new ArrayList<>();
-        if (CollectionUtils.isEmpty(list1)){
-            throw new LeoException("list1是空--初步使用自定义异常");
-        }
+//        List<String> list1 = new ArrayList<>();
+//        if (CollectionUtils.isEmpty(list1)){
+//            throw new LeoException("list1是空--初步使用自定义异常");
+//        }
     }
 }
