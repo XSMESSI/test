@@ -1,0 +1,143 @@
+
+
+linux命令：
+cd /home 进入 '/ home' 目录'
+ls 查看目录中的文件
+ls -F 查看目录中的文件
+ls -l 显示文件和目录的详细资料
+ls -a 显示隐藏文件
+ls *[0-9]* 显示包含数字的文件名和目录名
+tree 显示文件和目录由根目录开始的树形结构(1)
+lstree 显示文件和目录由根目录开始的树形结构(2)
+mkdir dir1 创建一个叫做 'dir1' 的目录'
+mkdir dir1 dir2 同时创建两个目录
+mkdir -p /tmp/dir1/dir2 创建一个目录树
+rm -f file1 删除一个叫做 'file1' 的文件'
+rm -rf dir1 删除一个叫做 'dir1' 的目录并同时删除其内容
+rm -rf dir1 dir2 同时删除两个目录及它们的内容
+mv dir1 new_dir 重命名/移动 一个目录
+cp file1 file2 复制一个文件
+cp dir/* . 复制一个目录下的所有文件到当前工作目录
+cp -a /tmp/dir1 . 复制一个目录到当前工作目录
+cp -a dir1 dir2 复制一个目录
+unzip file1.zip 解压一个zip格式压缩包
+gzip -d file.gz 解压.gz压缩包
+tail -f catalina.out 查看tomcat日志
+ps -ef|grep   查看进程
+chmod 777 error.log  //设置文件最大权限
+
+
+
+
+
+mysql命令
+mysql- u root -p        进入mysql
+use 数据库名
+   source  /sql文件地址   导入sql文件
+1.终端启动MySQL：/etc/init.d/mysql start；
+2.登录MySQL：mysql -uroot -p (用root账户登录),然后输入密码；
+3.查看所有的数据库名字：show databases;
+4.选择一个数据库操作： use database_name;
+5.查看当前数据库下所有的表名：show tables;
+6.创建一个数据库：create database database_name;
+7.删除一个数据库：drop database database_name;
+8.创建一个表: create table mytest( uid bigint(20) not null, uname varchar(20) not null);
+9.删除一个表: drop table mytest;
+10.SQL插入语句：insert into table_name(col1,col2) values(value1,value2);
+11.SQL更新语句：update table_name set col1='value1',col2='value2' where where_definition;
+12.SQL查询语句：select * from table_name where.......(最复杂的语句) 1
+3.SQL删除语句：delete from table_name where...
+14.增加表结构的字段：alert table table_name add column field1 date ,add column field2 time...
+15.删除表结构的字段：alert table table_name drop field1;
+16.查看表的结构：show columns from table_name;
+17.limit 的使用：select * from table_name limit 3；//每页只显示3行 select * from table_name limit 3,4 //从查询结果的第三个开始，显示四项结果。 此处可很好的用来作分页处理。
+18.对查询结果进行排序: select * from table_name order by field1,orderby field2;多重排序
+19.退出MySQL:exit;
+20.删除表中所有数据： truncate table 数据表名称 （不可恢复）
+1、导出数据和表结构：
+mysqldump -u用户名 -p密码 数据库名 > 数据库名.sql
+mysqldump -uroot -p dbname > dbname .sql
+敲回车后会提示输入密码
+2、只导出表结构
+mysqldump -u用户名 -p密码 -d 数据库名 > 数据库名.sql
+mysqldump -uroot -p -d dbname > dbname .sql
+
+
+导入sql
+mysql -u 用户名 -p 数据库名 < 存放位置
+
+mysqljump -u root -p test < c:/a.sql
+
+第二种导入方法：
+mysql -u 用户名 -p
+use 数据库名
+source sql文件的路径
+
+ 重启mysql
+service mysqld restart
+一、启动方式
+
+1、使用 service 启动：service mysqld start
+2、使用 mysqld 脚本启动：/etc/inint.d/mysqld start
+3、使用 safe_mysqld 启动：safe_mysqld&
+
+二、停止
+
+1、使用 service 启动：service mysqld stop
+2、使用 mysqld 脚本启动：/etc/inint.d/mysqld stop
+3、mysqladmin shutdown
+
+三、重启
+1、使用 service 启动：service mysqld restart
+2、使用 mysqld 脚本启动：/etc/inint.d/mysqld restart
+
+
+ 启动：systemctl start mysqld | 停止：systemctl stop mysqld | 重启：systemctl restart mysqld	#
+#  配置文件：/etc/my.cnf									#
+#——————————————————————————————————————————————— #
+#					redis操作命令						#
+#  启动：systemctl start redis | 停止：systemctl stop redis | 重启：systemctl restart redis	#
+#  配置文件：/opt/redis/conf/redis.cnf
+
+重启
+1、验证nginx配置文件是否正确
+方法一：进入nginx安装目录sbin下，输入命令./nginx -t
+看到如下显示nginx.conf syntax is ok
+
+nginx.conf test is successful
+
+说明配置文件正确！
+
+方法二：在启动命令-c前加-t
+2、重启Nginx服务
+ 方法一：进入nginx可执行目录sbin下，输入命令./nginx -s reload 即可
+
+
+方法二：查找当前nginx进程号，然后输入命令：kill -HUP 进程号 实现重启nginx服务
+
+tar
+  解包：tar zxvf filename.tar
+  打包：tar czvf filename.tar dirname
+
+.gz
+
+解压1：gunzip FileName.gz
+解压2：gzip -d FileName.gz
+压缩：gzip FileName
+
+.tar.gz 和 .tgz
+
+解压：tar zxvf FileName.tar.gz
+
+压缩：tar zcvf FileName.tar.gz DirName
+
+
+df -h Df命令是linux系统以磁盘分区为单位查看文件系统，可以加上参数查看磁盘剩余空间信息，
+命令格式： df -hl
+显示格式为：
+　　文件系统 容量 已用 可用 已用% 挂载点 Filesystem Size Used Avail Use% Mounted on /dev/hda2 45G 19G 24G 44% / /dev/hda1 494
+df   -h
+
+Df命令是linux系统以磁盘分区为单位查看文件系统，可以加上参数查看磁盘剩余空间信息，命令格式：
+
+df -hl

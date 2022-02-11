@@ -1,6 +1,4 @@
-package _2022._02_Feb.test_0228;
-
-import _2021._11_November.test_1110.Person;
+package _2022._02_Feb.test_0208;
 
 import java.io.Serializable;
 

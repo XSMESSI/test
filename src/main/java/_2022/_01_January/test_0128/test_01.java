@@ -124,6 +124,9 @@ public class test_01 {
         outputStream.flush();
 
 
+        /**
+         * 查看占用多少内存
+         */
         Runtime run = Runtime.getRuntime();
         double total = run.totalMemory();
         double free = run.freeMemory();

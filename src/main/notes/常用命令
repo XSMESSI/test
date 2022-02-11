@@ -18,3 +18,13 @@
 
 清除表格中的自增id记录：
 truncate table aa
+
+
+4.IDEA中项目端口被占用，杀掉改端口的进行：
+win+R 输入cmd到dos命令窗口：
+4-1.查找该端口的进行pid(通过端口号找到pid)
+netstat -ano | find “8086”《端口号》
+4-2.通过pid找到进程
+tasklist | find “189356”  《pid》
+4-3.关闭进程
+taskkill /f /t /im java.exe
