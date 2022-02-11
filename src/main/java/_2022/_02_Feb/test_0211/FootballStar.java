@@ -6,6 +6,7 @@ package _2022._02_Feb.test_0211;
  * @Date 2022/2/11 11:10
  */
 public enum FootballStar {
+
     Messi(10,"梅西"),
     Ronaldo(7,"C罗"),
     Neymar(11,"内马尔"),
@@ -20,7 +21,7 @@ public enum FootballStar {
     /**
      * 球员编号
      */
-    private int number;
+    private Integer number;
 
     public String getName() {
         return name;
@@ -38,7 +39,7 @@ public enum FootballStar {
         this.number = number;
     }
 
-    FootballStar(int number,String name){
+    FootballStar(Integer number,String name){
         this.number = number;
         this.name = name;
     }

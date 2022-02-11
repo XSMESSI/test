@@ -71,6 +71,63 @@ public class test_05Math {
         System.out.println("Math.abs(num62) = " + Math.abs(num62));
         System.out.println("Math.abs(num63) = " + Math.abs(num63));
 
+        //Java ceil() 方法  Java floor() 方法
+        // ceil() 方法可对一个数进行上舍入，返回值大于或等于给定的参数，类型为双精度浮点型。
+        //floor() 方法可对一个数进行下舍入，返回给定参数最大的整数，该整数小于或等给定的参数。
+        System.out.println("Java ceil() 方法 Java floor() 方法");
+        double num71 = 100.675;
+        float num72 = -90;
+
+        System.out.println("Math.ceil(num71) = "+Math.ceil(num71));
+        System.out.println("Math.ceil(num72) = "+Math.ceil(num72));
+
+        System.out.println("Math.floor(num71) = " + Math.floor(num71));
+        System.out.println("Math.floor(num72) = " + Math.floor(num72));
+
+        //Java rint() 方法 ：返回最接近参数的整数值
+        System.out.println("Java rint() 方法");
+        double num81 = 100.675;
+        double num82 = 100.500;//若存在两个，返回偶数
+        double num83 = 100.200;
+
+        System.out.println("Math.rint(num81) = " + Math.rint(num81));
+        System.out.println("Math.rint(num82) = " + Math.rint(num82));
+        System.out.println("Math.rint(num83) = " + Math.rint(num83));
+
+        //Java round() 方法
+        //round() 方法返回一个最接近的 int、long 型值，四舍五入。
+        //round 表示"四舍五入"，算法为Math.floor(x+0.5) ，
+        // 即将原来的数字加上 0.5 后再向下取整，所以 Math.round(11.5) 的结果为 12，Math.round(-11.5) 的结果为 -11。
+        System.out.println("Java round() 方法");
+        double num91 = 100.675;
+        double num92 = 100.500;
+        float num93 = 100;
+        float num94 = 90f;
+
+        System.out.println("Math.round(num91) = " + Math.round(num91));
+        System.out.println("Math.round(num92) = " + Math.round(num92));
+        System.out.println("Math.round(num93) = " + Math.round(num93));
+        System.out.println("Math.round(num94) = " + Math.round(num94));
+
+        //Java min() 方法 Java max() 方法
+        System.out.println("Java min() 方法 /   Java max() 方法");
+        System.out.println("Math.min(12.123,12.456) = " + Math.min(12.123,12.456));
+        System.out.println("Math.min(23.12,23.0) = " + Math.min(23.12,23.0));
+
+        System.out.println("Math.max(12.123,12.456) = " + Math.max(12.123,12.456));
+        System.out.println("Math.max(23.12,23.0) = " + Math.max(23.12,23.0));
+
+
+        //Java exp() 方法 exp() 方法用于返回自然数底数e的参数次方。
+        System.out.println("Java exp() 方法");
+        double num101 = 11.635;
+        double num102 = 2.76;
+        System.out.printf("e的值为 %.4f%n",Math.E);
+        System.out.printf("exp(%.3f) 为%.3f%n",num101,Math.exp(num101));
+
+
+
+
 
     }
 }
