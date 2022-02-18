@@ -1,0 +1,169 @@
+
+1.新增重点工作
+接口路径URL:/work/insertKey
+请求方式：POST
+
+入参：
+keyName,(重点工作名称)
+keyType（重点工作类型0:年度，1:学期，2:阶段）
+year(年度(2021年)，学期的时候传值（2021-2022年 第一学期），阶段不传)
+startTime(阶段重点工作开始时间)
+endTime（阶段重点工作结束时间）
+
+2.重点工作卡片信息
+接口路径URL:/work/keyCard
+请求方式：POST
+
+入参：
+year(年度：卡片形式页面的筛选框)；
+key（任务内容页面的（任务内容/负责人）搜索文本框）
+pageNum(页数)
+pageSize（条数）
+
+出参：
+//卡片内容
+keyId（重点工作id）
+name(重点工作名称)
+type（重点工作类型 0:年度，1:学期，2:阶段）
+
+任务内容：
+一级任务列表
+workList{
+
+//一级任务
+	grade（级别），
+	title（任务标题）,
+	measure(具体措施),
+	dept(牵头部门),
+	executor（执行人）,
+	publisher(发布人)，
+	workTime（任务周期）,
+	warnTime	(预警时间)，
+	status(状态 0:未发布，1：已发布)
+	progress（进度），
+	targets{(该项任务的目标列表)
+		executor(目标执行人),
+		target(目标名称),
+		type(目标汇报类型 0：百分比 1：数值)，
+		progress（任务进度/任务数值）
+	}
+
+		child{ (该任务下面的子任务 )
+		//二级任务
+		grade（级别），
+		title（任务标题）,
+		measure(具体措施),
+		dept(牵头部门)，
+		executor（执行人）,
+		publisher(发布人)，
+		workTime（任务周期）,
+		warnTime	(预警时间)，
+		status(状态 0:未发布，1：已发布)
+		progress（进度），
+			targets{(该项任务的目标列表)
+				executor(目标执行人),
+				target(目标名称),
+				type(目标汇报类型 0：百分比 1：数值)，
+				progress（任务进度/任务数值）
+			}
+
+			child{ (该任务下面的子任务 )
+			//三级任务
+			grade（级别），
+			title（任务标题）,
+			measure(具体措施),
+			dept(牵头部门)，
+			executor（执行人）,
+			publisher(发布人)，
+			workTime（任务周期）,
+			warnTime	(预警时间)，
+			status(状态 0:未发布，1：已发布)
+			progress（进度），
+				targets{(该项任务的目标列表)
+					executor(目标执行人),
+					target(目标名称),
+					type(目标汇报类型 0：百分比 1：数值)，
+					progress（任务进度/任务数值）
+				}
+			}
+		}
+
+}
+
+3.新增一级任务/分解任务
+接口路径URL:/work/insertWork
+请求方式：POST
+
+入参：
+
+topId(上一级的workId,新增一级任务的时候是重点工作id);
+keyId(重点工作id);
+grade(级别（新增一级任务的时候传0，当前任务（一级，二级）向下分解任务的时候，传当前任务的级别+1）);
+title(任务标题);
+startTime(任务开始时间);
+endTime(任务结束时间);
+dept(牵头部门);
+deptId(牵头部门id);
+budget(任务总预算)
+warnId(预警方式)；
+warnTime(预警时间);
+auditId("14");（审核人id）(默认是自己)
+file（上传附件）;
+context(任务内容介绍（1000字以内);
+
+	//关联目标《集合的形式》
+	targets{
+
+		executor（执行人姓名）
+
+		executorId（执行人id）
+
+		target（目标名称）
+
+		type（目标汇报类型 0：百分比 1：数值）
+
+		progress（任务进度/任务数值）
+	}
+
+
+
+4.编辑或者删除任务
+接口路径URL:/work/editOrDel
+请求方式：POST
+
+入参：
+
+/**
+编辑
+*/
+grade（当前任务的级别）
+status(当前任务状态)
+workId(当前任务的id)
+title(任务标题);
+startTime(任务开始时间);
+endTime(任务结束时间);
+dept(牵头部门);
+deptId(牵头部门id);
+budget(任务总预算)
+warnId(预警方式)；
+warnTime(预警时间);
+auditId("14");（审核人id）(默认是自己)
+file（上传附件）;
+context(任务内容介绍（1000字以内);
+targets(任务的目标);
+
+/**
+删除
+*/
+grade（当前任务的级别）
+deleteFlag (传1)
+
+5.发送任务/发布全部任务
+接口路径URL：/work/sendWork
+请求方式：GET
+
+入参：
+ids(勾选的任务id集合)
+
+
+

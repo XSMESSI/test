@@ -21,29 +21,29 @@ public class test_02 {
         List<_2021._11_November.test_1115.Student> list = new ArrayList<>();
         list.add(new _2021._11_November.test_1115.Student(1,"A",23));
         list.add(new _2021._11_November.test_1115.Student(2,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(3,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(4,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(5,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(6,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(7,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(8,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(9,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(10,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(11,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(12,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(13,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(14,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(15,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(16,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(17,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(18,"B",25));
-        list.add(new _2021._11_November.test_1115.Student(19,"A",23));
-        list.add(new _2021._11_November.test_1115.Student(20,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(3,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(4,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(5,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(6,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(7,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(8,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(9,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(10,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(11,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(12,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(13,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(14,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(15,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(16,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(17,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(18,"B",25));
+//        list.add(new _2021._11_November.test_1115.Student(19,"A",23));
+//        list.add(new _2021._11_November.test_1115.Student(20,"B",25));
 
 
 
-        Integer num = 4;
-        Integer size = 6;
+        Integer num = 1;
+        Integer size = 12;
         List<Student> pageList;
         if (num*size >list.size()){
             pageList = list.subList((num-1)*size,list.size());
