@@ -12,8 +12,9 @@
 
     <!--插入多条数据-->
     <insert id="insertList">
-        INSERT INTO `table`(columnM,columnM,columnM,columnM,columnM,columnM,columnM,
-        columnM,columnM,columnM,create_time,update_time)
+        INSERT INTO `table`(id,title,code,type,grade,dept,dept_id,publisher,publisher_id,
+        start_time,end_time,warn_id,warn_time,status,top_id,key_id,budget,progress,audit,
+        audit_id,file,context,create_time,modify_time,delete_flag)
         VALUES
         <foreach collection="list" item="item" separator=",">
             (#{item.columnM},#{item.columnM},#{item.columnM},#{item.columnM},#{item.columnM},
