@@ -57,7 +57,8 @@ class PhoneMall{
     }
 }
 class Phone{
-    double price;//价格
+    //价格
+    double price;
 
     public void sendEmail(){
         System.out.println("发送邮件");
