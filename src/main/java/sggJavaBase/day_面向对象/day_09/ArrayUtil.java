@@ -88,9 +88,7 @@ public class ArrayUtil {
                     //正确的：
                     swap(arr,j,j + 1);
                 }
-
             }
-
         }
     }
 
