@@ -18,7 +18,7 @@ public class test_02 {
         list.add("2");
         list.add("ce");
         System.out.println("list = " + list);
-        //集合转换为数组   也可以借鉴(全局搜索后面内容)：集合->对象数组->原始类型数组
+        //集合转换为数组   也可以借鉴(搜索后面内容)：集合->对象数组->原始类型数组
         String[] arr = list.toArray(new String[list.size()]);
         for (int i = 0;i<arr.length;i++){
             System.out.print(arr[i]+" ");

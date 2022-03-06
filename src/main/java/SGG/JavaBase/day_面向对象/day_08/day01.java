@@ -1,4 +1,4 @@
-package sggJavaBase.day_面向对象.day_08;
+package SGG.JavaBase.day_面向对象.day_08;
 
 /**
  * @Author: Leo messi

@@ -1,9 +1,9 @@
-package sggJavaBase.day_面向对象.day_09;
+package SGG.JavaBase.day_面向对象.day_09;
 
 /**
  * @Author: Leo messi
  * @Date: 2022/02/28/17:26
- * @Description:
+ * @Description: 面向对象开发
  */
 public class ArrayPrintTest {
     public static void main(String[] args) {

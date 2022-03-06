@@ -1,4 +1,4 @@
-package sggJavaBase.day_面向对象.day_09;
+package SGG.JavaBase.day_面向对象.day_09;
 
 /**
  * @Author: Leo messi
@@ -6,8 +6,6 @@ package sggJavaBase.day_面向对象.day_09;
  * @Description:
  */
 
-
-import org.aspectj.weaver.ast.Or;
 
 /**
  * 关于变量的赋值：
