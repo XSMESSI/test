@@ -1,0 +1,53 @@
+
+
+1.任务汇总统计
+接口路径URL:task/accountList
+请求方式：POST
+
+入参：
+type（0：项目任务，1：日常任务，2，重点工作任务）
+year(年度：传例如：2021)
+deptId(部门id)
+key（关键字）
+
+
+出参：
+    /**
+     * 名称
+     */
+    private String name;
+
+    /**
+     * 总进度
+     */
+    private BigDecimal num;
+
+    /**
+     * 列表信息
+     */
+    private List<TaskInfo> list;{
+    code,(任务编码)
+    grade,（任务级别）
+    title,（任务标题）
+    dept,（牵头部门）
+    workTime,（任务周期）
+    finshTime,（完成时间）
+    warnTime,（预警时间）
+    progress,（进度）
+
+//执行人
+    executors{
+    /**
+     * 执行人
+     */
+    private String executor;
+
+    /**
+     * 执行人id
+     */
+    private Long executorId;
+    }
+
+
+    }
+

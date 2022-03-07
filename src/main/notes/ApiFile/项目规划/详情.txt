@@ -1,0 +1,103 @@
+1.任务的详情
+接口路径URL:task/taskDetails
+请求方式：POST
+
+入参：
+     /**
+     * 任务id
+     */
+    taskId;
+
+
+出参：
+
+    /**
+     * 分级结构项任务详情
+     */
+    tree{
+        grade:级别
+        status：状态
+        publisher:发布人
+        executor:执行人
+        progress:进度
+        rate：预算
+        //该任务的下级任务的数据
+        child{
+                grade:级别
+                status：状态
+                publisher:发布人
+                executor:执行人
+                progress:进度
+                rate：预算
+        }
+
+    }
+
+    /**
+     * 工作信息
+     */
+    workInfo{
+            grade:级别
+            type：任务类型（0：项目任务，1：日常任务，2，重点工作任务）
+            publisher:发布人
+
+            executors{
+                executor:执行人
+                executorId:执行人id
+            }
+            progress:进度
+            cost:花费金额
+            context:具体措施
+            file:附件
+    }
+
+    /**
+     * 汇报记录
+     */
+    reportInfo{
+
+        grade：任务级别
+        type:任务类型（0：项目任务，1：日常任务，2，重点工作任务）
+        reportDate:汇报日期
+        reportPerson：汇报人
+        progress：进度
+        rate：预算使用进度
+        budget：任务总预算
+        cost：已用
+
+        //目标汇报记录
+        targetRecords{
+                target:目标名称
+                targetType:目标汇报类型
+                progress:目标值
+                actual：实际值
+                reachRate：达成度
+                file:佐证材料
+
+            }
+
+    }
+
+    /**
+     * 委托记录
+     */
+    entrustInfo{
+            publish：发起人
+            entrustReason：委托原因
+            entrustDate：委托时间
+            former:前执行人
+            later：后执行人
+            auditResult:审核结果
+            auditComment：审核意见
+
+        }
+
+    /**
+     * 催办记录
+     */
+    urgeInfo{
+            reminder,催办人
+            context,催办内容
+            executor,执行人
+            reminderDate，催办时间
+        }

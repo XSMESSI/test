@@ -1,0 +1,232 @@
+任务管理我发布的列表：
+
+URL:task/getPublishList
+请求方式：我发布的任务列表
+
+入参：
+{
+
+    /**
+     * 任务id
+     */
+    private Long taskId;
+
+    /**
+     * 任务类型
+     */
+    private Integer type;
+
+    /**
+     * 任务状态
+     */
+    private Integer status;
+
+    /**
+     * 关键字
+     */
+    private String key;
+
+    /**
+     * 开始时间
+     */
+    private LocalDate startTime;
+
+    /**
+     * 结束时间
+     */
+    private LocalDate endTime;
+
+    /**
+     * 菜单标识 :0(我发布的),1（我执行的）
+     */
+    private Integer flag;
+
+
+    /**
+     * 页数
+     */
+    private Integer pageNum;
+
+    /**
+     * 条数
+     */
+    private Integer pageSize;
+
+}
+
+出参：
+{
+
+
+    /**
+     * 任务编码
+     */
+    private String code;
+
+	/**
+     * 任务标题
+     */
+    private String title;
+
+    /**
+     * 任务类型（0：项目任务，1：日常任务，2，重点工作任务）
+     */
+    private Integer type;
+
+
+    /**
+     * 任务的执行人：
+     */
+    private List<TaskInfo> executors;{
+			executor     执行人姓名
+            executorId   执行人id
+		}
+
+    /**
+     * 任务周期
+     */
+    private String workTime;
+
+
+    /**
+     * 任务类型的数量
+     */
+    private Integer num;
+
+    /**
+     * 项目类型下面的项目名称统计
+     */
+    private List<TaskInfo> proInfo;
+
+    /**
+     * 日常任务id
+     */
+    private Long taskId;
+
+    /**
+     * 上级id
+     */
+    private Long topId;
+
+    /**
+     * 重点工作id/项目id
+     */
+    private Long keyId;
+
+    /**
+     * 任务级别
+     */
+    private Integer grade;
+
+    /**
+     * 下一级任务
+     */
+    private List<TaskInfo> child;
+
+
+    /**
+     * 预警时间
+     */
+    private LocalDate warnTime;
+
+
+    /**
+     * 完成时间
+     */
+    private LocalDate finishTime;
+
+
+
+    /**
+     * 状态
+     */
+    private Integer status;
+
+
+    /**
+     * 进度
+     */
+    private BigDecimal progress;
+
+
+    /**
+     * 汇报次数
+     */
+    private Integer times;
+
+
+    /**
+     * 目标信息：
+     */
+    private List<TaskTarget> targets;{
+		    target    目标名称
+            type   汇报类型
+            progress   目标值
+
+	}
+
+
+
+    /**
+     * 审核人
+     */
+    private String audit;
+
+    /**
+     * 审核人id
+     */
+    private String auditId;
+
+    /**
+     * 任务内容
+     */
+    private String context;
+
+    /**
+     * 删除标识
+     */
+    private Integer deleteFlag;
+
+	/**
+     * 任务总预算
+     */
+    private BigDecimal budget;
+
+	    /**
+     * 开始时间
+     */
+    private LocalDate startTime;
+
+    /**
+     * 结束时间
+     */
+    private LocalDate endTime;
+
+	/**
+     * 预警方式id
+     */
+    private String warnId;
+
+	    /**
+     * 牵头部门
+     */
+    private String dept;
+
+    /**
+     * 部门id
+     */
+    private Integer deptId;
+
+	    /**
+     * 任务内容
+     */
+    private String context;
+
+
+	   /**
+     * 附件
+     */
+    private String file;
+
+
+}

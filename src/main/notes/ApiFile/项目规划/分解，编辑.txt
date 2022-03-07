@@ -1,0 +1,88 @@
+
+
+1.分解
+接口路径URL:task/resolveTask
+请求方式：POST
+
+入参：
+    /**
+     * 任务的分解列表
+     */
+    nextTasks{
+
+            grade(级别);
+            title(任务标题);
+            type(任务类型：0：项目任务，1：日常任务，2，重点工作任务)
+            budget(任务总预算)
+            startTime(任务开始时间);
+            endTime(任务结束时间);
+            warnId(预警方式);
+            audit（审核人姓名）
+            auditId（审核人id)
+            dept(牵头部门);
+            deptId(牵头部门id);
+            file（上传附件）
+            context(任务内容介绍（1000字以内);
+
+
+            //关联目标
+            targets{
+
+                target（目标名称）
+
+                type（目标汇报类型 0：百分比 1：数值）
+
+                progress（目标值）
+            }
+
+            //任务的执行人
+            executors{
+
+                executor （执行人姓名）
+
+                executorId （执行人id）
+                }
+    }
+
+2.编辑：
+
+接口路径URL:task/updateDayTask
+请求方式：POST
+
+入参：
+grade(级别);
+            title(任务标题);
+            type(任务类型：0：项目任务，1：日常任务，2，重点工作任务)
+            budget(任务总预算)
+            startTime(任务开始时间);
+            endTime(任务结束时间);
+            warnId(预警方式);
+            audit（审核人姓名）
+            auditId（审核人id)
+            dept(牵头部门);
+            deptId(牵头部门id);
+            file（上传附件）
+            context(任务内容介绍（1000字以内);
+
+
+            //关联目标
+            targets{
+
+                target（目标名称）
+
+                type（目标汇报类型 0：百分比 1：数值）
+
+                progress（目标值）
+            }
+
+            //任务的执行人
+            executors{
+
+                executor （执行人姓名）
+
+                executorId （执行人id）
+           }
+
+
+
+
