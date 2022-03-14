@@ -1,0 +1,28 @@
+委托，催办的接口文档
+
+1.我执行的任务-》委托
+接口路径URL:task/entrustTask
+请求方式：POST
+
+入参：
+taskId（任务id）
+executorId（新的任务执行人id）
+executor(新的任务执行人姓名)
+entrustDept(委托部门)
+entrustDeptId（委托部门id）
+reason（委托原因）
+
+
+2.我发布的任务-》催办任务
+接口路径URL:task/reminderTask
+请求方式：POST
+
+入参：
+
+
+/**/任务的执行人列表
+executors{
+        executorId    任务执行人id
+        executor      执行人姓名
+}
+taskId（任务id）

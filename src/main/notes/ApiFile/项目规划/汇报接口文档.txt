@@ -1,0 +1,32 @@
+
+
+1.任务的汇报接口文档
+接口路径URL:task/reportTask
+请求方式：POST
+
+入参：
+type(汇报类型(0：完成汇报，1：进度汇报))
+taskId;任务id
+cost;花费金额
+budget; 项目总预算
+content;* 汇报内容
+/**支出明细
+costs{
+        item   支出项目
+        cost 花费金额
+        reason 依据与理由
+    }
+
+汇报中的目标信息数据《形成目标记录数据》
+targets;{
+        id      目标id
+        target    目标名称
+        type   汇报类型
+        progress   目标值
+        actual   实际值
+        file   附件
+}
+
+
+
+

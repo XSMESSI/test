@@ -2,6 +2,8 @@ package common;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * @Description
  * @Author XuShen
@@ -14,6 +16,8 @@ public class message {
      * 年份
      */
     private Integer year;
+
+    private BigDecimal count;
 
     /**
      * 姓名
