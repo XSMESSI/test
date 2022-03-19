@@ -15,4 +15,24 @@ package SGG.JavaBase.day_面向对象.day_10.java1;
  * 		>有属性，且有对应的get、set方法
  */
 public class Customer {
+
+    private int id;
+    private String name;
+//反射：14章
+    public Customer(){
+
+    }
+
+    public void setId(int i){
+        id = i;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setName(String n){
+        name = n;
+    }
+    public String getName(){
+        return name;
+    }
 }
