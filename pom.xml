@@ -8,8 +8,8 @@
         <version>2.4.1</version>
         <relativePath/>
     </parent>
-    <groupId>com.campsg</groupId>
-    <artifactId>baseteaching</artifactId>
+    <groupId>com.leo</groupId>
+    <artifactId>messi</artifactId>
     <version>1.0</version>
     <name>testMaven</name>
     <packaging>jar</packaging>
