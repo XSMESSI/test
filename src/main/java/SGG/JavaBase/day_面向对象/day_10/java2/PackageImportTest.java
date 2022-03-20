@@ -55,6 +55,7 @@ public class PackageImportTest {
         Dog dog = new Dog();
 
         Field field = null;
+        System.out.println(field);
 
     }
 

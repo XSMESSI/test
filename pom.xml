@@ -2,6 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>Project2</module>
+        <module>Project2Myself</module>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -11,9 +15,9 @@
     <groupId>com.leo</groupId>
     <artifactId>messi</artifactId>
     <version>1.0</version>
-    <name>testMaven</name>
-    <packaging>jar</packaging>
-    <description>基层教学组织管理系统</description>
+    <name>testLeo</name>
+    <packaging>pom</packaging>
+    <description>徐慎学习程序</description>
 
     <properties>
         <java.version>1.8</java.version>

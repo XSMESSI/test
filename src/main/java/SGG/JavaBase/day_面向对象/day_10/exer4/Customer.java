@@ -5,6 +5,7 @@ public class Customer {
 	
 	private String firstName;
 	private String lastName;
+	//对象之间的关联关系
 	private Account account;
 	
 	public Customer(String f, String l) {
