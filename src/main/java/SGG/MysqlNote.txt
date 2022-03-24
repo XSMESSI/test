@@ -1,0 +1,63 @@
+尚硅谷Mysql核心技术的视频学习相关记录：
+
+-3月24学习：
+*****start*********
+-- select * from employees
+--
+-- 查询常量值
+SELECT
+	100 AS num;-- 查询表达式：
+SELECT
+	100 % 98;-- 查询函数：
+SELECT
+	VERSION( );-- 起别名：
+SELECT
+	100 % 98 AS result;
+SELECT
+	last_name AS 姓,
+	first_name AS 名
+FROM
+	employees;-- 方式2：
+SELECT
+	last_name 姓,
+	first_name 名
+FROM
+	employees;-- 查询sakary，显示out put,双引号的使用
+SELECT
+	salary AS "out put"
+FROM
+	employees;-- 去重：
+--
+-- 查询员工所在部门编号：
+SELECT DISTINCT
+	( department_id )
+FROM
+	employees;-- 9.+号作用
+/**
+
+java中的+号：
+1.运算符：两个操作数都为数值型；
+2.连接符：只要有一个操作数为字符串
+
+mysql中的+号：
+仅仅只有一个功能：运算符
+
+select 100+90;  两个操作数都是数值型，做加法运算
+SELECT '123'+90  ;其中一方位字符型，试图将字符型的数值转换为数值型，如果转换成功，则继续做加法运算
+
+SELECT 'john'+90;   如果转换失败，则将字符型数值转换为0
+
+SELECT null+0;    一方为null，结果为null
+*/--
+-- 查询员工名和姓链接成一个字段，并显示为姓名
+SELECT
+	last_name + first_name AS 姓名
+FROM
+	employees;-- 连接字符函数
+-- CONCAT(str1,str2,...)
+SELECT
+	CONCAT( last_name, first_name ) 姓名
+FROM
+	employees;
+
+*****end*********

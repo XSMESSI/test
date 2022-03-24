@@ -6,8 +6,6 @@ package SGG.JavaBase.day_面向对象.day_10.java2;
  * @Description:
  */
 
-import com.mchange.v2.c3p0.stmt.PerConnectionMaxOnlyStatementCache;
-
 /**
  * this关键字的使用：
  * 1.this可以用来修饰：属性，方法，构造器；

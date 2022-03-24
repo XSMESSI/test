@@ -77,8 +77,6 @@ public class CutomerView {
 
         //将上述数据封装到对象中
         Customer customer = new Customer(name,gender,age,phone,email);
-//        customerList.addCustomer(customer);
-
         boolean isSuccess = customerList.addCustomer(customer);
         if (isSuccess){
             System.out.println("添加完成");
@@ -105,7 +103,6 @@ public class CutomerView {
             Customer[] custs = customerList.getAllCustomers();
             for (int i = 0; i < total; i++) {
             System.out.println(i + 1 + "\t" + custs[i].getName() + "\t" + custs[i].getGender() + "\t" + custs[i].getAge() + "\t\t" + custs[i].getPhone() + "\t\t" + custs[i].getEmail());
-//                System.out.println((i+1) + "\t" + custs[i].getDetails());
             }
         }
         System.out.println("-------------------------客户列表完成-------------------------");

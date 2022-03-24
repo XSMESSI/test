@@ -7,8 +7,6 @@ package SGG.JavaBase.day_面向对象.day_10;
  */
 
 
-import org.checkerframework.checker.units.qual.A;
-
 /**
  * 面向对象的特征一：封装与隐藏
  * 一、问题的引入

@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="test" />
-        <module name="Project2" />
         <module name="Project2MySelf" />
+        <module name="Project2" />
+        <module name="myProject2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,7 +21,8 @@
       <module name="Project2" options="-parameters" />
       <module name="Project2MySelf" options="-parameters" />
       <module name="baseteaching" options="" />
-      <module name="test" options="-parameters" />
+      <module name="myProject2" options="-parameters" />
+      <module name="test" options="" />
     </option>
   </component>
 </project>

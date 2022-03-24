@@ -1,7 +1,5 @@
 package SGG.JavaBase.day_面向对象.day_10.exer3;
 
-import lombok.Data;
-
 /**
  * 客户类
  */

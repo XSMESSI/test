@@ -1,0 +1,113 @@
+1.项目概览统计：专业维度：
+URL:/projectPortrayal/majorInfo
+请求方式：post
+入参：
+    /**
+     * 专业ID
+     */
+    private Integer majorId;
+
+    /**
+     * 预算（0），支出（1）标识值
+     */
+    private Integer flag;
+
+
+出参;
+    /**
+     * 资金运作情况
+     */
+    private List<ProjectMajorAccount> run;{
+    /**
+     * 0,1,2,3,4,
+     名称（0：项目累计报销花费，1：项目资金总预算，2：学校专项资金，3：二级学院资助，4：其他资金来源）
+     */
+    private Integer id;
+
+    /**
+     * 金额
+     */
+    private BigDecimal money;
+
+    /**
+     * 同比增长率
+     */
+    private BigDecimal rate;
+        }
+
+    /**
+     * 预算趋势图
+     */
+    private List<ProjectMajorAccount> trend;{
+
+/**
+月份/
+private String name;
+
+
+    /**
+     * 新增预算
+     */
+    private BigDecimal add;
+
+    /**
+     * 累计预算
+     */
+    private BigDecimal total;
+        }
+
+    /**
+     * 项目参与度分析
+     */
+    private List<ProjectMajorAccount> attends;{
+                        /**
+                         * 项目参与度标题
+                         */
+                        private List<String> titles;
+
+    /**
+     * 项目参与度数据集合
+     */
+    private List<ProjectMajorAccount> numList;{
+
+                    /**
+                     * 主导项目
+                     */
+                    private BigDecimal num0;
+
+                    /**
+                     * 参与项目
+                     */
+                    private BigDecimal num1;
+
+                    /**
+                     * 进行项目
+                     */
+                    private BigDecimal num2;
+
+                    /**
+                     * 结项项目
+                     */
+                    private BigDecimal num3;
+
+                    /**
+                     * 失败项目
+                     */
+                    private BigDecimal num4;
+
+                    /**
+                     * 汇报任务
+                     */
+                    private BigDecimal num5;
+
+                    /**
+                     * 汇报中
+                     */
+                    private BigDecimal num6;
+
+                    /**
+                     * 汇报延期
+                     */
+                    private BigDecimal num7;
+            }
+                }
