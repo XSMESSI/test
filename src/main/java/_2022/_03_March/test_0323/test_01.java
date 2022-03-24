@@ -8,7 +8,9 @@ package _2022._03_March.test_0323;
 public class test_01 {
     public static void main(String[] args) {
         Long num = 2L;
-        boolean result = num == 2;
+        Boolean result = num == 2;
+
+        System.out.println(result.getClass());
 
         System.out.println(num.getClass());
 

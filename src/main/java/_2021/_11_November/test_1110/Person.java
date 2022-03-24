@@ -25,5 +25,10 @@ public class Person {
      */
     private String age;
 
+    /**
+     * 年度
+     */
+    private Integer year;
+
 
 }
