@@ -61,3 +61,121 @@ FROM
 	employees;
 
 *****end*********
+
+
+3月25日学习：
+-- 1. 下面的语句是否可以执行成功
+select last_name , job_id , salary as sal
+from employees;
+-- 2. 下面的语句是否可以执行成功
+select * from employees;
+-- 3. 找出下面语句中的错误
+select employee_id , last_name，
+salary * 12 “ANNUAL SALARY”
+from employees;
+
+select employee_id , last_name,
+salary * 12 "ANNUAL SALARY"
+from employees;
+-- 4. 显示表 departments 的结构，并查询其中的全部数据
+
+DESC departments;
+SELECT * FROM departments;
+
+-- 5. 显示出表 employees 中的全部 job_id（不能重复）
+
+SELECT DISTINCT job_id from employees;
+-- 6. 显示出表 employees 的全部列，各个列之间用逗号连接，列头显示成 OUT_PUT
+
+
+SELECT IFNULL(commission_pct,0) AS 结果,commission_pct from employees;
+
+SELECT CONCAT(first_name,',',last_name,',',job_id,',',IFNULL(commission_pct,0)) AS OUT_PUT FROM employees;
+
+
+进阶二：
+
+条件查询：
+
+/**
+语法：select 查询列表 from 表名  where   筛选条件；
+
+分类：
+  1.按条件表达式筛选：
+			条件运算符； > < = !=  <>
+	2.按逻辑表达式查询：
+	逻辑运算符： && || !
+							and  or  not
+
+							&& 和and  两个条件都为true,结果为true,反之为false;
+							|| 和 or  只要有一个条件为true 结果为true,反之为false;
+							! 或 not 如果链接的两个条件本身为false,结果为true,反之为false;
+	3.模糊查询：
+			LIKE
+			BETWEEN AND
+			IN
+			IS NULL
+
+*/
+
+
+1.按条件表达式筛选
+
+#案例1：查询工资》12000的员工信息
+
+SELECT * FROM employees where salary > 12000;
+
+
+#案例2:查询部门编号部位90的员工名和部门编号
+
+SELECT last_name,department_id from employees WHERE department_id != 90;
+
+
+2.按逻辑表达式筛选
+
+#案例一：查询工资在10000到20000之间的员工名，工资和奖金
+SELECT
+	last_name,
+	salary,
+	commission_pct
+FROM
+	employees
+WHERE
+	salary >= 10000
+	AND salary <= 20000;
+
+
+#案例二：查询部门编号不是在90 到110之间，或者工资高于15000的员工信息
+
+SELECT * FROM employees WHERE department_id < 90 OR department_id > 110 OR salary > 15000;
+
+
+#三。模糊查询：
+
+/***
+LIKE
+特点：
+1.一般和通配符搭配使用：
+			通配符：
+			%  任意多个字符 ，包含0个字符
+			_ 任意单个字符
+			BETWEEN AND
+			IN
+			IS NULL*/
+
+#案例1：查询员工名中包含a的员工信息
+
+SELECT * FROM employees WHERE last_name LIKE '%a%';
+
+#查询员工名中第三个字符为e,第五个字符为a的员工名和工资：
+
+SELECT last_name,salary FROM employees WHERE last_name LIKE '__n_l%';
+
+#案例3：查询员工名中第二个字符为_的员工名(转义字符的使用)
+
+SELECT last_name FROM employees where last_name LIKE '_\_%';
+
+<转义字符的使用>
+SELECT last_name FROM employees where last_name LIKE '_$_%' ESCAPE '$';
+
+***** end *******
