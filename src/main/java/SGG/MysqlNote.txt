@@ -121,7 +121,7 @@ SELECT CONCAT(first_name,',',last_name,',',job_id,',',IFNULL(commission_pct,0)) 
 
 1.按条件表达式筛选
 
-#案例1：查询工资》12000的员工信息
+#案例1：查询工资 > 12000的员工信息
 
 SELECT * FROM employees where salary > 12000;
 
@@ -169,7 +169,7 @@ SELECT * FROM employees WHERE last_name LIKE '%a%';
 
 #查询员工名中第三个字符为e,第五个字符为a的员工名和工资：
 
-SELECT last_name,salary FROM employees WHERE last_name LIKE '__n_l%';
+SELECT last_name,salary FROM employees WHERE last_name LIKE '__n_a%';
 
 #案例3：查询员工名中第二个字符为_的员工名(转义字符的使用)
 

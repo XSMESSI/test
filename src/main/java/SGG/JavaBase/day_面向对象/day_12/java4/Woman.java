@@ -1,0 +1,25 @@
+package SGG.JavaBase.day_面向对象.day_12.java4;
+
+/**
+ * @Author: Leo messi
+ * @Date: 2022/03/27/17:48
+ * @Description:
+ */
+public class Woman extends Person{
+
+    boolean isBeauty;
+
+    public void goShopping(){
+        System.out.println("女人喜欢购物");
+    }
+
+    public void eat(){
+        System.out.println("女人少吃，为了减肥");
+    }
+
+    public void walk(){
+        System.out.println("女人窈窕的走路");
+    }
+
+
+}
