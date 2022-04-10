@@ -18,9 +18,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Leo" options="" />
       <module name="Project2" options="-parameters" />
       <module name="Project2MySelf" options="-parameters" />
-      <module name="baseteaching" options="" />
       <module name="myProject2" options="-parameters" />
       <module name="test" options="" />
     </option>

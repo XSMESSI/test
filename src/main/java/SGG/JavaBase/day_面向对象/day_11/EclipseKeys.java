@@ -53,6 +53,8 @@ import java.util.HashMap;
  * 38.直接定位到当前行的首位：home
  * 39.直接定位到当前行的末位：end
  */
+
+    //day11主要是项目二
 public class EclipseKeys {
 
     final double PROJECT_ACCOUNT_ID = 3.14;

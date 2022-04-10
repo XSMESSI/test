@@ -22,6 +22,7 @@ public class Student extends Person{
     }
 
     //对父类中的eat()进行重写
+    @Override
     public void eat(){
         System.out.println("学生应该多吃有营养的食物");
     }

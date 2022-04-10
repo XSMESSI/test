@@ -1,15 +1,19 @@
-package SGG.JavaBase.day_面向对象.day_12.java4;
+package SGG.JavaBase.day_面向对象.day_14.java;
 
 /**
  * @Author: Leo messi
  * @Date: 2022/03/27/17:47
  * @Description:
  */
-public class Man extends Person{
+public class Man extends Person {
 
     boolean isSmoking;
 
     int id = 1002;
+
+    public Man(String name, int age) {
+        super(name, age);
+    }
 
     public void earnMoney(){
         System.out.println("男人负责挣钱养家");

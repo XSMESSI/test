@@ -14,6 +14,7 @@ class Animal  {
 
 class Cat  extends Animal  {
  
+	@Override
 	protected void eat() {
 		System.out.println("cat eat fish");
 	}
@@ -21,6 +22,7 @@ class Cat  extends Animal  {
 
 class Dog  extends Animal  {
  
+	@Override
 	public void eat() {
 		System.out.println("Dog eat bone");
 
@@ -31,6 +33,7 @@ class Dog  extends Animal  {
 class Sheep  extends Animal  {
  
 
+	@Override
 	public void eat() {
 		System.out.println("Sheep eat grass");
 
