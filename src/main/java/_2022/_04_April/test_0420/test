@@ -1,0 +1,11 @@
+insertMMSKCBZ(@Param("list") List<CourseInfo> list);
+insertMMSSKSPS(@Param("list") List<CourseInfo> list);
+insertMMSXTKRL(@Param("list") List<CourseInfo> list);
+insertMMSJXZYZS(@Param("list") List<CourseInfo> list);
+insertMMSZXJXZQS(@Param("list") List<CourseInfo> list);
+insertMMSKCMBDCD(@Param("list") List<CourseInfo> list);
+insertMMSRWCYL(@Param("list") List<CourseInfo> list);
+insertMMSZLCYL(@Param("list") List<CourseInfo> list);
+insertMMSHDCYL(@Param("list") List<CourseInfo> list);
+insertMMSCQL(@Param("list") List<CourseInfo> list);
+insertKCZYTJL(@Param("list") List<CourseInfo> list);
