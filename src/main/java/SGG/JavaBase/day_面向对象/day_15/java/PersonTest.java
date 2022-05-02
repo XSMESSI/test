@@ -21,11 +21,39 @@ public class PersonTest {
 
         method1(new Worker());//非匿名的类匿名对象
 
+        //创建一个匿名子类的对象：p
+        Person p = new Person() {
+            @Override
+            public void eat() {
+                System.out.println("吃东西");
+            }
+
+            @Override
+            public void breath() {
+                System.out.println("呼吸");
+            }
+        };
+
+        method1(p);
+        System.out.println("*******");
+        //创建匿名子类的匿名对象
+        method1(new Person() {
+            @Override
+            public void eat() {
+                System.out.println("吃好吃的东西");
+            }
+
+            @Override
+            public void breath() {
+                System.out.println("好好呼吸新鲜空气");
+            }
+        });
     }
 
     public static void method1(Person p){
         p.eat();
         p.walk();
+        p.breath();
     }
 
     public static void method(Student s){
