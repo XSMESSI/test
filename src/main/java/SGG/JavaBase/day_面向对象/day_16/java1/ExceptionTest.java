@@ -1,4 +1,4 @@
-package SGG.JavaBase.day_面向对象.day_16.java;
+package SGG.JavaBase.day_面向对象.day_16.java1;
 
 /**
  * @Author: Leo messi
@@ -6,12 +6,10 @@ package SGG.JavaBase.day_面向对象.day_16.java;
  * @Description:
  */
 
-import io.swagger.models.auth.In;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
