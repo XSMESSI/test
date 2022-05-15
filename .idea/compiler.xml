@@ -7,8 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="myProject2" />
+        <module name="Project-03Myself" />
         <module name="Project2" />
+        <module name="Project-03" />
+        <module name="myProject2" />
         <module name="Project2MySelf" />
       </profile>
     </annotationProcessing>
@@ -19,6 +21,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Leo" options="" />
+      <module name="Project-03" options="-parameters" />
+      <module name="Project-03Myself" options="-parameters" />
       <module name="Project2" options="-parameters" />
       <module name="Project2MySelf" options="-parameters" />
       <module name="myProject2" options="-parameters" />

@@ -5,6 +5,8 @@
     <modules>
         <module>Project2</module>
         <module>Project2Myself</module>
+        <module>Project-03</module>
+        <module>Project-03Myself</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
