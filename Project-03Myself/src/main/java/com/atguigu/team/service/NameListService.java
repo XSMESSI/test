@@ -91,11 +91,26 @@ public class NameListService {
         return null;
     }
 
-    public Employee[] getEmployees() {
-        return null;
+    /**
+     * 获取当前所有员工
+     * @return
+     */
+    public Employee[] getAllEmployees() {
+
+        return employees;
     }
 
-    public Employee getEmployee(int id) {
-        return null;
+    /**
+     * 获取指定id的员工对象
+     * @param id
+     * @return
+     */
+    public Employee getEmployee(int id) throws TeamException {
+        for (int i = 0;i < employees.length;i++){
+            if (employees[i].getId() == id){
+                return employees[i];
+            }
+        }
+        throw new TeamException("找不到指定的员工");
     }
 }
