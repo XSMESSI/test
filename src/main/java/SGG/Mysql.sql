@@ -1,7 +1,7 @@
-#Mysql备份版本:
-尚硅谷Mysql核心技术的视频学习相关记录：
+#最终版本:
+尚硅谷Mysql核心技术的视频学习相关记录:
 
--3月24学习：
+-3月24学习:
 *****start*********
 -- select * from employees
 --
@@ -37,7 +37,7 @@ FROM
 /**
 
 java中的+号：
-1.运算符：两个操作数都为数值型；
+1.运算符：两个操作数都为数值型:
 2.连接符：只要有一个操作数为字符串
 
 mysql中的+号：
@@ -64,29 +64,29 @@ FROM
 *****end*********
 
 
-*************3月25日学习：**************
+*************3月25日学习 **************
 -- 1. 下面的语句是否可以执行成功
 select last_name , job_id , salary as sal
 from employees;
 -- 2. 下面的语句是否可以执行成功
 select * from employees;
 -- 3. 找出下面语句中的错误
-select employee_id , last_name，
-salary * 12 “ANNUAL SALARY”
+select employee_id , last_name ,
+salary * 12  "ANNUAL SALARY "
 from employees;
 
 select employee_id , last_name,
 salary * 12 "ANNUAL SALARY"
 from employees;
--- 4. 显示表 departments 的结构，并查询其中的全部数据
+-- 4. 显示表 departments 的结构 ,并查询其中的全部数据
 
 DESC departments;
 SELECT * FROM departments;
 
--- 5. 显示出表 employees 中的全部 job_id（不能重复）
+-- 5. 显示出表 employees 中的全部 job_id(不能重复)
 
 SELECT DISTINCT job_id from employees;
--- 6. 显示出表 employees 的全部列，各个列之间用逗号连接，列头显示成 OUT_PUT
+-- 6. 显示出表 employees 的全部列 ,各个列之间用逗号连接 ,列头显示成 OUT_PUT
 
 
 SELECT IFNULL(commission_pct,0) AS 结果,commission_pct from employees;
@@ -94,24 +94,24 @@ SELECT IFNULL(commission_pct,0) AS 结果,commission_pct from employees;
 SELECT CONCAT(first_name,',',last_name,',',job_id,',',IFNULL(commission_pct,0)) AS OUT_PUT FROM employees;
 
 
-进阶二：
+进阶二 
 
-条件查询：
+条件查询 
 
 /**
-语法：select 查询列表 from 表名  where   筛选条件；
+语法 select 查询列表 from 表名  where   筛选条件:
 
-分类：
-  1.按条件表达式筛选：
-			条件运算符； > < = !=  <>
-	2.按逻辑表达式查询：
-	逻辑运算符： && || !
+分类 
+  1.按条件表达式筛选 
+			条件运算符: > < = !=  <>
+	2.按逻辑表达式查询 
+	逻辑运算符  && || !
 							and  or  not
 
 							&& 和and  两个条件都为true,结果为true,反之为false;
 							|| 和 or  只要有一个条件为true 结果为true,反之为false;
 							! 或 not 如果链接的两个条件本身为false,结果为true,反之为false;
-	3.模糊查询：
+	3.模糊查询 
 			LIKE
 			BETWEEN AND
 			IN
@@ -122,7 +122,7 @@ SELECT CONCAT(first_name,',',last_name,',',job_id,',',IFNULL(commission_pct,0)) 
 
 1.按条件表达式筛选
 
-#案例1：查询工资 > 12000的员工信息
+#案例1 查询工资 > 12000的员工信息
 
 SELECT * FROM employees where salary > 12000;
 
@@ -134,7 +134,7 @@ SELECT last_name,department_id from employees WHERE department_id != 90;
 
 2.按逻辑表达式筛选
 
-#案例一：查询工资在10000到20000之间的员工名，工资和奖金
+#案例一 查询工资在10000到20000之间的员工名 ,工资和奖金
 SELECT
 	last_name,
 	salary,
@@ -146,33 +146,33 @@ WHERE
 	AND salary <= 20000;
 
 
-#案例二：查询部门编号不是在90 到110之间，或者工资高于15000的员工信息
+#案例二 查询部门编号不是在90 到110之间 ,或者工资高于15000的员工信息
 
 SELECT * FROM employees WHERE department_id < 90 OR department_id > 110 OR salary > 15000;
 
 
-#三。模糊查询：
+#三.模糊查询 
 
 /***
 LIKE
-特点：
-1.一般和通配符搭配使用：
-			通配符：
-			%  任意多个字符 ，包含0个字符
+特点 
+1.一般和通配符搭配使用 
+			通配符 
+			%  任意多个字符  ,包含0个字符
 			_ 任意单个字符
 			BETWEEN AND
 			IN
 			IS NULL*/
 
-#案例1：查询员工名中包含a的员工信息
+#案例1 查询员工名中包含a的员工信息
 
 SELECT * FROM employees WHERE last_name LIKE '%a%';
 
-#查询员工名中第三个字符为e,第五个字符为a的员工名和工资：
+#查询员工名中第三个字符为e,第五个字符为a的员工名和工资 
 
 SELECT last_name,salary FROM employees WHERE last_name LIKE '__n_l%';
 
-#案例3：查询员工名中第二个字符为_的员工名(转义字符的使用)
+#案例3 查询员工名中第二个字符为_的员工名(转义字符的使用)
 
 SELECT last_name FROM employees where last_name LIKE '_\_%';
 
@@ -191,15 +191,15 @@ SELECT last_name FROM employees where last_name LIKE '_$_%' ESCAPE '$';
 
 */
 
-#案例一，查询员工编号在100-120之间的员工信息
+#案例一 ,查询员工编号在100-120之间的员工信息
 
 SELECT * FROM employees WHERE employee_id BETWEEN 100 AND 120;
 
 3.IN关键字
 
 /**
-1.含义：判断某字段的值是否属于in列表中的某一项
-特点：
+1.含义 判断某字段的值是否属于in列表中的某一项
+特点 
 		1.使用in提高语句简洁度
 		2.in列表的值必须一致或兼容
 
@@ -209,30 +209,30 @@ SELECT * FROM employees WHERE employee_id BETWEEN 100 AND 120;
 SELECT last_name,job_id FROM employees where job_id IN('IT_PROG','AD_VP','AD_PRES');
 
 
-4.is null 使用：
+4 is null 使用 
 /**
   = 或 <> 不能用于判断null值
 	is null 或者is not null 可以判断null 值
 **/
-#案例1：查询没有奖金的员工名和奖金率
+#案例1 查询没有奖金的员工名和奖金率
 
 SELECT last_name,commission_pct FROM employees WHERE commission_pct IS NULL;
 
-#安全等于：  <=>  可读性差
+#安全等于   <=>  可读性差
 
-#案例1：查询没有奖金的员工名和奖金率
+#案例1 查询没有奖金的员工名和奖金率
 
 SELECT last_name,commission_pct FROM employees WHERE commission_pct <=> NULL;
 
-#案例二：查询工资为12000的员工信息
-#案例1：查询没有奖金的员工名和奖金率
+#案例二 查询工资为12000的员工信息
+#案例1 查询没有奖金的员工名和奖金率
 
 SELECT last_name,salary FROM employees WHERE salary <=> 12000;
 
-#：is null pk   <=>
+# is null pk   <=>
 
 IS NULL :仅仅可以判断null值
-<=> :既可以判断null值，有可以判断普通的数值，可读性较低
+<=> :既可以判断null值 ,有可以判断普通的数值 ,可读性较低
 
 
 #2.查询员工号为176的员工的姓名和部门号和年薪
@@ -246,22 +246,22 @@ FROM
 	employees
 
 -- ISNULL(expr)函数的使用
-功能：判断某字段或表达式是否为null，如果是，则返回1，否则返回0
+功能 判断某字段或表达式是否为null ,如果是 ,则返回1 ,否则返回0
 SELECT ISNULL(commission_pct) from employees
 
-##进阶三：排序查询
+##进阶三 排序查询
 /*
-语法：SELECT 查询列表 FROM 表 WHERE 筛选条件 ORDER BY 排序列表 ASC/DESC
+语法 SELECT 查询列表 FROM 表 WHERE 筛选条件 ORDER BY 排序列表 ASC/DESC
 
-特点：1.ASC 升序，DESC 降序  不写，默认升序；
-			2.ORDER BY子句中可以支持单个字段，多个字段，表达式，函数，别名
-			3.ORDER BY子句一般放在查询语句的最后面，LIMIT子句除外
+特点 1.ASC 升序 ,DESC 降序  不写 ,默认升序:
+			2.ORDER BY子句中可以支持单个字段 ,多个字段 ,表达式 ,函数 ,别名
+			3.ORDER BY子句一般放在查询语句的最后面 ,LIMIT子句除外
 */
--- 引入：/
-#案例：查询员工信息，要求工资从高到低排序：
+-- 引入 /
+#案例 查询员工信息 ,要求工资从高到低排序 
 SELECT * from employees ORDER BY salary DESC;
 
-#查询部门编号 >= 90的员工信息，按照入职时间的先后进行排序；[添加筛选条件]
+#查询部门编号 >= 90的员工信息 ,按照入职时间的先后进行排序:[添加筛选条件]
 SELECT
 	*
 FROM
@@ -271,22 +271,22 @@ WHERE
 ORDER BY
 	hiredate ASC;
 
-	#案例：按年薪的高低显示员工的信息和年薪【按表达式进行排序】
+	#案例 按年薪的高低显示员工的信息和年薪{按表达式进行排序}
 
 	SELECT *,salary * 12 * (1+IFNULL(commission_pct,0)) 年薪
 	FROM employees ORDER BY salary * 12 * (1+IFNULL(commission_pct,0)) DESC;
 
 
-	#案例 ：
+	#案例  
 		SELECT *,salary * 12 * (1+IFNULL(commission_pct,0)) 年薪
 	FROM employees ORDER BY 年薪 DESC;
 
-	#案例：按照姓名的长度显示员工的姓名和工资[按函数排序]
+	#案例 按照姓名的长度显示员工的姓名和工资[按函数排序]
 	SELECT LENGTH(last_name) 字节长度,last_name,salary
 	FROM employees
 	ORDER BY LENGTH(last_name);
 
-	#案例：查询员工信息；要求先按工资进行排序，再按员工编号进行排序【按多个字段进行排序】
+	#案例 查询员工信息:要求先按工资进行排序 ,再按员工编号进行排序[按多个字段进行排序]
 	SELECT * FROM employees order by salary ASC,employee_id DESC;
 
 *************3月28日学习********END**************
@@ -295,7 +295,7 @@ ORDER BY
 ***********3月30日学习**********START***********
 
 测 试
-1. 查询员工的姓名和部门号和年薪，按年薪降序 按姓名升序
+1. 查询员工的姓名和部门号和年薪 ,按年薪降序 按姓名升序
 SELECT
 	last_name,
 	department_id,
@@ -306,7 +306,7 @@ FROM
 ORDER BY
 	年薪 DESC,
 	last_name ASC
-2.选择工资不在 8000 到 17000 的员工的姓名和工资，按工资降序
+2.选择工资不在 8000 到 17000 的员工的姓名和工资 ,按工资降序
 SELECT
 last_name,
 salary
@@ -318,7 +318,7 @@ WHERE
 ORDER BY
 	salary DESC;
 
-3. 查询邮箱中包含 e 的员工信息，并先按邮箱的字节数降序，再按部门号升序
+3. 查询邮箱中包含 e 的员工信息 ,并先按邮箱的字节数降序 ,再按部门号升序
 
 SELECT
 	*
@@ -333,14 +333,14 @@ ORDER BY
 
 	##进阶4::常见函数
 	/**
-	概念：类似于java的方法，将一组逻辑语句封装在方法体中对外暴露方法名
-	好处：1.隐藏了实现细节2，提高了代码的重用性
-	调用：SELECT 函数名(实参列表) FROM 表 ;
-	特点：1.叫什么（函数名）
+	概念 类似于java的方法 ,将一组逻辑语句封装在方法体中对外暴露方法名
+	好处 1.隐藏了实现细节2 ,提高了代码的重用性
+	调用 SELECT 函数名(实参列表) FROM 表 ;
+	特点 1.叫什么(函数名)
 
-	2.干什么（函数功能）
+	2.干什么(函数功能)
 
-	分类：	1.单行函数 CONCAT(str1,str2,...).LENGTH(str),IFNULL(expr1,expr2)
+	分类 	1.单行函数 CONCAT(str1,str2,...).LENGTH(str),IFNULL(expr1,expr2)
 					2.分组函数
 	*/
 
@@ -366,18 +366,18 @@ SELECT
 	SELECT UPPER('john');
 	SELECT LOWER('JOhN');
 
-	##示例将姓变大写，名变小写，然后拼接
+	##示例将姓变大写 ,名变小写 ,然后拼接
 	SELECT CONCAT(UPPER(last_name),'-',LOWER(first_name)) 姓名 FROM employees
 
 	4. substr,substring,
-	注意：索引从1开始
+	注意 索引从1开始
 	#截取 从指定索引出后面所有的字符
 	SELECT SUBSTR('李莫愁爱上了陆展源',7) out_put;
 
 	#截取 从指定索引处指定字符长度的字符
 	SELECT SUBSTR('李莫愁爱上了陆展源',1,3) out_put;
 
-	##案例；姓名中首字符大写，其他字符小写，然后拼接
+	##案例:姓名中首字符大写 ,其他字符小写 ,然后拼接
 SELECT
 	CONCAT(
 		UPPER(
@@ -388,7 +388,7 @@ SELECT
 FROM
 	employees;
 
-	5. INSTR(str,substr) 返回子串第一次出现的索引，如果找不到返回0
+	5. INSTR(str,substr) 返回子串第一次出现的索引 ,如果找不到返回0
 
 SELECT
 	INSTR( '杨不梅爱上了殷六侠', '殷六侠' ) AS out_put ;
@@ -417,11 +417,11 @@ SELECT REPLACE('张无忌爱上了周芷若','周芷若','赵敏') AS out_put;
  SELECT ROUND(1.45);
  SELECT ROUND(1.567,2);
 
- #ceil 向上取整 返回>=该参数的最小整数；
+ #ceil 向上取整 返回>=该参数的最小整数:
  SELECT CEIL(1.001);
  SELECT CEIL(-1.001);
 
- #FLOOR(X) 向下取整，返回<=该参数的最大整数；
+ #FLOOR(X) 向下取整 ,返回<=该参数的最大整数:
  SELECT FLOOR(-9.99);
 
  #TRUNCATE(X,D) 截断
@@ -435,18 +435,18 @@ SELECT MOD(-10,-3);
 SELECT 10%3;
 
 
-#3.日期函数：
+#3.日期函数 
 
 #NOW() 返回当前系统的日期+时间
 SELECT NOW();
 
-#CURDATE() 返回当前日期，不包含时间
+#CURDATE() 返回当前日期 ,不包含时间
 SELECT CURDATE();
 
-#CURTIME() 返回当前时间，不包含日期
+#CURTIME() 返回当前时间 ,不包含日期
 SELECT CURTIME();
 
-#可以获取指定的部分，年月日，小时，分，秒
+#可以获取指定的部分 ,年月日 ,小时 ,分 ,秒
 SELECT YEAR(NOW()) 年;
 SELECT YEAR('1998-1-1') 年;
 SELECT YEAR(hiredate) FROM employees;
@@ -455,7 +455,7 @@ SELECT MONTH(NOW()) 月;
 SELECT MONTHNAME(NOW()) 月;
 
 
-#STR_TO_DATE(str,format) 将字符通过指定的格式转换为日期；
+#STR_TO_DATE(str,format) 将字符通过指定的格式转换为日期:
 SELECT STR_TO_DATE('1998-3-2','%Y-%c-%d') as out_put;
 
 #查询入职日期为1992-4-3的员工信息
@@ -466,7 +466,7 @@ SELECT * FROM employees WHERE hiredate = STR_TO_DATE('4-3 1992','%c-%d %Y');
 #DATE_FORMAT(date,format) 将日期转换为字符串
 SELECT DATE_FORMAT(NOW(),'%y年%m月%d日') AS OUT_PUT;
 
-#查询有奖金的员工名和入职日期：（%月/xx日  xx年）
+#查询有奖金的员工名和入职日期 (%月/xx日  xx年)
 
 SELECT
 	last_name,
@@ -476,7 +476,7 @@ FROM
 WHERE
 	commission_pct IS NOT NULL;
 
-	#四。其他函数
+	#四.其他函数
 	SELECT VERSION();
 	SELECT DATABASE();
 	SELECT USER();
@@ -486,7 +486,7 @@ WHERE
 
 		***********4月1日学习**********START***********
 
-	#五、流程控制函数：
+	#五.流程控制函数 
 	#1.if函数 :if else 的效果
 	SELECT IF(10>5,'大','小');
 
@@ -498,17 +498,17 @@ IF
 FROM
 	employees;
 
-	#2。case函数的使用一：switch case的效果
+	#2.case函数的使用一 switch case的效果
 
 	/**
 	switch(变量或表达式){
-	case 常量1：语句1；break;
+	case 常量1 语句1:break;
 	...
-	default ：语句n；break;
+	default  语句n:break;
 	}
 
 
-	mysql中：
+	mysql中 
 	case 要判断的字段或表达式
 	when 常量1 then 要显示的值1或语句1
 	when 常量2 then 要显示的值2或语句2
@@ -519,11 +519,11 @@ FROM
 	*/
 
 	/**
-	案例：查询员工的工资，要求
-	部门号 =  30，显示的工资为1.1倍
-	部门号 = 40 ，显示的工资为1.2倍
-	部门号 = 50，显示的工资为1.3倍
-	其余的部门，显示工资为原工资
+	案例 查询员工的工资 ,要求
+	部门号 =  30 ,显示的工资为1.1倍
+	部门号 = 40  ,显示的工资为1.2倍
+	部门号 = 50 ,显示的工资为1.3倍
+	其余的部门 ,显示工资为原工资
 	*/
 
 SELECT
@@ -543,7 +543,7 @@ FROM
 
 	#CASE函数的使用2:类似于多重if
 	/**
-		java中：
+		java中 
 		if(条件一){
 				语句1;
 			}else if(条件2){
@@ -554,16 +554,16 @@ FROM
 	*/
 
 	/**
-		mysql中：
+		mysql中 
 
 		case:
 		when 条件1 then 要显示的值1或语句1;
 		when 条件2 then 要显示的值2或语句2;
-		。。。
-		else 要显示的值n或语句n；
+		...
+		else 要显示的值n或语句n:
 	*/
-#案例：查询员工的工资情况：
-#如果工资>20000,显示A级别；
+#案例 查询员工的工资情况 
+#如果工资>20000,显示A级别:
 #如果工资>15000,显示B级别
 #如果工资>10000,显示C级别
 #否则显示D级别
@@ -579,10 +579,10 @@ FROM employees;
 
 
 #测试题目
-1. 显示系统时间(注：日期+时间)
+1. 显示系统时间(注 日期+时间)
 SELECT NOW();
 
-2. 查询员工号，姓名，工资，以及工资提高百分之 20%后的结果（new salary）
+2. 查询员工号 ,姓名 ,工资 ,以及工资提高百分之 20%后的结果(new salary)
 SELECT
 	employee_id,
 	last_name,
@@ -591,18 +591,18 @@ SELECT
 FROM
 	employees;
 
-3. 将员工的姓名按首字母排序，并写出姓名的长度（length）
+3. 将员工的姓名按首字母排序 ,并写出姓名的长度(length)
 SELECT LENGTH(last_name) ,SUBSTR(last_name,1,1) 首字符,last_name
 FROM employees
 ORDER BY 首字符;
 
-4. 做一个查询，产生下面的结果
+4. 做一个查询 ,产生下面的结果
 <last_name> earns <salary> monthly but wants <salary*3>
 
 SELECT CONCAT(last_name,' earns',salary,'month but wants',salary*3) as "dream salary"
 from employees WHERE salary = 24000;
 
-5.使用 case-when，按照下面的条件：
+5.使用 case-when ,按照下面的条件 
 job grade
 AD_PRES A
 ST_MAN B
@@ -629,26 +629,26 @@ ST_CLERK E
 		employees
 		where job_id = 'AD_PRES';
 
-		####二、分组函数：
+		####二.分组函数 
 /**
-功能：用作统计使用，又称为聚合函数或统计函数或组函数
+功能 用作统计使用 ,又称为聚合函数或统计函数或组函数
 
-分类：
+分类 
 sum 求和 avg 平均值 max 最大值 min 最小值 count 计算个数
 
-特点：
+特点 
 1.sum,avg一般用于处理数值型
-	max,min，count 可以处理任何类型
-2.以上分组函数忽略null值，
+	max,min ,count 可以处理任何类型
+2.以上分组函数忽略null值 ,
 3.可以和distinct搭配实现去重的运算
-4.count（）函数
-一般使用count（*）统计行数
+4.count()函数
+一般使用count(*)统计行数
 5.和分组函数一桶查询的字段要求是Group by 后的字段
 
 
 **/
 
-1.简单使用：
+1.简单使用 
 SELECT SUM(salary) FROM employees;
 SELECT AVG(salary) FROM employees;
 SELECT MIN(salary) FROM employees;
@@ -657,7 +657,7 @@ SELECT COUNT(salary) FROM employees;
 
 SELECT SUM(salary),ROUND(AVG(salary),2),MIN(salary),MAX(salary),COUNT(salary) FROM employees;
 
-#2.特点：参数支持哪些类型：
+#2.特点 参数支持哪些类型 
 SELECT SUM(last_name),AVG(last_name) FROM employees;//没有意义
 
 SELECT MAX(last_name),MIN(last_name) FROM employees;
@@ -688,15 +688,15 @@ SELECT commission_pct FROM employees;
 	SELECT COUNT(DISTINCT salary) ,COUNT(salary) from employees;
 
 
-	5.count()函数的详细介绍
+	5 count()函数的详细介绍
 
 	SELECT COUNT(salary) from employees;
 
 	SELECT count(*) FROM employees
 	SELECT COUNT(1) FROM employees;
 
-	效率：MYISM,存储引擎下，count（*）的效率高
-	INNODB存储引擎下，count(*) 和 COUNT(1) 的效率高，但是比count(字段)要高一些
+	效率 MYISM,存储引擎下 ,count(*)的效率高
+	INNODB存储引擎下 ,count(*) 和 COUNT(1) 的效率高 ,但是比count(字段)要高一些
 
 
 
@@ -705,7 +705,7 @@ SELECT commission_pct FROM employees;
 	SELECT AVG(salary),employee_id from employees;
 
 
-1. 查询公司员工工资的最大值，最小值，平均值，总和，
+1. 查询公司员工工资的最大值 ,最小值 ,平均值 ,总和 ,
 SELECT MAX(salary) mx_sal,MIN(salary) min_sal,ROUND(AVG(salary),2) ag_sal,SUM(salary) sm_sal FROM employees;
 
 2. 查询员工表中最大入职时间和最小入职时间的相差天数
@@ -715,51 +715,51 @@ SELECT DATEDIFF(MAX(hiredate),MIN(hiredate)) DIFFRENG FROM employees;
 SELECT COUNT(*) FROM employees WHERE department_id = 90;
 
 
-##进阶5：分组查询
-#引入：查询每个部门的平均工资
-语法：
-			SELECT 分组函数，列（要求出现在group by） 后面
+##进阶5 分组查询
+#引入 查询每个部门的平均工资
+语法 
+			SELECT 分组函数 ,列(要求出现在 group by) 后面
 			FROM 表
 			WHERE [筛选条件]
 			GROUP BY 分组的列表
 			ORDER BY 子句
 
-注意：
-			 查询列表必须特殊，要求是分组函数和group by 后出现的字段
+注意 
+			 查询列表必须特殊 ,要求是分组函数和group by 后出现的字段
 
-特点：
+特点 
 			1.分组查询中的筛选条件分为两类
 											数据源            位置                       关键字
 			分组前筛选     原始表              GROUP BY 子句的前面       WHERE
 			分组后筛选     分组后的结果集      GROUP BY 子句的后面        having
 
 			1.分组函数做条件肯定是放在having子句中
-			2.能用分组前筛选前的，优先考虑分组前筛选
+			2.能用分组前筛选前的 ,优先考虑分组前筛选
 
-			2.GROUP BY子句支持单个字段分组，多个字段分组（多个字段之间用逗号隔开没有顺序要求），表达式或函数（用的较少）
-			3. 也可以添加排序（排序放在整个分组查询的最后）
+			2 GROUP BY子句支持单个字段分组 ,多个字段分组(多个字段之间用逗号隔开没有顺序要求) ,表达式或函数(用的较少)
+			3. 也可以添加排序(排序放在整个分组查询的最后)
 
 
-			 【简单的分组查询】
+			 [简单的分组查询]
 
-			 #案例1：查询每个公众的最高工资
+			 #案例1 查询每个公众的最高工资
 
 			 SELECT MAX(salary),job_id FROM employees GROUP BY job_id;
 
-			 #案例2：每个位置上的部门个数
+			 #案例2 每个位置上的部门个数
 			 SELECT COUNT(*),location_id FROM departments GROUP BY location_id;
 
 		***********4月1日学习**********END***********
 
 		***********4月4日学习******START********
 		#添加分组前筛选条件
-		#案例1:查询邮箱中包含a字符的，每个部门的平均工资
+		#案例1:查询邮箱中包含a字符的 ,每个部门的平均工资
 		SELECT Avg(salary),department_id
 		from employees
 		where email like '%a%'
 		GROUP BY department_id;
 
-		#案例2：查询有奖金的每个领导手下员工的最高工资
+		#案例2 查询有奖金的每个领导手下员工的最高工资
 		SELECT MAX(salary),manager_id
 		from employees
 		where commission_pct is not NULL
@@ -767,7 +767,7 @@ SELECT COUNT(*) FROM employees WHERE department_id = 90;
 
 		# 添加分组后的筛选条件
 
-		#案例1：查询哪个部门的员工个数 》2
+		#案例1 查询哪个部门的员工个数 > 2
 		#1.查询每个部门的员工个数
 
 
@@ -775,14 +775,14 @@ SELECT COUNT(*) FROM employees WHERE department_id = 90;
 		from employees
 		GROUP BY department_id
 
-		#2.根据1的结果进行筛选，查询哪个部门的员工个数 > 2
+		#2.根据1的结果进行筛选 ,查询哪个部门的员工个数 > 2
 
 		SELECT COUNT(*),department_id
 		from employees
 		GROUP BY department_id
 		HAVING COUNT(*) > 2;
 
-		#案例2:查询每个工种有奖金的员工的最高工资 > 12000 的工种编号和最高工资。
+		#案例2:查询每个工种有奖金的员工的最高工资 > 12000 的工种编号和最高工资.
 		#1.查询每个工种有奖金的员工的最高工资
 
 
@@ -791,7 +791,7 @@ SELECT COUNT(*) FROM employees WHERE department_id = 90;
 		WHERE commission_pct is not NULL
 		GROUP BY job_id;
 
-		#2.根据1的结果继续筛选，最高工资> 12000
+		#2.根据1的结果继续筛选 ,最高工资> 12000
 
 				SELECT MAX(salary),job_id
 		from employees
@@ -799,20 +799,20 @@ SELECT COUNT(*) FROM employees WHERE department_id = 90;
 		GROUP BY job_id
 		HAVING MAX(salary) > 12000;
 
-		#案例3 ： 查询领导编号> 102 的每个领导手下的最低工资 > 5000的领导编号是哪个，以及其最低工资
+		#案例3   查询领导编号> 102 的每个领导手下的最低工资 > 5000的领导编号是哪个 ,以及其最低工资
 
 		#1.查询每个领导手下的员工的固定最低工资
 		SELECT MIN(salary),manager_id
 		from employees
 		GROUP BY manager_id;
 
-		#2.添加筛选条件，编号》102
+		#2.添加筛选条件 ,编号>102
 				SELECT MIN(salary),manager_id
 		from employees
 		where manager_id > 102
 		GROUP BY manager_id;
 
-		#3.添加筛选条件，最低工资 > 5000
+		#3.添加筛选条件 ,最低工资 > 5000
 SELECT
 	MIN( salary ),
 	manager_id
@@ -826,9 +826,9 @@ HAVING
 	MIN( salary ) > 5000
 
 
-	#按照表达式或函数进行分组：
+	#按照表达式或函数进行分组 
 
-	#案例：按员工姓名的长度分组，查询每一组的员工个数，筛选员工个数 > 5的有哪些
+	#案例 按员工姓名的长度分组 ,查询每一组的员工个数 ,筛选员工个数 > 5的有哪些
 
 	#1.查询每个长度的员工个数
 
@@ -836,7 +836,7 @@ HAVING
 	FROM employees
 	GROUP BY LENGTH(last_name);
 
-	#2，添加筛选条件(支持别名)
+	#2 ,添加筛选条件(支持别名)
 
 	SELECT COUNT(*),LENGTH(last_name) len_name
 	FROM employees
@@ -845,31 +845,31 @@ HAVING
 
 	#按多个字段进行分组
 
-	#案例：查询每个部门，每个工种的员工的平均工资
+	#案例 查询每个部门 ,每个工种的员工的平均工资
 	SELECT AVG(salary),department_id,job_id
 	FROM employees
 	GROUP BY department_id,job_id;###顺序可以变换
 
-	#添加排序
-	#案例：查询每个部门每个工种的员工的平均工资，并且按平均工资的高低显示
+#添加排序
+#案例 查询每个部门每个工种的员工的平均工资 ,并且按平均工资的高低显示
 
 
-	SELECT AVG(salary),department_id,job_id
-	FROM employees
-	WHERE department_id IS NOT NULL
-	GROUP BY department_id,job_id
-	ORDER BY AVG(salary) DESC;
+SELECT AVG(salary),department_id,job_id
+FROM employees
+WHERE department_id IS NOT NULL
+GROUP BY department_id,job_id
+ORDER BY AVG(salary) DESC;
 
-	#1. 查询各 job_id 的员工工资的最大值，最小值，平均值，总和，并按 job_id 升序
-	SELECT MAX(salary),MIN(salary),AVG(salary),SUM(salary)
-	from employees
-	GROUP BY job_id
-	ORDER BY job_id;
+#1. 查询各 job_id 的员工工资的最大值 ,最小值 ,平均值 ,总和 ,并按 job_id 升序
+SELECT MAX(salary),MIN(salary),AVG(salary),SUM(salary)
+from employees
+GROUP BY job_id
+ORDER BY job_id;
 
-#2. 查询员工最高工资和最低工资的差距（DIFFERENCE）
+#2. 查询员工最高工资和最低工资的差距(DIFFERENCE)
 SELECT MAX(salary) - MIN(salary) DIFFERENCE
 from employees;
-#3. 查询各个管理者手下员工的最低工资，其中最低工资不能低于 6000，没有管理者的员
+#3. 查询各个管理者手下员工的最低工资 ,其中最低工资不能低于 6000 ,没有管理者的员
 工不计算在内
 SELECT MIN(salary),manager_id
 from employees
@@ -878,15 +878,15 @@ GROUP BY manager_id
 HAVING MIN(salary) >= 6000
 
 
-#4. 查询所有部门的编号，员工数量和工资平均值,并按平均工资降序
+#4. 查询所有部门的编号 ,员工数量和工资平均值,并按平均工资降序
 SELECT department_id,	COUNT(*),AVG(salary) a
 FROM employees
 GROUP BY department_id
 ORDER BY a desc;
 
-5. 选择具有各个 job_id 的员工人数
+#5. 选择具有各个 job_id 的员工人数
 
-SELECT COUNT(*)个数，job_id
+SELECT COUNT(*)个数 ,job_id
 FROM employees
 GROUP BY job_id;
 
@@ -894,28 +894,28 @@ GROUP BY job_id;
 
 		********4月6号学习*****START****
 
-#进阶6：连接查询
+#进阶6 连接查询
 /**
-含义：又称多表查询，当查询的字段来自于多个表时，就会用到连接查询
+含义 又称多表查询 ,当查询的字段来自于多个表时 ,就会用到连接查询
 
-笛卡尔乘积现象：表1:有m行，表2有n行，结果 = m* n行
-发生原因：没有有效的连接条件
-如何避免：添加有效的连接条件
+笛卡尔乘积现象 表1:有m行 ,表2有n行 ,结果 = m* n行
+发生原因 没有有效的连接条件
+如何避免 添加有效的连接条件
 
-分类：
-			按年代分类：
-			sql 92标准：仅仅支持内连接
-			sql 99 标准【推荐】支持内连接+外链接（左外，右外）+交叉连接
-			按功能分类：
-						内连接：
+分类 
+			按年代分类 
+			sql 92标准 仅仅支持内连接
+			sql 99 标准[推荐]支持内连接+外链接(左外 ,右外)+交叉连接
+			按功能分类 
+						内连接 
 									等值连接
 									非等值连接
 									自连接
-						外链接：
+						外链接 
 									左外连接
 									右外连接
 									全外连接
-						交叉连接：
+						交叉连接 
 
 **/
 
@@ -931,53 +931,53 @@ WHERE beauty.boyfriend_id = boys.id;
 
 /**
 1.多表等值连接的结果为多表的交集部分
-2.n表连接，至少需要n-1个连接条件
+2.n表连接 ,至少需要n-1个连接条件
 3.多表的顺序没有要求
-4.一般需要为表取别名；
-5.可以搭配前面介绍的所有子句使用，比如排序，分组，筛选。
+4.一般需要为表取别名:
+5.可以搭配前面介绍的所有子句使用 ,比如排序 ,分组 ,筛选.
 */
 
-#案例1：查询女神名和对应的男生名
+#案例1 查询女神名和对应的男生名
 
 SELECT NAME,boyName FROM boys,beauty
 WHERE beauty.boyfriend_id = boys.id;
 
 
-#2.为表起别名：
+#2.为表起别名 
 /***
 1.提高语句的简洁度
 2.区分多个重名的字段
 
-注意：如果为表取了别名，则查询的字段就不能使用原来的表名去限定
+注意 如果为表取了别名 ,则查询的字段就不能使用原来的表名去限定
 
 **/
-#案例2：查询员工名和对应的部门名
+#案例2 查询员工名和对应的部门名
 
 SELECT last_name,department_name
 FROM employees,departments
 WHERE employees.department_id = departments.department_id;
 
-#2.查询员工名，工种号，工种名
+#2.查询员工名 ,工种号 ,工种名
 SELECT last_name,e.job_id,j.job_title
 FROM employees as e,jobs j
 WHERE e.job_id = j.job_id;
 
 #3.两个表的顺序是否可以调换
 
-#.查询员工名，工种号，工种名
+#.查询员工名 ,工种号 ,工种名
 SELECT last_name,e.job_id,j.job_title
 FROM jobs j,employees as e
 WHERE e.job_id = j.job_id;
 
 #4.可以加筛选
-#案例1：查询有奖金的员工名，部门名
+#案例1 查询有奖金的员工名 ,部门名
 
 SELECT last_name,department_name
 from employees e,departments d
 WHERE e.department_id = d.department_id
 AND e.commission_pct IS NOT NULL
 
-#案例2：查询城市名中第二个字符为O的部门名和城市名
+#案例2 查询城市名中第二个字符为O的部门名和城市名
 
 SELECT department_name,city
 FROM departments d,locations l
@@ -985,9 +985,9 @@ WHERE d.location_id = l.location_id
 AND city like '_o%';
 
 
-#5.可以加分组？
+#5.可以加分组
 
-#案例1：查询每个城市的部门个数
+#案例1 查询每个城市的部门个数
 
 SELECT COUNT(*) 个数,city
 FROM departments d,locations l
@@ -1005,7 +1005,7 @@ GROUP BY department_name,manager_id;
 
 #6.可以加排序
 
-#案例：查询每个工种的工种名和员工的个数，并且按员工个数降序
+#案例 查询每个工种的工种名和员工的个数 ,并且按员工个数降序
 
 SELECT job_title,COUNT(*)
 FROM employees
@@ -1015,7 +1015,7 @@ ORDER BY COUNT(*) DESC;
 
 #7.实现三表连接
 
-#案例：查询员工名，部门名，和所在的城市
+#案例 查询员工名 ,部门名 ,和所在的城市
 
 SELECT last_name,department_name,city
 FROM employees e,departments d,locations l
@@ -1024,9 +1024,9 @@ AND d.location_id = l.location_id
 AND city LIKE 's%'
 ORDER BY department_name DESC;
 
-#2.非等值连接：
+#2.非等值连接 
 
-#案例1：查询员工的工资和工资级别
+#案例1 查询员工的工资和工资级别
 
 
 SELECT salary,grade_level,department_id
@@ -1035,7 +1035,7 @@ SELECT salary,grade_level,department_id
 
  #3.自连接
 
- #案例：查询员工名，和上级的名称
+ #案例 查询员工名 ,和上级的名称
  SELECT e.employee_id,e.last_name,m.employee_id ,m.last_name
  FROM employees e,employees m
  WHERE e.manager_id = m.employee_id;
@@ -1044,19 +1044,19 @@ SELECT salary,grade_level,department_id
 
 
 
- 三.查询员工表的job_id中包含 a 和 e的，并且a在e的前面
+ 三.查询员工表的job_id中包含 a 和 e的 ,并且a在e的前面
 
  SELECT job_id from employees where job_id LIKE '%a%e%';
 
- 五，显示当前日期，以及去前后空格，截取字符串的函数
+ 五 ,显示当前日期 ,以及去前后空格 ,截取字符串的函数
 
  SELECT NOW();
- SELECT TRIM(字符 from ‘’);
+ SELECT TRIM(字符 from '');
 
  SELECT SUBSTR(STR,startIndex);
 
- ####作业：
- #1. 显示所有员工的姓名，部门号和部门名称。
+ ####作业 
+ #1. 显示所有员工的姓名 ,部门号和部门名称.
  SELECT last_name,d.department_id,department_name
  from employees e,departments d
  WHERE e.department_id = d.department_id
@@ -1086,7 +1086,7 @@ WHERE e.department_id = d.department_id
 AND d.location_id = l.location_id
 AND city = 'Toronto';
 
-5.查询每个工种、每个部门的部门名、工种名和最低工资
+5.查询每个工种.每个部门的部门名.工种名和最低工资
 SELECT department_name,job_title,MIN(salary) 最低工资
 FROM employees e,departments d,jobs j
 WHERE e.department_id = d.department_id
@@ -1101,7 +1101,7 @@ WHERE d.location_id = l.location_id
 GROUP BY country_id
 HAVING 部门个数 > 2
 
-7、选择指定员工的姓名，员工号，以及他的管理者的姓名和员工号，结果类似于下面的格
+7.选择指定员工的姓名 ,员工号 ,以及他的管理者的姓名和员工号 ,结果类似于下面的格
 式
 employees Emp# manager Mgr#
 kochhar 101 king 100
@@ -1118,11 +1118,11 @@ AND e.last_name = "kochhar"
 
 
 	********4月10号学习*****START****
-	#sql99语法：
+	#sql99语法 
 	/*
-	语法：
+	语法 
 			SELECT 查询列表
-			FROM 表1 别名 【连接类型】
+			FROM 表1 别名 [连接类型]
 			join 表2 别名
 			on 连接条件
 			WHERE 筛选条件
@@ -1132,39 +1132,39 @@ AND e.last_name = "kochhar"
 
 	内连接 INNER
 	外连接
-				左外: left（OUTER）
+				左外: left(OUTER)
 				右外 right
 				全外 :FULL
 	交叉连接:cross
 	*/
 
 
-		#1.内连接：
+		#1.内连接 
 			/**
-			语法：
+			语法 
 			SELECT 查询列表
 			FROM 表1 别名
 			inner join 表2 别名
 			on 连接条件;
 
-			分类：
-			等值：
-			非等值：
+			分类 
+			等值 
+			非等值 
 			自连接
 
-			特点：
-			1。添加排序，分组，筛选
-			2，inner 可以省略
-			3.筛选条件放在where 后面，连接条件放在on后面，提高分离性，便于阅读
-			4.inner JOIN 连接和sql92语法中的等值连接效果是一样的，都是查询交集部门。
+			特点 
+			1.添加排序 ,分组 ,筛选
+			2 ,inner 可以省略
+			3.筛选条件放在where 后面 ,连接条件放在on后面 ,提高分离性 ,便于阅读
+			4.inner JOIN 连接和sql92语法中的等值连接效果是一样的 ,都是查询交集部门.
 
 
 
 
 			*/
 
-		#1、等值连接：
-		案例一：查询员工名，部门名（调换位置）
+		#1.等值连接 
+		案例一 查询员工名 ,部门名(调换位置)
 
 		SELECT last_name,department_name
 		from departments d
@@ -1172,14 +1172,14 @@ AND e.last_name = "kochhar"
 		ON e.department_id = d.department_id
 
 
-		#案例二：查询名字中包含a的员工名和工种名（筛选）
+		#案例二 查询名字中包含a的员工名和工种名(筛选)
 		SELECT last_name,job_title
 		from employees e
 		INNER JOIN jobs j
 		ON e.job_id = j.job_id
 		WHERE e.last_name LIKE '%e%';
 
-		#案例3：查询部门个数 > 3的城市名和部门个数，（添加分组+外加筛选）
+		#案例3 查询部门个数 > 3的城市名和部门个数 ,(添加分组+外加筛选)
 
 		#1.查询每个城市的部门个数
 
@@ -1190,7 +1190,7 @@ AND e.last_name = "kochhar"
 		GROUP BY city
 		HAVING COUNT(*) > 3;
 
-		#案例4：查询每个部门的部门员工数》3的部门名和员工个数，并按个数降序（排序）
+		#案例4 查询每个部门的部门员工数>3的部门名和员工个数 ,并按个数降序(排序)
 
 		1.查询每个部门的员工个数
 
@@ -1199,7 +1199,7 @@ AND e.last_name = "kochhar"
 		INNER JOIN departments d ON e.department_id = d.department_id
 		GROUP BY department_name;
 
-		2.在1的结果上筛选员工个数>3的记录，并排序
+		2.在1的结果上筛选员工个数>3的记录 ,并排序
 
 		SELECT count(*),department_name
 		FROM employees e
@@ -1208,7 +1208,7 @@ AND e.last_name = "kochhar"
 		HAVING COUNT(*) > 3
 		ORDER BY COUNT(*) DESC
 
-		#案例5：查询员工名,部门名，工种名，并按部门名降序。
+		#案例5 查询员工名,部门名 ,工种名 ,并按部门名降序.
 
 		SELECT last_name,department_name,job_title
 		FROM employees e
@@ -1217,7 +1217,7 @@ AND e.last_name = "kochhar"
 		ORDER BY department_name DESC;
 
 
-		#二、非等值连接
+		#二.非等值连接
 
 			#查询员工的工资级别
 
@@ -1226,7 +1226,7 @@ AND e.last_name = "kochhar"
 			JOIN job_grades g
 			ON e.salary BETWEEN g.lowest_sal and g.highest_sal
 
-			#查询每个工资级别 > 20的个数，并且按工资级别降序
+			#查询每个工资级别 > 20的个数 ,并且按工资级别降序
 			SELECT COUNT(*),salary,grade_level
 			FROM employees e
 			JOIN job_grades g
@@ -1235,36 +1235,36 @@ AND e.last_name = "kochhar"
 			HAVING COUNT(*) > 20
 			ORDER BY grade_level DESC;
 
-			三、自连接：
+			三.自连接 
 
-			#查询员工的名字，上级的名字
+			#查询员工的名字 ,上级的名字
 
 			SELECT e.last_name,m.last_name
 			FROM employees e
 			JOIN employees m ON e.manager_id = m.employee_id
 
-			#查询姓名中包含字符K的员工的名字，上级的名字
+			#查询姓名中包含字符K的员工的名字 ,上级的名字
 			SELECT e.last_name,m.last_name
 			FROM employees e
 			JOIN employees m ON e.manager_id = m.employee_id
 			WHERE e.last_name like '%k%';
 
-			二。外连接
+			二.外连接
 
 			/**
-			应用场景：用于查询一个表中有，另一个表没有的记录
+			应用场景 用于查询一个表中有 ,另一个表没有的记录
 
-			特点：
+			特点 
 						1.外链接的查询结果为主表中的所有记录
-								如果从表中有和它匹配的，则显示匹配的值
-								如果从表中没有和它匹配的值，则显示null,
+								如果从表中有和它匹配的 ,则显示匹配的值
+								如果从表中没有和它匹配的值 ,则显示null,
 								外链接查询结果=内连接结果+主表中有而从表中没有的记录
-						2.左外连接，left join 左边的是主表
-						  右外连接，right join 右边的是主表
-						3.左外和右外交换两个表的顺序，可以实现同样的效果
-						4.全外连接 = 内连接的结果+表1中有，但表2没有的+表2中有但表1没有的
+						2.左外连接 ,left join 左边的是主表
+						  右外连接 ,right join 右边的是主表
+						3.左外和右外交换两个表的顺序 ,可以实现同样的效果
+						4.全外连接 = 内连接的结果+表1中有 ,但表2没有的+表2中有但表1没有的
 			*/
-			#引入：查询男朋友不在男生表的女神名
+			#引入 查询男朋友不在男生表的女神名
 			SELECT * FROM beauty;
 			SELECT * FROM boys;
 
@@ -1286,21 +1286,21 @@ AND e.last_name = "kochhar"
 			WHERE b.id IS NULL;
 
 
-			#案例：查询哪个部门没有员工
-			#左外：
+			#案例 查询哪个部门没有员工
+			#左外 
 
 			SELECT d.*,e.employee_id
 			FROM departments d
 			LEFT OUTER JOIN employees e ON d.department_id = e.department_id
 			WHERE e.employee_id IS NULL;
 
-			#右外：
+			#右外 
 			SELECT d.*,e.employee_id
 			FROM employees e
 			RIGHT OUTER JOIN departments d ON d.department_id = e.department_id
 			WHERE e.employee_id IS NULL;
 
-			#全外：Mysql不支持
+			#全外 Mysql不支持
 
 
 			SELECT b.*,bo.*
@@ -1313,73 +1313,73 @@ AND e.last_name = "kochhar"
 
 ******4月20号学习*****START****
 
-#交叉连接：
+#交叉连接 
 SELECT b.*,bo.*
 FROM beauty b
 CROSS JOIN boys bo;
 
-#sql92和sql99 PK：
+#sql92和sql99 PK 
 
-#案例讲解：
-#一、查询编号>3的女神的男朋友信息，如果有则详细列出，如果没有，用null填充
+#案例讲解 
+#一.查询编号>3的女神的男朋友信息 ,如果有则详细列出 ,如果没有 ,用null填充
 
 #查询哪个城市没有部门
 
 #查询部门名为SAL 或IT的员工信息
 
 
-进阶7：子查询：
+进阶7 子查询 
 /**
-含义：
-出现在其他语句中的select语句，成为子查询或内查询；
-外部查询语句， 成为主查询或外查询
+含义 
+出现在其他语句中的select语句 ,成为子查询或内查询:
+外部查询语句 , 成为主查询或外查询
 
 分类:
-按子查询出现的位置：
+按子查询出现的位置 
 
 SELECT 后面 : 仅仅支持标量子查询
 FROM 后面 支持表子查询
-WHERE 或 having后面 ： 标量子查询（单行），列子查询（多行），行子查询
-EXISTS 后面（相关子查询） ：表子查询
+WHERE 或 having后面   标量子查询(单行) ,列子查询(多行) ,行子查询
+EXISTS 后面(相关子查询)  表子查询
 
-按结果集的行列式不同：
+按结果集的行列式不同 
 				标量子查询(结果集只有一行一列)
-				列子查询（结果集只有一列多行）
-				行子查询（结果集有一行多列）
-				表子查询（结果集一般为多行多列）
+				列子查询(结果集只有一列多行)
+				行子查询(结果集有一行多列)
+				表子查询(结果集一般为多行多列)
 
 
 */
 
-#一、where 或having后面
-1.标量子查询（单行子查询）
+#一.where 或having后面
+1.标量子查询(单行子查询)
 
-2.列子查询（多行子查询）
+2.列子查询(多行子查询)
 
-3.行子查询（多列多行）
+3.行子查询(多列多行)
 
-特点：
+特点 
 1.子查询都是放在小括号内
 2.子查询一般放在条件的右侧
-3.标量子查询，一般搭配这单行操作符使用
+3.标量子查询 ,一般搭配这单行操作符使用
 > < >= <= = <>
 
-列子查询，一般搭配着多行操作符使用
+列子查询 ,一般搭配着多行操作符使用
 IN ANY.SOME,ALL
-4.子查询的执行优先于主查询执行，主查询的条件用到了子查询的结果。
+4.子查询的执行优先于主查询执行 ,主查询的条件用到了子查询的结果.
 
 
 
-1.标量子查询：
+1.标量子查询 
 
-#案例1：谁的工资比Abel高？
+#案例1 谁的工资比Abel高
 
 #1.查询Abel的工资
 SELECT salary
 FROM employees
 where last_name = 'Abel'
 
-#2.查询员工的信息，满足salary > 1结果
+#2.查询员工的信息 ,满足salary > 1结果
 SELECT *
 FROM employees
 WHERE salary > (
@@ -1388,7 +1388,7 @@ FROM employees
 where last_name = 'Abel'
 )
 
-#案例2：返回job_id 与141号员工相同，salary 比 143 号员工多的员工 姓名，job_id,和工资
+#案例2 返回job_id 与141号员工相同 ,salary 比 143 号员工多的员工 姓名 ,job_id,和工资
 
 #1.查询141号员工的job_id
 SELECT job_id
@@ -1400,7 +1400,7 @@ SELECT salary
 FROM employees
 WHERE employee_id = 143
 
-#3.查询员工的姓名，job_id和工资，要求job_id = 1 并且salary > 2
+#3.查询员工的姓名 ,job_id和工资 ,要求job_id = 1 并且salary > 2
 SELECT last_name,job_id,salary
 FROM employees
 WHERE job_id = (
@@ -1425,7 +1425,7 @@ FROM employees
 WHERE salary = (SELECT MIN(salary)
 FROM employees);
 
-#案例4：查询最低工资大于50号部门最低工资的部门id，和其最低工资
+#案例4 查询最低工资大于50号部门最低工资的部门id ,和其最低工资
 
 #1.查询50号部门的最低工资
 SELECT MIN(salary)
@@ -1437,7 +1437,7 @@ SELECT MIN(salary),department_id
 FROM employees
 GROUP BY department_id
 
-#3.在2基础上进行筛选2，满足min(salary) > 1的结果
+#3.在2基础上进行筛选2 ,满足min(salary) > 1的结果
 SELECT MIN(salary),department_id
 FROM employees
 GROUP BY department_id
@@ -1462,16 +1462,16 @@ HAVING MIN(salary) > (
 
 ******5月2号学习*****START****
 
-2.列子查询（多行子查询）
+2.列子查询(多行子查询)
 
-#案例1：返回location_id是1400或1700的部门中的所有员工姓名
+#案例1 返回location_id是1400或1700的部门中的所有员工姓名
 
 #1.查询location_id 是1400 或1700的部门编号
 SELECT DISTINCT department_id
 FROM departments
 WHERE location_id in(1400,1700);
 
-#2.查询员工姓名，要求部门号是1列表中的某一个
+#2.查询员工姓名 ,要求部门号是1列表中的某一个
 SELECT last_name
 FROM employees
 WHERE department_id IN(
@@ -1480,14 +1480,14 @@ FROM departments
 WHERE location_id in(1400,1700)
 );
 
-#案例2：返回其它工种中比job_id为‘IT_PROG’部门任一工资低的员工的员工号、姓名、job_id 以及salary
+#案例2 返回其它工种中比job_id为'IT_PROG'部门任一工资低的员工的员工号.姓名.job_id 以及salary
 
 #查询job_id,为IT_PROG部门任一工资
 SELECT DISTINCT salary
 FROM employees
 WHERE job_id = 'IT_PROG'
 
-#2.查询员工名，姓名，job_id,以及 salary, salary < 1的任意一个
+#2.查询员工名 ,姓名 ,job_id,以及 salary, salary < 1的任意一个
 SELECT last_name,employee_id,job_id,salary
 FROM employees
 WHERE salary < ANY(SELECT DISTINCT salary
@@ -1504,7 +1504,7 @@ WHERE job_id = 'IT_PROG')
 AND job_id <> 'IT_PROG';
 
 
-#案例3：返回其它工种中比job_id为‘IT_PROG’部门所有工资低的员工的员工号、姓名、job_id 以及salary
+#案例3 返回其它工种中比job_id为'IT_PROG'部门所有工资低的员工的员工号.姓名.job_id 以及salary
 
 SELECT last_name,employee_id,job_id,salary
 FROM employees
@@ -1524,8 +1524,8 @@ AND job_id <> 'IT_PROG';
 
 
 
-#3.行子查询（结果集一行多列或多行多列）
-#案例：查询员工编号最小并且工资最高的员工信息
+#3.行子查询(结果集一行多列或多行多列)
+#案例 查询员工编号最小并且工资最高的员工信息
 
 SELECT *
 FROM employees
@@ -1548,37 +1548,37 @@ FROM employees) AND salary = (SELECT MAX(salary)
 FROM employees)
 
 
-#二、select后面
+#二.select后面
 /***
 仅仅支持标量子查询
 */
 
-#案例1：查询每个部门的员工个数
+#案例1 查询每个部门的员工个数
 SELECT d.*,( SELECT COUNT(*) FROM employees e WHERE e.department_id = d.department_id ) 个数
 FROM
 	departments d;
 
-#案例2：查询员工号 = 102的部门名
+#案例2 查询员工号 = 102的部门名
 
 SELECT
 	( SELECT department_name FROM departments d INNER JOIN employees e ON d.department_id = e.department_id WHERE e.employee_id = 102 ) 部门名;
 
-#三、from 后面
+#三.from 后面
 
 /**
-将子查询结果充当一张表，要求必须起别名。
+将子查询结果充当一张表 ,要求必须起别名.
 */
 
-#案例： 查询每个部门的平均工资的工资等级
+#案例  查询每个部门的平均工资的工资等级
 
 #1查询每个部门的平均工资
-SELECT AVG(salary)，department_id
+SELECT AVG(salary) ,department_id
 FROM employees
 GROUP BY department_id
 
 SELECT * FROM job_grades;
 
-#2连接1的结果集和job_grades表，筛选条件平均工资 between lowest_sal and highest_sal
+#2连接1的结果集和job_grades表 ,筛选条件平均工资 between lowest_sal and highest_sal
 
 SELECT
 	ag_dep.*,
@@ -1594,19 +1594,19 @@ FROM
 ******5月3号学习*****START****
 
 
-#四、exists 后面（相关子查询）
+#四.exists 后面(相关子查询)
 
 
 /**
-语法：
+语法 
 exists(完整的查询语句)
-结果：
+结果 
 1或0
 
 */
 SELECT EXISTS(SELECT employee_id FROM employees)
 
-#案例1：查询有员工的部门名
+#案例1 查询有员工的部门名
 
 #in
 SELECT department_name
@@ -1620,7 +1620,7 @@ WHERE d.department_id in(SELECT department_id FROM employees)
 	);
 
 
-	#案例2：查询没有女朋友的男神信息
+	#案例2 查询没有女朋友的男神信息
 
 	#IN
 	SELECT bo.*
@@ -1659,12 +1659,12 @@ WHERE
 		)
 
 
-	#2.查询工资比公司平均工资高的员工的员工号，姓名和工资
+	#2.查询工资比公司平均工资高的员工的员工号 ,姓名和工资
 		1.查询平均工资
 		SELECT AVG(salary)
 		FROM employees
 
-		2.查询工资 > 1的员工号，姓名和工资
+		2.查询工资 > 1的员工号 ,姓名和工资
 		SELECT last_name,employee_id,salary
 		FROM employees
 		WHERE salary >(
@@ -1673,13 +1673,13 @@ WHERE
 		)
 
 
-	#3.查询各部门中工资比本部门的平均工资高的员工的员工号，姓名和工资
+	#3.查询各部门中工资比本部门的平均工资高的员工的员工号 ,姓名和工资
 		1.各部门的平均工资
 		SELECT AVG(salary),department_id
 		FROM employees
 		GROUP BY department_id
 
-		2.连接1结果集和employees表，进行筛选
+		2.连接1结果集和employees表 ,进行筛选
 		SELECT employee_id,last_name,salary,e.department_id
 		FROM employees e
 		INNER JOIN (		SELECT AVG(salary) ag,department_id
@@ -1733,7 +1733,7 @@ WHERE last_name = "K_ing"
 		last_name = "K_ing"
 			)
 
-	#7.查询工资最高的员工的姓名，要求first_name和last_name显示为一列，列名为姓.名
+	#7.查询工资最高的员工的姓名 ,要求first_name和last_name显示为一列 ,列名为姓.名
 
 	1.查询最高工资
 	SELECT MAX(salary)
@@ -1745,24 +1745,24 @@ WHERE last_name = "K_ing"
 	FROM employees
 	WHERE salary = (SELECT MAX(salary) FROM employees)
 
-	#进阶8：分页查询
+	#进阶8 分页查询
 
 	/*
-	应用场景：当要显示的数据，一页显示不全，需要分页提交sql请求
+	应用场景 当要显示的数据 ,一页显示不全 ,需要分页提交sql请求
 
-	语法：
+	语法 
 				SELECT 查询列表
 				FROM 表
 				JOIN TYPE JOIN 表2 ON 连接条件 WHERE 筛选条件
 				GROUP BY 分组字段 HAVING 分组后的查询
 				ORDER BY 排序的字段
 				LIMIT OFFSET,size;
-				OFFSET :要显示条目的起始索引，（起始索引从0开始）
+				OFFSET :要显示条目的起始索引 ,(起始索引从0开始)
 				size:要显示的条目个数
 
 		特点:
 				1.limit语句放在查询语句的最后
-				2.公式：
+				2.公式 
 				要显示的页数 page 每页条目数size
 
 				SELECT 查询列表
@@ -1771,16 +1771,16 @@ WHERE last_name = "K_ing"
 
 	*/
 
-	#案例1：查询前5条员工信息
+	#案例1 查询前5条员工信息
 
 	SELECT * FROM employees LIMIT 0,5;
 	SELECT * FROM employees LIMIT 5;
 
-	#案例2：查询第11条-第25条；
+	#案例2 查询第11条-第25条:
 
 	SELECT * FROM employees LIMIT 10,15;
 
-	#案例3：有奖金的员工信息，并且工资较高的前10名显示出来
+	#案例3 有奖金的员工信息 ,并且工资较高的前10名显示出来
 SELECT
 	*
 FROM
@@ -1791,7 +1791,7 @@ ORDER BY
 	salary DESC
 	LIMIT 10;
 
-	#查询语句中涉及到的所有的关键字，以及执行先后顺序
+	#查询语句中涉及到的所有的关键字 ,以及执行先后顺序
 
 	SELECT 查询列表
 	FROM 表
@@ -1800,10 +1800,10 @@ ORDER BY
 	GROUP BY 分组列表
 	HAVING 分组后的筛选
 	ORDER BY 排序列表
-	LIMIT 偏移，条目数;
+	LIMIT 偏移 ,条目数;
 
-	#子查询经典案例讲解：
-	1.查询工资最低的员工信息：last_name,salary
+	#子查询经典案例讲解 
+	1.查询工资最低的员工信息 last_name,salary
 			#1.查询最低工资
 			SELECT MIN(salary) FROM employees;
 			#2.查询last_name,salary,要求salary = 1
@@ -1854,7 +1854,7 @@ ORDER BY
 			)
 		)
 
-		###方式二：
+		###方式二 
 		#1.各部门的平均工资
 		SELECT AVG(salary),department_id
 		FROM employees
@@ -1935,7 +1935,7 @@ WHERE
 			#2.查询每个部门的平均工资
 			SELECT AVG(salary),department_id from employees GROUP BY department_id
 
-			#3.筛选2结果集，满足平均工资>1
+			#3.筛选2结果集 ,满足平均工资>1
 SELECT
 	AVG( salary ),
 	department_id
@@ -1954,14 +1954,14 @@ HAVING
 	6.查询处公司中所有manger的详细信息？
 				#1.查询所有manger的员工编号
 				SELECT DISTINCT manager_id FROM employees
-				#2.查询详细信息，满足employ_id = #1
+				#2.查询详细信息 ,满足employ_id = #1
 				SELECT * FROM employees
 				WHERE employee_id = ANY(
 				SELECT DISTINCT manager_id from employees
 				)
 
 
-	7.各个部门中，最高工资中最低的那个部门的最低工资是多少？
+	7.各个部门中 ,最高工资中最低的那个部门的最低工资是多少？
 			#1.查询各部门的最高工资Z中最低的
 			SELECT department_id FROM employees GROUP BY department_id ORDER BY MAX(salary) LIMIT 1;
 			#2.查询1结果的那个部门的最低工资
@@ -1982,14 +1982,14 @@ WHERE
 		LIMIT 1
 	)
 
-	8.查询平均工资最高的部门的manger的详细信息，：last_name,department_id,emailm,salary
+	8.查询平均工资最高的部门的manger的详细信息 , last_name,department_id,emailm,salary
 			#1.查询平均工资最高的部门编号
 			SELECT department_id
 			FROM employees
 			GROUP BY department_id
 			ORDER BY AVG(salary) DESC
 			LIMIT 1
-			#2.将employees和deaprments连接查询，筛选条件是1
+			#2.将employees和deaprments连接查询 ,筛选条件是1
 			SELECT last_name,d.department_id,email,salary
 			FROM employees e
 			INNER JOIN departments d ON d.manager_id = e.employee_id
@@ -2006,7 +2006,7 @@ WHERE
 
   ******5月4号学习*****START****
 
-	4.查询生日在“1988-1-1”后的学生姓名，专业名称
+	4.查询生日在 "1988-1-1 "后的学生姓名 ,专业名称
 	SELECT stuName,majorName
 	FROM student s
 	JOIN major m
@@ -2018,7 +2018,7 @@ WHERE
 	FROM student
 	GROUP BY sex,majorId
 
-	方式二：
+	方式二 
 	SELECT majorId,
 	(SELECT COUNT(*) FROM student WHERE sex = "男")男,
 	(SELECT COUNT(*) FROM student WHERE sex = "女")女
@@ -2026,7 +2026,7 @@ WHERE
 	GROUP BY majorId;
 
 	6.查询专业和张翠山一样的学生的最低分
-		1：查询张翠山的专业编号
+		1 查询张翠山的专业编号
 		SELECT majorId from student WHERE stuName = "张翠山"
 
 		2.查询编号 = 1的所有学生编号
@@ -2051,7 +2051,7 @@ WHERE
 	WHERE
 	majorId = ( SELECT mojorId FROM student WHERE studentName = "张翠山" ))
 
-	查询哪个专业没有学生，分别用左连接和右连接实现
+	查询哪个专业没有学生 ,分别用左连接和右连接实现
 	#左
 	SELECT m.mjoerID,m.majorName,s.studno
 	FROM major m
@@ -2064,28 +2064,28 @@ WHERE
 	RIGHT JOIN major m on m.majorId = s.majorId
 	WHERE s.studenNo IS NULL
 
-	#进阶9：联合查询：
+	#进阶9 联合查询 
 /**
-union : 联合 合并 ：将多条查询语句的结果合并成一个结果
+union : 联合 合并  将多条查询语句的结果合并成一个结果
 
-语法：
+语法 
 查询语句1
 UNION
 查询语句2
 UNION
 ..
 
-应用场景：
-要查询的结果来自于多个表，且多个表没有直接的连接关系，但查询的信息一致时。
+应用场景 
+要查询的结果来自于多个表 ,且多个表没有直接的连接关系 ,但查询的信息一致时.
 
-特点：
+特点 
 1.要求多条查询语句的查询列数是一致的
 2.要求多条查询语句的查询的每一列的类型和顺序最好一致
-3.UNION关键字默认去重，如果使用UNION ALL 可以包含重复项
+3.UNION关键字默认去重 ,如果使用UNION ALL 可以包含重复项
 
 */
 
-#引入的案例：查询部门编号 > 90或邮箱包含a的员工信息
+#引入的案例 查询部门编号 > 90或邮箱包含a的员工信息
 
 SELECT * FROM employees WHERE email LIKE '%a%' OR department_id > 90;
 
@@ -2102,22 +2102,22 @@ FROM
 WHERE
 	department_id > 90;
 
-	#DML语言：
+	#DML语言 
 
 	/**
-	数据操作语言：
-	插入：insert
-	修改：update
-	删除：delete
+	数据操作语言 
+	插入 insert
+	修改 update
+	删除 delete
 
 	*/
 
 
-	一、插入语言：
-	方式一：经典的插入
+	一.插入语言 
+	方式一 经典的插入
 	/**
-	语法：
-	INSERT INTO 表名(列名，。。。。) VALUES(值1，值2，，);
+	语法 
+	INSERT INTO 表名(列名 ,....) VALUES(值1 ,值2 , ,);
 
 
 
@@ -2133,7 +2133,7 @@ WHERE
 	INSERT INTO beauty(id,name,sex,borndate,phone,photo,boyfriend_id)
 	VALUES(13,'唐艺昕','女','1990-4-23','18999112',NULL,2);
 
-	#方式2：
+	#方式2 
 	INSERT INTO beauty(id,name,sex,borndate,phone,boyfriend_id)
 	VALUES(14,'金星','女','1990-4-23','128299112',9);
 
@@ -2141,19 +2141,19 @@ WHERE
 
 	#3.列的顺序是否可以调换
 	INSERT INTO beauty (name,sex,id,phone)
-	VALUES('蒋欣','女'，16,'110');
+	VALUES('蒋欣','女' ,16,'110');
 
 	#4.列数和值的个数必须一致
 	INSERT INTO beauty (name,sex,id,phone,boyfriend_id)
-	VALUES('蒋欣','女'，17,'110');
+	VALUES('蒋欣','女' ,17,'110');
 
-	#5.可以省略列名，默认所有列，而且列的顺序和表中列的顺序一致
+	#5.可以省略列名 ,默认所有列 ,而且列的顺序和表中列的顺序一致
 	INSERT INTO beauty
 	VALUES(18,'张飞','男',NULL,'119',NULL,NULL);
 
-	#方式二：
+	#方式二 
 	/**
-	语法：
+	语法 
 	INSERT INTO 表名
 	SET 列名 = 值,列名 = 值,.......
 	*/
@@ -2168,7 +2168,7 @@ WHERE
 	(21,'张飞','男',NULL,'119',NULL,NULL),
 	(22,'张飞','男',NULL,'119',NULL,NULL);
 
-	2.方式一支持子查询，方式二不支持
+	2.方式一支持子查询 ,方式二不支持
 	INSERT INTO beauty(id,name,phone)
 	SELECT 26,'宋茜','1190888';
 
@@ -2178,24 +2178,24 @@ WHERE
 	WHERE id < 3;
 
 
-	#二、修改语句
+	#二.修改语句
 
 	/*
 	1.修改单表中的记录
-	语法：
+	语法 
 	UPDATE 表名
 	SET 列 = 新值,列 = 新值,......
 	WHERE 筛选条件;
 
-	2.修改多表的记录【补充】
-	语法：
+	2.修改多表的记录[补充]
+	语法 
 
 	UPDATE 表1 别名,表2 别名
-	SET 列 = 值，。。
+	SET 列 = 值 ,..
 	WHERE 连接条件
 	and 筛选条件
 
-	sql99语法：
+	sql99语法 
 	UPDATE 表1 别名
 	inner left right join 表2 别名
 	ON 连接条件
@@ -2204,67 +2204,67 @@ WHERE
 	*/
 
 	#1.修改单表的记录
-	#案例1：修改beauty表中姓唐的女神的电话为1389999
+	#案例1 修改beauty表中姓唐的女神的电话为1389999
 	UPDATE beauty SET phone = '13882222'
 	WHERE name LIKE '唐%';
 
-	#案例2：修改boys表中id号为2的名称为张飞，魅力值为10
+	#案例2 修改boys表中id号为2的名称为张飞 ,魅力值为10
 	UPDATE boys SET boyName = '张飞',userCP = 10
 	WHERE id = 2;
 
 
 	#2.修改多表的记录
-	#案例1：修改张无忌的女朋友的手机号为114
+	#案例1 修改张无忌的女朋友的手机号为114
 
 	UPDATE boys bo
 	INNER JOIN beauty b ON bo.id = b.boyfriend_id
 	SET b.phone = '114'
 	WHERE bo.boyName = '张无忌';
 
-	#案例2：修改没有男朋友的女神的男朋友编号都是张飞2号
+	#案例2 修改没有男朋友的女神的男朋友编号都是张飞2号
 	UPDATE boys bo
 	RIGHT JOIN beauty b ON bo.id = b.boyfriend_id
 	SET b.boyfriend_id = 2
 	WHERE b.id IS NULL;
 
 
-	#三、删除语句
+	#三.删除语句
 
 	/**
-	方式1：delete
-	语法：
+	方式1 delete
+	语法 
 	1.单表的删除
 	DELETE FROM 表名 where 筛选条件
 
-	2.多表的删除【补充】
-	sql92语法：
-	DELETE 表1的别名，表2的别名
-	FROM 表1 别名，表2 别名
+	2.多表的删除[补充]
+	sql92语法 
+	DELETE 表1的别名 ,表2的别名
+	FROM 表1 别名 ,表2 别名
 	WHERE 连接条件
-	AND 筛选条件；
+	AND 筛选条件:
 
-	sql99语法：
+	sql99语法 
 
-	DELETE 表1的别名，表2的别名
+	DELETE 表1的别名 ,表2的别名
 	FROM 表1 别名
 	INNER|LEFT|right JOIN 表2 别名 ON 连接条件
 	WHERE 筛选条件
 
 
 
-	方式2：TRUNCATE
-	语法：TRUNCATE table 表名；
+	方式2 TRUNCATE
+	语法 TRUNCATE table 表名:
 
 	*/
 
-	#方式一：
+	#方式一 
 	1.单表的删除
-	#案例1：删除手机号以9结尾的女神信息
+	#案例1 删除手机号以9结尾的女神信息
 	DELETE FROM beauty WHERE phone LIKE '%9';
 
 	#2.多表的删除
 
-	#案例：删除张无忌的女朋友的信息
+	#案例 删除张无忌的女朋友的信息
 	DELETE b
 	FROM beauty b
 	INNER JOIN boys bo ON b.boyfriend_id = bo.id
@@ -2276,20 +2276,20 @@ WHERE
 	INNER JOIN boys bo ON b.boyfriend_id = bo.id
 	WHERE bo.boyName = "黄晓明";
 
-	#方式二：TRUNCATE 语句：
+	#方式二 TRUNCATE 语句 
 
-	#案例：将魅力值> 100的男神信息删除
+	#案例 将魅力值> 100的男神信息删除
 	TRUNCATE TABLE boys;
 
 
 	#DELETE pk TRUNCATE
-	1.DELETE 可以加where条件，TRUNCATE不能加
+	1.DELETE可以加where条件.TRUNCATE不能加
 
-	2.TRUNCATE 删除，效率高一丢丢
-	3.如果要删除的表中有自增长列，如果用delete删除后，再插入数据，自增长列的值从断点开始
-	 而truncate删除后，再插入数据，自增长列的值从1开始。
+	2.TRUNCATE 删除.效率高一丢丢
+	3.如果要删除的表中有自增长列 ,如果用delete删除后 ,再插入数据 ,自增长列的值从断点开始
+	 而truncate删除后 ,再插入数据 ,自增长列的值从1开始.
  4.TRUNCATE删除没有返回值,DELETe 删除有返回值
- 5.TRUNCATE删除不能回滚，DELETE删除可以回滚。
+ 5.TRUNCATE删除不能回滚 ,DELETE删除可以回滚.
 
 	 1. 运行以下脚本创建表 my_employees
 Create table my_employees(
@@ -2317,7 +2317,7 @@ ID FIRST_NAME LAST_NAME USERID SALARY
 INSERT INTO my_employees(ID FIRST_NAME LAST_NAME USERID SALARY)
 VALUE();
 4. 向 users 表中插入数据
-5. 将 3 号员工的 last_name 修改为“drelxer”
+5. 将 3 号员工的 last_name 修改为 "drelxer "
 
 6. 将所有工资少于 900 的员工的工资修改为 1000
 
@@ -2329,33 +2329,33 @@ VALUE();
 
 10. 清空表 my_employees
 
-	#DDL语言：
+	#DDL语言 
 	/**
-	数据定义语言：
+	数据定义语言 
 
-	库和表的管理：
-	一、库的管理
-	创建，修改，删除
+	库和表的管理 
+	一.库的管理
+	创建 ,修改 ,删除
 
-	二、表的管理
-	创建，修改，删除
+	二.表的管理
+	创建 ,修改 ,删除
 
-	创建：create
-	修改：alter
-	删除：drop
+	创建 create
+	修改 alter
+	删除 drop
 
 
 	*/
 
-	#库的管理：
+	#库的管理 
 	1.库的创建
 	/**
-	语法：
-	create DATABASE 库名；
+	语法 
+	create DATABASE 库名:
 
 	*/
 
-	#案例：创建库Books
+	#案例 创建库Books
 
 	CREATE DATABASE IF NOT EXISTS books;
 
@@ -2375,14 +2375,14 @@ VALUE();
 	#二/表的管理
 	#1.表的创建
 
-	CREATE table 表名（列名 列的类型(长度) 约束，）
-	             表名（列名 列的类型(长度) 约束，
-	             表名（列名 列的类型(长度) 约束，
-	             表名（列名 列的类型(长度) 约束，
-	             表名（列名 列的类型(长度) 约束，
-	）
+	CREATE table 表名(列名 列的类型(长度) 约束 ,)
+	             表名(列名 列的类型(长度) 约束 ,
+	             表名(列名 列的类型(长度) 约束 ,
+	             表名(列名 列的类型(长度) 约束 ,
+	             表名(列名 列的类型(长度) 约束 ,
+	)
 
-#案例：创建表Book
+#案例 创建表Book
 
 CREATE TABLE book(id INT,#编号
 bName VARCHAR(20),#图书名
@@ -2391,7 +2391,7 @@ author VARCHAR(20),#作者编号
 publishDate DATETIME#出版日期
 );
 
-#案例：创建表author
+#案例 创建表author
 CREATE TABLE author(
 id INT,
 au_name VARCHAR(20),
@@ -2403,7 +2403,7 @@ DESC author;
 #2.表的修改
 
 /**
-alter table 表名 add|drop|CHANGE|MODIFY COLUMN 列名 【列类型 约束】
+alter table 表名 add|drop|CHANGE|MODIFY COLUMN 列名 [列类型 约束]
 */
 	#1.修改列名
 	ALTER TABLE book CHANGE COLUMN publishDate pubDate DATETIME;
@@ -2418,21 +2418,21 @@ ALTER TABLE author DROP COLUMN annual;
 
 ALTER TABLE author RENAME TO book_author;
 
-#3.表的删除；
+#3.表的删除:
 
 drop TABLE 	IF EXISTS book_author;
 
 
 	SHOW TABLES;
 
-通用的写法：
+通用的写法 
 DROP DATABASE IF EXISTS 旧库名;
 CREATE DATABASE 新库名;
 
 
-DROP TABLE IF EXISTS 旧表名：
-CREATE TABLE 表名（）;
-#4.表的复制；
+DROP TABLE IF EXISTS 旧表名 
+CREATE TABLE 表名();
+#4.表的复制:
 INSERT INTO author VALUES(1, '村上春树','日本'),
 (2,'莫言','中国'),(3,'冯庸','中国'),(4,'金庸','中国');
 
@@ -2444,7 +2444,7 @@ CREATE TABLE copy like author;
 #2.赋值表的结构+数据
 CREATE TABLE copy2 	SELECT * FROM author;
 
-#3.只复制部分数据：
+#3.只复制部分数据 
 CREATE TABLE copy3
 SELECT id,au_name
 FROM author
@@ -2472,34 +2472,34 @@ Dept_id int(7)
 4. 将列 Last_name 的长度增加到 50
 5. 根据表 employees 创建 employees2
 6. 删除表 emp5
-7. 将表 employees2 重命名为 emp5 8 在表 dept 和 emp5 中添加新列 test_column，并检查所作的操作
+7. 将表 employees2 重命名为 emp5 8 在表 dept 和 emp5 中添加新列 test_column ,并检查所作的操作
 9.直接删除表 emp5 中的列 dept_id
 
 
-#常见的数据类型：
+#常见的数据类型 
 /**
-数值型：
-整型，
-小数：
+数值型 
+整型 ,
+小数 
 		定点数
 		浮点数
-字符型：
-		较短的文本：char VARCHAR
-		较长的文本：text /blob(较长的二进制数据)
-日期型：
+字符型 
+		较短的文本 char VARCHAR
+		较长的文本 text /blob(较长的二进制数据)
+日期型 
 
 */
 
-#一、整型：
+#一.整型 
 /**
-分类：
+分类 
 TINYINT,SMALLINT,MEDIUMINT,Int/INTEGER,BIGINT
 1        2        3         4           8
-特点：
-1.如果不设置无符号还是有符号，默认是有符号，如果设置无符号，需要添加unsigned关键字
-2.如果插入的数值超出了整型的范围，会报异常，插入的是临界值
-3.如果不设置长度，会有默认的长度
-4.长度代表的意思为显示的最大宽度，如果不够会用0在左边填充，但必须用zeroFill搭配使用.
+特点 
+1.如果不设置无符号还是有符号 ,默认是有符号 ,如果设置无符号 ,需要添加unsigned关键字
+2.如果插入的数值超出了整型的范围 ,会报异常 ,插入的是临界值
+3.如果不设置长度 ,会有默认的长度
+4.长度代表的意思为显示的最大宽度 ,如果不够会用0在左边填充 ,但必须用zeroFill搭配使用.
 
 */
 #1.如何设置无符号和有符号
@@ -2508,25 +2508,25 @@ CREATE TABLE tab_int(
 					t2 INT UNSIGNED
 );
 
-#二、小数
+#二.小数
 
 /*
-分类：
-1.浮点型：
+分类 
+1.浮点型 
 	float (M,D)
 	DOUBLE(M,D)
 2.定点型
 DEC(M,D)
 DECIMAL(M,D)
-特点：
+特点 
 1.M和D
 M:整数部位+小数部位
 D:小数部位
-如果超出范围，则插入临界值
+如果超出范围 ,则插入临界值
 2.M,D都可以省略
-如果是decimalm,则M默认为10，D默认为0
+如果是decimalm,则M默认为10 ,D默认为0
 如果是float和double,则会根据插入的数据的精度来决定精度
-3.定点型的精度较高，如果要求插入的数值的精度较高，如货币运算等考虑使用
+3.定点型的精度较高 ,如果要求插入的数值的精度较高 ,如货币运算等考虑使用
 
 */
 CREATE TABLE tab_float(
@@ -2537,9 +2537,9 @@ f3 DECIMAL(5,2)
 
 SELECT * FROM tab_float;
 
-#原则：
+#原则 
 /*
-所选择的类型越简单越好，能保存数值的类型越小越好。
+所选择的类型越简单越好 ,能保存数值的类型越小越好.
 */
 
   ******5月4号学习*****END****

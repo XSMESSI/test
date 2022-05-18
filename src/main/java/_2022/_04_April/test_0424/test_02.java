@@ -15,5 +15,6 @@ public class test_02 {
         BigDecimal num5 = BigDecimal.valueOf(10);
         BigDecimal num4 = num1.subtract(num2).subtract(num3).subtract(num5);
         System.out.println("num4 = " + num4);
+        System.out.println();
     }
 }

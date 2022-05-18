@@ -11,12 +11,17 @@ public class test_01 {
     public static void main(String[] args) {
         Person param = new Person();
         param.setYear(2021);
+        System.out.println();
         System.out.println("没有传到方法里面的年度数据"+param.getYear());
 //        param.setYear(param.getYear()-1);
 //        System.out.println("set年度值拿数据"+param.getYear());
         testChangeYear(param.getYear());
 
         System.out.println("判断年度值是否变化"+param.getYear());
+        System.out.println();
+        for (int i = 0;i < 10;i++){
+            System.out.println(i);
+        }
     }
 
     /**
