@@ -17,4 +17,17 @@ public class Designer extends Programmer{
         super(id, name, age, salary, equipment);
         this.bonus = bonus;
     }
+
+    @Override
+    public String toString() {
+        return getDetails() + "设计师{" +getStatus()+
+                "bonus=" + bonus + getEquipment() +
+                '}';
+    }
+
+    @Override
+    public String getDetailsFrom(){
+        return getMemberId() + "/" + getId() + "\t" + getName() + "\t"
+                + getAge() + "\t" + getSalary() +"\t设计师\t" +bonus ;
+    }
 }

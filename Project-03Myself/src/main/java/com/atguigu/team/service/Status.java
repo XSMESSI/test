@@ -13,12 +13,22 @@ import com.atguigu.team.domain.Printer;
  */
 public class Status {
 
+//    public static final Status FREE = ;
     private final String NAME;
     public Status(String name) {
         this.NAME = name;
     }
 
-    private static final Status FREE = new Status("FREE");
-    private static final Status BUSY = new Status("BUSY");
-    private static final Status VOCATION = new Status("VOCATION");
+    public static final Status FREE = new Status("FREE");
+    public static final Status BUSY = new Status("BUSY");
+    public static final Status VOCATION = new Status("VOCATION");
+    public String getNAME() {
+        return NAME;
+    }
+    @Override
+    public String toString() {
+        return "Status{" +
+                "NAME='" + NAME + '\'' +
+                '}';
+    }
 }

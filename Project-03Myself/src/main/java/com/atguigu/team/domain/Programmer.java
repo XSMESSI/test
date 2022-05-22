@@ -1,5 +1,6 @@
 package com.atguigu.team.domain;
 
+import com.atguigu.team.service.Data;
 import com.atguigu.team.service.Status;
 
 /**
@@ -10,7 +11,7 @@ import com.atguigu.team.service.Status;
 public class Programmer extends Employee {
 
     private int memberId;//开发团队中的id
-    private Status status;
+    private Status status = Status.FREE;
     //    private double salary;
     private Equipment equipment;
 
@@ -45,5 +46,23 @@ public class Programmer extends Employee {
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+    }
+
+    @Override
+    public String toString() {
+        return getDetails()+"程序员{" +
+                "memberId=" + memberId +
+                ", status=" + status +"\t\t\t"+
+                ", equipment=" + equipment +
+                '}';
+    }
+
+//    public String getTeamBaseDetails(){
+//        return getDetails() + ""
+//    }
+
+    public String getDetailsFrom(){
+        return memberId + "/" + getId() + "\t" + getName() + "\t"
+                + getAge() + "\t" + getSalary() +"\t程序员";
     }
 }
