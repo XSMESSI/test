@@ -84,8 +84,9 @@ public class CustomerView {
 			cust = customers.getCustomer(index - 1);
 			if (cust == null) {
 				System.out.println("无法找到指定客户！");
-			} else
+			} else {
 				break;
+			}
 		}
 
 		System.out.print("姓名(" + cust.getName() + ")：");
