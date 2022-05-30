@@ -23,5 +23,10 @@ public class test_03 {
         System.out.println("mills = " + mills);
         long nanos = duration.toNanos();//相差的纳秒数
         System.out.println("nanos = " + nanos);
+
+        Long nu =199992L;
+        System.out.println("nu/1000 = " + 1.0*nu/1000);
+
+
     }
 }
