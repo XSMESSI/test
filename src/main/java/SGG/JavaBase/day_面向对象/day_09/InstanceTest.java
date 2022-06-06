@@ -35,7 +35,7 @@ public class InstanceTest {
         p.playGame();
 
         //匿名
-        System.out.println("匿名对象输出");
+        System.out.println(">>>>>>>>>>>>匿名对象输出>>>>>>>>>>>");
         new Phone().playGame();
         new Phone().sendEmail();
 

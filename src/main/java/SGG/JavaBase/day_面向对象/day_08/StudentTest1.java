@@ -81,7 +81,7 @@ class Student1{
 
     //显示学生信息的方法
     public String info(){
-        return "学号："+number+"年级，"+state+"分数"+score;
+        return "学号："+number+" : 年级，"+state+" :分数"+score;
     }
 
 }

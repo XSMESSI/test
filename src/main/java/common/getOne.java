@@ -7,7 +7,6 @@ package common;
  */
 
 import SGG.JavaBase.day_面向对象.day_13.java.Person;
-import _2021._09_September.test_0917.People;
 
 import java.util.ArrayList;
 import java.util.Comparator;
