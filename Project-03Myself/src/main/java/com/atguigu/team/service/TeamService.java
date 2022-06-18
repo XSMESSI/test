@@ -59,10 +59,16 @@ public class TeamService {
         //* 该员正在休假，无法添加
 
         Programmer p = (Programmer) e;
-        if ("BUSY".equals(p.getStatus().getNAME())) {
-            throw new TeamException("该员工已是某团队成员");
-        }else if ("VOCATION".equalsIgnoreCase(p.getStatus().getNAME())){
-            throw new TeamException("该员正在休假，无法添加");
+//        if ("BUSY".equals(p.getStatus().getNAME())) {
+//            throw new TeamException("该员工已是某团队成员");
+//        }else if ("VOCATION".equalsIgnoreCase(p.getStatus().getNAME())){
+//            throw new TeamException("该员正在休假，无法添加");
+//        }
+        switch (p.getStatus()){
+            case BUSY:
+                throw new TeamException("该员工已是某团队成员");
+            case VOCATION:
+                throw new TeamException("该员正在休假，无法添加");
         }
         //* 团队中至多只能有一名架构师
         //* 团队中至多只能有两名设计师
