@@ -31,7 +31,12 @@ public class OverLoadTest {
         OverLoadTest test = new OverLoadTest();
         test.getSum(1,2);
         System.out.println();
+
+        System.out.println();
     }
+
+
+
 
 
     //如下的4个方法构成了重载
