@@ -24,7 +24,8 @@ public class Student extends Person{
         this.major = major;
     }
 
-    	public void eat(){
+    	@Override
+        public void eat(){
 		System.out.println("吃饭");
 	}
 

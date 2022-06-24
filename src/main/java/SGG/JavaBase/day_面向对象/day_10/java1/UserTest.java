@@ -6,9 +6,11 @@ package SGG.JavaBase.day_面向对象.day_10.java1;
  * @Description:
  */
 
+import java.time.LocalDateTime;
+
 /**
  * 总结：属性赋值的先后顺序
- *
+ *  2022-06-22T13:29:47.563
  * 1.默认初始化
  * 2.显式初始化
  * 3.构造器中初始化
@@ -25,6 +27,7 @@ public class UserTest {
         User u1 = new User(2);
         u1.setAge(3);
         System.out.println(u1.age);
+        System.out.println(LocalDateTime.now());
     }
 
 }
