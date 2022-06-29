@@ -13,7 +13,7 @@ import org.junit.Test;
  * 包装类的使用
  * 1.Java提供了8种基本数据类型对应的包装类，使得基本数据类型具备类的特征。
  *
- * 2.掌握的，基本数据类型.包装类、String三者之间的相互转换
+ * 2.掌握的，基本数据类型、包装类、String三者之间的相互转换
  *
  */
 public class WrapperTest {

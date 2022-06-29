@@ -31,7 +31,7 @@ package SGG.JavaBase.day_面向对象.day_14.java1;
  *      2.          静态方法     非静态方法
  *              类    yes          no
  *              对象  yes          yes
- *       3.静态方法中，只能调用静态的方法或属性，
+ *      3.静态方法中，只能调用静态的方法或属性，
  *       非静态方法中，既可以调用非静态的方法或属性，也可以调用静态的方法或属性
  * 5.static注意点：
  *   5.1 在静态的方法内，不能使用this关键字，super关键字
@@ -52,6 +52,7 @@ public class StaticTest {
 
 
         Chinese.nation = "中国";
+        Chinese.dept = "部门信息";
 
         Chinese c1 = new Chinese();
         c1.name = "姚明";
@@ -84,6 +85,7 @@ class Chinese{
     String name;
     int age;
     static String nation;
+    static String dept;
 
 
     public void eat(){

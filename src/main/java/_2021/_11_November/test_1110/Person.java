@@ -30,5 +30,15 @@ public class Person {
      */
     private Integer year;
 
+    public void say(){
+        System.out.println("方法");
+    }
 
+    public Person() {
+    }
+
+    public Person(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

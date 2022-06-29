@@ -5,7 +5,7 @@ package SGG.JavaBase.day_面向对象.day_13.exer;
  * @Date: 2022/03/28/22:14
  * @Description:
  */
-/*
+/**
  * 建立InstanceTest 类，在类中定义方法method(Person e);
 		在method中:
 		(1)根据e的类型调用相应类的getInfo()方法。

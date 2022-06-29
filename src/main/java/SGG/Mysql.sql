@@ -44,7 +44,7 @@ mysql中的+号：
 仅仅只有一个功能：运算符
 
 select 100+90;  两个操作数都是数值型，做加法运算
-SELECT '123'+90  ;其中一方位字符型，试图将字符型的数值转换为数值型，如果转换成功，则继续做加法运算
+SELECT '123'+90  ;其中一方为字符型，试图将字符型的数值转换为数值型，如果转换成功，则继续做加法运算
 
 SELECT 'john'+90;   如果转换失败，则将字符型数值转换为0
 
@@ -54,8 +54,7 @@ SELECT null+0;    一方为null，结果为null
 SELECT
 	last_name + first_name AS 姓名
 FROM
-	employees;-- 连接字符函数
--- CONCAT(str1,str2,...)
+	employees;-- 连接字符函数 -- CONCAT(str1,str2,...)
 SELECT
 	CONCAT( last_name, first_name ) 姓名
 FROM
@@ -72,7 +71,7 @@ from employees;
 select * from employees;
 -- 3. 找出下面语句中的错误
 select employee_id , last_name ,
-salary * 12  "ANNUAL SALARY "
+salary * 12  "ANNUAL SALARY"
 from employees;
 
 select employee_id , last_name,
@@ -129,7 +128,7 @@ SELECT * FROM employees where salary > 12000;
 
 #案例2:查询部门编号部位90的员工名和部门编号
 
-SELECT last_name,department_id from employees WHERE department_id != 90;
+SELECT last_name,department_id from employees WHERE department_id = 90;
 
 
 2.按逻辑表达式筛选
@@ -183,7 +182,7 @@ SELECT last_name FROM employees where last_name LIKE '_$_%' ESCAPE '$';
 *************3月28日学习********START************
 
 
-##between and
+between and *包含临界值*
 /**
 1.使用between and可以提高代码简洁度
 2.包含临界值
@@ -232,7 +231,7 @@ SELECT last_name,salary FROM employees WHERE salary <=> 12000;
 # is null pk   <=>
 
 IS NULL :仅仅可以判断null值
-<=> :既可以判断null值 ,有可以判断普通的数值 ,可读性较低
+<=> :既可以判断null值 ,也可以判断普通的数值 ,可读性较低
 
 
 #2.查询员工号为176的员工的姓名和部门号和年薪
@@ -567,7 +566,7 @@ FROM
 #如果工资>15000,显示B级别
 #如果工资>10000,显示C级别
 #否则显示D级别
-
+复习地址1:0628-8:46
 SELECT salary,
 CASE
 WHEN salary > 20000 THEN 'A'
@@ -692,7 +691,7 @@ SELECT commission_pct FROM employees;
 
 	SELECT COUNT(salary) from employees;
 
-	SELECT count(*) FROM employees
+	SELECT COUNT(*) FROM employees
 	SELECT COUNT(1) FROM employees;
 
 	效率 MYISM,存储引擎下 ,count(*)的效率高

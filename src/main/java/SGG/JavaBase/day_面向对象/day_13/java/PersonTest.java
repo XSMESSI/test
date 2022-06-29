@@ -48,6 +48,8 @@ public class PersonTest {
         //		p2.earnMoney();
 //        Person p3 = new Woman();
 
+        System.out.println("多态结束*****************");
+
         System.out.println("********");
         //不能调用子类特有的方法
         p2.name = "Tom";

@@ -175,3 +175,7 @@ Select Name,sex,Count(*) From A Group By Name,sex Having Count(*) > 1
 (四)
 查询重复select * from tablename where id in (select id from tablenamegroup by idhaving count(id) > 1)
 
+
+查看数据库中是否存在该表格:
+SELECT COUNT(1) FROM information_schema.TABLES WHERE table_name = 't_platform_zy' AND  TABLE_SCHEMA = 'platform_hszy'
+
