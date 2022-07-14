@@ -28,7 +28,7 @@ package SGG.JavaBase.day_面向对象.day_15.java2;
  *  4.1 如何实例化成员内部类的对象
  *  4.2 如何在成员内部类中区分调用外部类的结构
  *  4.3 开发中局部内部类的使用 见InnerClassTest1.java
- *
+ *  成员内部类成员信息处理
  */
 public class InnerClassTest {
     public static void main(String[] args) {

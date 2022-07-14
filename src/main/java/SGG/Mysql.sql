@@ -578,10 +578,10 @@ FROM employees;
 
 
 #测试题目
-1. 显示系统时间(注 日期+时间)
+#1. 显示系统时间(注 日期+时间)
 SELECT NOW();
 
-2. 查询员工号 ,姓名 ,工资 ,以及工资提高百分之 20%后的结果(new salary)
+#2. 查询员工号 ,姓名 ,工资 ,以及工资提高百分之 20%后的结果(new salary)
 SELECT
 	employee_id,
 	last_name,
@@ -590,12 +590,12 @@ SELECT
 FROM
 	employees;
 
-3. 将员工的姓名按首字母排序 ,并写出姓名的长度(length)
+#3. 将员工的姓名按首字母排序 ,并写出姓名的长度(length)
 SELECT LENGTH(last_name) ,SUBSTR(last_name,1,1) 首字符,last_name
 FROM employees
 ORDER BY 首字符;
 
-4. 做一个查询 ,产生下面的结果
+#4. 做一个查询 ,产生下面的结果
 <last_name> earns <salary> monthly but wants <salary*3>
 
 SELECT CONCAT(last_name,' earns',salary,'month but wants',salary*3) as "dream salary"
@@ -724,7 +724,7 @@ SELECT COUNT(*) FROM employees WHERE department_id = 90;
 			ORDER BY 子句
 
 注意 
-			 查询列表必须特殊 ,要求是分组函数和group by 后出现的字段
+			 查询列表必须特殊 ,要求是分组函数和 group by 后出现的字段
 
 特点 
 			1.分组查询中的筛选条件分为两类
@@ -735,13 +735,13 @@ SELECT COUNT(*) FROM employees WHERE department_id = 90;
 			1.分组函数做条件肯定是放在having子句中
 			2.能用分组前筛选前的 ,优先考虑分组前筛选
 
-			2 GROUP BY子句支持单个字段分组 ,多个字段分组(多个字段之间用逗号隔开没有顺序要求) ,表达式或函数(用的较少)
+			2 GROUP BY 子句支持单个字段分组 ,多个字段分组(多个字段之间用逗号隔开没有顺序要求) ,表达式或函数(用的较少)
 			3. 也可以添加排序(排序放在整个分组查询的最后)
 
 
 			 [简单的分组查询]
 
-			 #案例1 查询每个公众的最高工资
+			 #案例1 查询每个工种的最高工资
 
 			 SELECT MAX(salary),job_id FROM employees GROUP BY job_id;
 
@@ -848,7 +848,6 @@ HAVING
 	SELECT AVG(salary),department_id,job_id
 	FROM employees
 	GROUP BY department_id,job_id;###顺序可以变换
-
 #添加排序
 #案例 查询每个部门每个工种的员工的平均工资 ,并且按平均工资的高低显示
 
@@ -1047,7 +1046,7 @@ SELECT salary,grade_level,department_id
 
  SELECT job_id from employees where job_id LIKE '%a%e%';
 
- 五 ,显示当前日期 ,以及去前后空格 ,截取字符串的函数
+ 五 .显示当前日期 ,以及去前后空格 ,截取字符串的函数
 
  SELECT NOW();
  SELECT TRIM(字符 from '');
@@ -1055,7 +1054,7 @@ SELECT salary,grade_level,department_id
  SELECT SUBSTR(STR,startIndex);
 
  ####作业 
- #1. 显示所有员工的姓名 ,部门号和部门名称.
+ #1. 显示所有员工的姓名 ,部门号和部门名称;
  SELECT last_name,d.department_id,department_name
  from employees e,departments d
  WHERE e.department_id = d.department_id
@@ -1100,7 +1099,7 @@ WHERE d.location_id = l.location_id
 GROUP BY country_id
 HAVING 部门个数 > 2
 
-7.选择指定员工的姓名 ,员工号 ,以及他的管理者的姓名和员工号 ,结果类似于下面的格
+#7.选择指定员工的姓名 ,员工号 ,以及他的管理者的姓名和员工号 ,结果类似于下面的格
 式
 employees Emp# manager Mgr#
 kochhar 101 king 100
@@ -1108,7 +1107,7 @@ kochhar 101 king 100
 SELECT e.last_name,e.employee_id "Emp#",m.last_name,m.employee_id "Mgr#"
 FROM employees e,employees m
 WHERE e.employee_id = m.employee_id
-AND e.last_name = "kochhar"
+AND e.last_name = "kochhar";
 
 
 
@@ -1330,8 +1329,8 @@ CROSS JOIN boys bo;
 进阶7 子查询 
 /**
 含义 
-出现在其他语句中的select语句 ,成为子查询或内查询:
-外部查询语句 , 成为主查询或外查询
+出现在其他语句中的select语句 ,称为子查询或内查询:
+外部查询语句 , 称为主查询或外查询
 
 分类:
 按子查询出现的位置 
@@ -1378,7 +1377,7 @@ SELECT salary
 FROM employees
 where last_name = 'Abel'
 
-#2.查询员工的信息 ,满足salary > 1结果
+#2.查询员工的信息 ,满足salary > #1结果
 SELECT *
 FROM employees
 WHERE salary > (
@@ -1454,18 +1453,18 @@ HAVING MIN(salary) > (
 			SELECT MIN(salary)
 			FROM employees
 			WHERE department_id = 50
-)
+);
 
 
 ******4月20号学习*****END****
 
 ******5月2号学习*****START****
 
-2.列子查询(多行子查询)
+#2.列子查询(多行子查询)
 
 #案例1 返回location_id是1400或1700的部门中的所有员工姓名
 
-#1.查询location_id 是1400 或1700的部门编号
+#1.查询location_id 是 1400 或 1700 的部门编号
 SELECT DISTINCT department_id
 FROM departments
 WHERE location_id in(1400,1700);
@@ -1673,15 +1672,15 @@ WHERE
 
 
 	#3.查询各部门中工资比本部门的平均工资高的员工的员工号 ,姓名和工资
-		1.各部门的平均工资
+		#1.各部门的平均工资
 		SELECT AVG(salary),department_id
 		FROM employees
 		GROUP BY department_id
 
-		2.连接1结果集和employees表 ,进行筛选
+		#2.连接1结果集和employees表 ,进行筛选
 		SELECT employee_id,last_name,salary,e.department_id
 		FROM employees e
-		INNER JOIN (		SELECT AVG(salary) ag,department_id
+		INNER JOIN (SELECT AVG(salary) ag,department_id
 		FROM employees
 		GROUP BY department_id) ag_dep ON e.department_id = ag_dep.department_id
 		WHERE salary > ag_dep.ag

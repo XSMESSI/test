@@ -5,9 +5,6 @@ package SGG.JavaBase.day_面向对象.day_15.java1;
  * @Date: 2022/04/30/20:54
  * @Description:
  */
-
-import java.awt.image.VolatileImage;
-
 /**
  * 接口的使用：
  *
@@ -24,8 +21,8 @@ import java.awt.image.VolatileImage;
  *  4.接口中不能定义构造器，意味着接口不可以实例化；
  *
  *  5.Java开发中，接口都通过让类去实现（implements）的方式去使用,
- *      如果实现类覆盖了接口中的恩所有的抽象方法，则实现类就可以实例化
- *      如果实现类没有覆盖接口中所有的抽象方法，则次实现类仍为一个抽象类
+ *      如果实现类覆盖了接口中的所有的抽象方法，则实现类就可以实例化
+ *      如果实现类没有覆盖接口中所有的抽象方法，则此实现类仍为一个抽象类
  *
  *  6.java类可以实现多个接口 -->弥补了Java单继承的局限性
  *          格式：class AA entends BB implements CC,DD,EE

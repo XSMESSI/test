@@ -32,6 +32,11 @@ public class PersonTest {
             public void breath() {
                 System.out.println("呼吸");
             }
+
+            @Override
+            public void say() {
+
+            }
         };
 
         method1(p);
@@ -46,6 +51,11 @@ public class PersonTest {
             @Override
             public void breath() {
                 System.out.println("好好呼吸新鲜空气");
+            }
+
+            @Override
+            public void say() {
+
             }
         });
     }
@@ -70,6 +80,11 @@ class Worker extends Person{
 
     @Override
     public void breath() {
+
+    }
+
+    @Override
+    public void say() {
 
     }
 

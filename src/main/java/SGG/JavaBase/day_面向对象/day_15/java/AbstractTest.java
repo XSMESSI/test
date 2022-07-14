@@ -38,6 +38,8 @@ public class AbstractTest {
 }
 abstract class Creature{
     public abstract void breath();
+
+    public abstract void say();
 }
 abstract class Person extends Creature{
 
@@ -84,5 +86,10 @@ class Student extends Person{
     @Override
     public void breath() {
         System.out.println("学生呼吸新鲜的空气，没有雾霾的");
+    }
+
+    @Override
+    public void say() {
+
     }
 }

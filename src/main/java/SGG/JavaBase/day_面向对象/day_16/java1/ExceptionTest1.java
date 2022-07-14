@@ -77,15 +77,20 @@ public class ExceptionTest1 {
                 data = fils.read();
             }
         } catch (FileNotFoundException e) {
+            System.out.println(1);
             e.printStackTrace();
         } catch (IOException e){
+            System.out.println(2);
             e.printStackTrace();
         }finally {
+            System.out.println(3);
             try {
+                System.out.println(4);
                 if (fils != null){
                     fils.close();
                 }
             } catch (IOException e) {
+                System.out.println(5);
                 e.printStackTrace();
             }
         }
