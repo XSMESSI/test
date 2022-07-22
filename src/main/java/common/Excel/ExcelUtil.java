@@ -19,6 +19,7 @@ public class ExcelUtil {
         HSSFSheet sheet1 = wb.createSheet("sheet1");
         //创建的是sheet1(表名)表格
         HSSFSheet sheet2 = wb.createSheet("sheet2");
+        HSSFSheet sheet3 = wb.createSheet("练习表格");
         //创建sheet2表格
         sheet1.setDefaultColumnWidth(20);
         //(设置sheet页的列宽)默认列宽
@@ -54,6 +55,20 @@ public class ExcelUtil {
         titleStyle.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
         titleStyle.setFont(tileFont);
 
+        //未达成的学生目标指标
+        CellStyle styleNotReach = wb.createCellStyle();
+        styleNotReach.setFillForegroundColor(IndexedColors.ROSE.getIndex());
+        styleNotReach.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+        HSSFFont dataFont =wb.createFont();
+        dataFont.setFontName("宋体");
+        dataFont.setFontHeightInPoints((short)12);
+        dataFont.setColor(HSSFFont.COLOR_NORMAL);
+
+        //数据单元格字体样式
+        CellStyle dataStyle = wb.createCellStyle();
+        dataStyle.setFont(dataFont);
+
         /**
          * 定义表头并且插入数据,定义样式
          */
@@ -61,6 +76,12 @@ public class ExcelUtil {
             cell = row0.createCell((short) i );
             cell.setCellValue(strArray[i]);
             cell.setCellStyle(titleStyle);
+        }
+        Row[] dataRow = new Row[10000];
+        for (int i = 0; i < 10000; i++) {
+            dataRow[i] = sheet3.createRow(i);
+            Cell cell1 = dataRow[i].createCell(1);
+            cell1.setCellValue("测试数据");
         }
 
         int i = 0;
@@ -77,7 +98,7 @@ public class ExcelUtil {
             }
             //第六步，将文件存在指定位置：
             try {
-                FileOutputStream fout = new FileOutputStream("E:/A徐慎/测试文件导出/球员记录表格.xlsx");
+                FileOutputStream fout = new FileOutputStream("E:/A徐慎/文件导出/球员记录表格.xlsx");
                 System.out.println("已经插入一条数据到表格里面");
                 wb.write(fout);
                 fout.close();

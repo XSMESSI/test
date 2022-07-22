@@ -1700,13 +1700,13 @@ WHERE
 
 
 	#5.查询在部门的location_id 为1700的部门工作的员工的员工号
-		1.查询localtion_id 为1700的部门
+		#1.查询localtion_id 为1700的部门
 		SELECT DISTINCT department_id
 		FROM departments
 		where location_id = 1700
 
-		2.查询部门号 = 1中任意一个的员工号
-		SELECTL employee_id
+		#2.查询部门号 = #1中任意一个的员工号;
+		SELECT employee_id
 		from employees
 		WHERE department_id = ANY(
 		SELECT DISTINCT department_id
@@ -1733,11 +1733,11 @@ WHERE last_name = "K_ing"
 
 	#7.查询工资最高的员工的姓名 ,要求first_name和last_name显示为一列 ,列名为姓.名
 
-	1.查询最高工资
+	#1.查询最高工资
 	SELECT MAX(salary)
 	FROM employees;
 
-	2.查询工资 = 1 的姓.名
+	#2.查询工资 = #1 的姓.名
 
 	SELECT CONCAT(first_name,last_name,) "姓.名"
 	FROM employees
@@ -1747,6 +1747,7 @@ WHERE last_name = "K_ing"
 
 	/*
 	应用场景 当要显示的数据 ,一页显示不全 ,需要分页提交sql请求
+
 
 	语法 
 				SELECT 查询列表
