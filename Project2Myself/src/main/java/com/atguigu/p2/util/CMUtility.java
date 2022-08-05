@@ -19,7 +19,9 @@ public class CMUtility {
             if (c != '1' && c != '2' && 
                 c != '3' && c != '4' && c != '5') {
                 System.out.print("选择错误，请重新输入：");
-            } else break;
+            } else {
+                break;
+            }
         }
         return c;
     }

@@ -33,6 +33,9 @@ public class TestStringUtils {
         System.out.println("StringUtils.isNotBlank(str1) = " + StringUtils.isNotBlank(str1));
         System.out.println("StringUtils.isNotBlank(str1) = " + StringUtils.isNotEmpty(str1));
         System.out.println("str1 = " + str1);
+
+        System.out.println(StringUtils.isNotBlank(""));
+        System.out.println(StringUtils.isNotBlank(null));
     }
 
 }
