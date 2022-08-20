@@ -1,4 +1,4 @@
-package common;
+package common.list;
 
 /**
  * @Description 根据多个字段进行去重操作

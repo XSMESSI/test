@@ -1,4 +1,4 @@
-package common;
+package common.list;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
