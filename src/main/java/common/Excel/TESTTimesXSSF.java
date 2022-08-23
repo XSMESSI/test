@@ -77,20 +77,15 @@ public class TESTTimesXSSF {
             }
         }
 //        sheet.autoSizeColumn(5,true);
-
         File file = new File("E:\\AA公司文档\\诊改文件夹\\福建卫生\\2022-08\\0819\\测试文件夹\\测试耗时\\XSSF耗时.xls");
         System.out.println("导出成功");
         LocalDateTime end = LocalDateTime.now();
         int time = end.getSecond() - start.getSecond();
         System.out.println("XSSF" + time + "秒");
         if(file.exists()){
-
             file.delete();
-
         }
-
         file.createNewFile();
-
         wb.write(new FileOutputStream( file ));
 
     }

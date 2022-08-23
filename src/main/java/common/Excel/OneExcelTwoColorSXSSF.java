@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
  * @Description SXSSFWorkbook
@@ -23,7 +24,7 @@ public class OneExcelTwoColorSXSSF {
 
         SXSSFWorkbook wb = new SXSSFWorkbook();
 
-        Sheet sheet = wb.createSheet("自定义单元格部分内容颜色");
+        Sheet sheet = wb.createSheet("自定义单元格");
 
         Row row  = sheet.createRow(5);
 
@@ -70,22 +71,21 @@ public class OneExcelTwoColorSXSSF {
 //            text.applyFont(txt.indexOf("*必填*"),txt.length(),font);
 //        }
 
-        XSSFRichTextString text = new XSSFRichTextString(txt);
-        text.applyFont(0,2,font2);
-        text.applyFont(2,5,font);
-//        if (txt.contains("*必填*")){
-//            //黑色
-//            text.applyFont(0,txt.indexOf("*必填*")+1,font2);
-//            //红色
-//            text.applyFont(txt.indexOf("*必填*"),txt.length(),font);
-//        }
+//        XSSFRichTextString text = new XSSFRichTextString(txt);
+//        text.applyFont(0,2,font2);
+//        text.applyFont(2,5,font);
+//        cell.setCellValue(text);
 
-        cell.setCellValue(text);
-
+        RichTextString text1 = cell.getRichStringCellValue();
+        text1.applyFont(0,2,font2);
+        text1.applyFont(2,5,font);
+        cell.setCellValue(text1);
 //        sheet.autoSizeColumn(5,true);
+        String fileName = "SXSSF测试一个单元格两个颜色" + System.currentTimeMillis() + ".xlsx";
 
-        File file = new File("E:\\AA公司文档\\诊改文件夹\\福建卫生\\2022-08\\0819\\测试文件夹\\SXSSF字体不一致.xls");
+        File file = new File("E:\\AA公司文档\\测试文档\\" + fileName);
         System.out.println("导出成功");
+        System.out.println(file.getPath());
         if(file.exists()){
 
             file.delete();

@@ -1927,7 +1927,7 @@ WHERE
 	)
 
 
-	5.查询平均工资高于公司平均工资的部门有哪些？
+	5.查询平均工资高于公司平均工资的部门有哪些?
 			#1.查询平均工资
 			SELECT AVG(salary) FROM employees
 
@@ -1950,7 +1950,7 @@ HAVING
 		employees
 	)
 
-	6.查询处公司中所有manger的详细信息？
+	6.查询处公司中所有manger的详细信息?
 				#1.查询所有manger的员工编号
 				SELECT DISTINCT manager_id FROM employees
 				#2.查询详细信息 ,满足employ_id = #1
@@ -1960,7 +1960,7 @@ HAVING
 				)
 
 
-	7.各个部门中 ,最高工资中最低的那个部门的最低工资是多少？
+	7.各个部门中 ,最高工资中最低的那个部门的最低工资是多少?
 			#1.查询各部门的最高工资Z中最低的
 			SELECT department_id FROM employees GROUP BY department_id ORDER BY MAX(salary) LIMIT 1;
 			#2.查询1结果的那个部门的最低工资

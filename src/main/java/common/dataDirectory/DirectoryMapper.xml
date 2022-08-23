@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="common.dataDirectory.DirectoryDao">
+
+    <!--表格的数据-->
+    <select id="getAllTableInfo" resultType="common.dataDirectory.DataDirectory">
+        SELECT
+            CO.TABLE_SCHEMA AS TABLESCHEMA,
+            CO.TABLE_NAME AS TABLENAME,
+            CO.COLUMN_NAME AS COLUMNNAME,
+            CO.COLUMN_TYPE AS COLUMNTYPE,
+            CO.COLUMN_DEFAULT AS COLUMNDEFAULT,
+            CO.IS_NULLABLE AS ISNULLABLE,
+            CO.DATA_TYPE AS DATATYPE,
+            CO.CHARACTER_MAXIMUM_LENGTH AS CHARACTERMAXIMUMLENGTH,
+            CO.NUMERIC_PRECISION AS NUMERICPRECISION,
+            CO.NUMERIC_SCALE AS NUMERICSCALE,
+            CO.COLUMN_COMMENT AS COLUMNCOMMENT
+        FROM information_schema.COLUMNS CO
+        WHERE CO.TABLE_SCHEMA = #{dbName}
+    </select>
+
+    <!--表格的注释,数据条数-->
+    <select id="getTableCommoent" resultType="common.dataDirectory.DataDirectory">
+        SELECT
+            TABLE_SCHEMA AS TABLESCHEMA,
+            TABLE_NAME AS TABLENAME,
+            table_comment AS TABLECOMMENT,
+            TABLE_ROWS AS TABLEROWS
+        FROM information_schema.tables
+        WHERE TABLE_SCHEMA = #{dbName}
+    </select>
+
+</mapper>

@@ -39,11 +39,12 @@ public class OneExcelTwoColorHSSF {
         font.setFontHeight((short)700);
 
         HSSFFont font2 = workbook.createFont();
+        font2.setBold(true);
 
         font2.setColor(HSSFFont.COLOR_NORMAL);
 //        font2.setColor(HSSFColor.RED.index);
 
-        font2.setFontName("黑体");
+        font2.setFontName("宋体");
 
         font2.setFontHeight((short)800);
 //        font2.setBoldweight((short)700);
@@ -52,7 +53,7 @@ public class OneExcelTwoColorHSSF {
 
         cell.setCellStyle(cellStyle);
 
-        String txt = "测试数据*必填数据";
+        String txt = "测试数据*必填*数据";
 
         HSSFRichTextString text = new HSSFRichTextString(txt);
 
@@ -88,7 +89,7 @@ public class OneExcelTwoColorHSSF {
 
         sheet.autoSizeColumn(5,true);
 
-        File file = new File("E:\\AA公司文档\\诊改文件夹\\福建卫生\\2022-08\\0819\\测试文件夹\\我要变成红色的字体.xls");
+        File file = new File("E:\\AA公司文档\\测试文档\\我要变成红色的字体HSSF.xls");
         System.out.println("导出成功");
         if(file.exists()){
 
