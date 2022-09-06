@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 利用xml解析技术,定义导出Excel的模板:包含各种样式 -->
+<excel id="student" name="student" excelName="学生信息导入">
+    <columns>
+        <column index="A" width="17em"></column>
+        <column index="B" width="17em"></column>
+        <column index="C" width="17em"></column>
+        <column index="D" width="17em"></column>
+        <column index="E" width="17em"></column>
+        <column index="F" width="17em"></column>
+    </columns>
+
+    <title rowspan="1" colspan="6">学生信息</title>
+
+    <table>
+        <tr height="16px">
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>生日</td>
+            <td>爱好</td>
+            <td>性别</td>
+        </tr>
+    </table>
+    <format height="16px" firstRow="2" finstCol="0" repeat="5">
+        <td type="String" allowNull="false" maxLength="30"></td>
+        <td type="String" allowNull="false" maxLength="40"></td>
+        <td type="number" allowNull="false" format="##0"></td>
+        <td type="date" allowNull="true" maxLength="30"></td>
+        <td type="String" allowNull="true" maxLength="30"></td>
+        <td type="enum" allowNull="false" format="男,女"></td>
+    </format>
+</excel>

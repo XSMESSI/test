@@ -2001,7 +2001,7 @@ WHERE
 			);
 
 
-	******5月3号学习*****END****
+	******5月3号学习*****#END#****
 
   ******5月4号学习*****START****
 
@@ -2012,7 +2012,7 @@ WHERE
 	ON s.majorId = m.majorId
 	WHERE DATEDIFF(bor,"1988-1-1")>0
 
-	5.查询每个专业的男生人数和女生人数分别是多少？
+	5.查询每个专业的男生人数和女生人数分别是多少?
 	SELECT COUNT(*) 个数,sex,majorId
 	FROM student
 	GROUP BY sex,majorId
