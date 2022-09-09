@@ -2127,13 +2127,13 @@ WHERE
 	INSERT INTO beauty(id,name,sex,borndate,phone,photo,boyfriend_id)
 	VALUES(13,'唐艺昕','女','1990-4-23','18999112',NULL,2);
 
-	#2.可以为Null的列如何插入值.可以为NULL的列如何插入值？
+	#2.可以为Null的列如何插入值.可以为NULL的列如何插入值?
 	#方式1
 	INSERT INTO beauty(id,name,sex,borndate,phone,photo,boyfriend_id)
 	VALUES(13,'唐艺昕','女','1990-4-23','18999112',NULL,2);
 
 	#方式2 
-	INSERT INTO beauty(id,name,sex,borndate,phone,boyfriend_id)
+	INSERT INTO beauty(id,`name`,sex,borndate,phone,boyfriend_id)
 	VALUES(14,'金星','女','1990-4-23','128299112',9);
 
 
