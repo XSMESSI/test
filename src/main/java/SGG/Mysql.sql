@@ -2287,8 +2287,8 @@ WHERE
 	2.TRUNCATE 删除.效率高一丢丢
 	3.如果要删除的表中有自增长列 ,如果用delete删除后 ,再插入数据 ,自增长列的值从断点开始
 	 而truncate删除后 ,再插入数据 ,自增长列的值从1开始.
- 4.TRUNCATE删除没有返回值,DELETe 删除有返回值
- 5.TRUNCATE删除不能回滚 ,DELETE删除可以回滚.
+ 4.TRUNCATE删除没有返回值,DELETE 删除有返回值
+ 5.TRUNCATE删除不能回滚 ,DELETE 删除可以回滚.
 
 	 1. 运行以下脚本创建表 my_employees
 Create table my_employees(
@@ -2419,7 +2419,7 @@ ALTER TABLE author RENAME TO book_author;
 
 #3.表的删除:
 
-drop TABLE 	IF EXISTS book_author;
+DROP TABLE 	IF EXISTS book_author;
 
 
 	SHOW TABLES;
@@ -2436,11 +2436,11 @@ INSERT INTO author VALUES(1, '村上春树','日本'),
 (2,'莫言','中国'),(3,'冯庸','中国'),(4,'金庸','中国');
 
 
-#1.仅仅赋值表的结构
+#1.仅仅复制表的结构
 
 CREATE TABLE copy like author;
 
-#2.赋值表的结构+数据
+#2.复制表的结构+数据
 CREATE TABLE copy2 	SELECT * FROM author;
 
 #3.只复制部分数据 
