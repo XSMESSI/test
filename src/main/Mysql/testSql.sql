@@ -68,6 +68,8 @@ WHERE
         <if test="upNow != null">
             WHERE DATE_FORMAT(update_time,'%Y-%m-%d') = #{upNow}
         </if>
+
+
 //6.条件用主键进行更新可以更快
 <update id="updateBtoStudentAppraise">
         <foreach collection="list" item="item" separator=";">
@@ -123,8 +125,9 @@ SELECT * FROM TEST WHERE VALUE IN('test1','test2','test3','test4')
 ORDER BY FIELD(value,'test1','test2','test3','test4') ASC/DESC # 保证只满足条件的进行排序
  */
 
-#2022-06-17新增相关学习sql
- 1.在面试的时候碰到一个 问题,就是让写一张表中有id和name 两个字段,查询出name重复的所有数据,现在列下:
+# 2022-06-17新增相关学习sql
+
+1.在面试的时候碰到一个 问题,就是让写一张表中有id和name 两个字段,查询出name重复的所有数据,现在列下:
 select * from xi a where (a.username) in  (select username from xi group by username  having count(*) > 1)
 
 2.查询出所有数据进行分组之后,和重复数据的重复次数的查询数据,先列下:
@@ -168,9 +171,11 @@ Select Name,sex,Count(*) From A Group By Name,sex Having Count(*) > 1
 
 方法二 重复记录 有两个意义上的重复记录,一是完全重复的记录,也即所有字段均重复的记录,二是部分关键字段重复的记录,比如Name字段重复,而其他字段不一定重复或都重复可以忽略。
 
-1.对于第一种重复,比较容易解决,使用select distinct * from tableName 就可以得到无重复记录的结果集.如果该表需要删除重复的记录(重复记录保留1条),可以按以下方法删除select distinct * into #Tmp from tableNamedrop table tableNameselect * into tableName from #Tmpdrop table #Tmp 发生这种重复的原因是表设计不周产生的,增加唯一索引列即可解决.
+1.对于第一种重复,比较容易解决,使用select distinct * from tableName 就可以得到无重复记录的结果集.如果该表需要删除重复的记录(重复记录保留1条),可以按以下方法删除
+select distinct * into #Tmp from tableNamedrop table tableNameselect * into tableName from #Tmpdrop table #Tmp 发生这种重复的原因是表设计不周产生的,增加唯一索引列即可解决.
 
-2.这类重复问题通常要求保留重复记录中的第一条记录,操作方法如下 假设有重复的字段为Name,Address,要求得到这两个字段唯一的结果集select identity(int,1,1) as autoID, * into #Tmp from tableNameselect min(autoID) as autoID into #Tmp2 from #Tmp group by Name,autoIDselect * from #Tmp where autoID in(select autoID from #tmp2) 最后一个select即得到了Name,Address不重复的结果集(但多了一个autoID字段,实际写时可以写在select子句中省去此列)
+2.这类重复问题通常要求保留重复记录中的第一条记录,操作方法如下 假设有重复的字段为Name,Address,要求得到这两个字段唯一的结果集
+select identity(int,1,1) as autoID, * into #Tmp from tableNameselect min(autoID) as autoID into #Tmp2 from #Tmp group by Name,autoIDselect * from #Tmp where autoID in(select autoID from #tmp2) 最后一个select即得到了Name,Address不重复的结果集(但多了一个autoID字段,实际写时可以写在select子句中省去此列)
 
 (四)
 查询重复select * from tablename where id in (select id from tablenamegroup by idhaving count(id) > 1)
@@ -179,3 +184,30 @@ Select Name,sex,Count(*) From A Group By Name,sex Having Count(*) > 1
 查看数据库中是否存在该表格:
 SELECT COUNT(1) FROM information_schema.TABLES WHERE table_name = 't_platform_zy' AND  TABLE_SCHEMA = 'platform_hszy'
 
+
+#查询MySQL服务中数据库表数据量
+SELECT COUNT(*) TABLES, table_schema FROM information_schema.TABLES    GROUP BY table_schema;
+
+#查询指定数据库表数量
+SELECT COUNT(*) TABLES, table_schema FROM information_schema.TABLES   WHERE table_schema = 'szdb'
+
+ #查询一个表中有多少字段
+SELECT COUNT(*) FROM information_schema. COLUMNS WHERE table_schema = 'szdb' AND table_name = 'SystemLog';
+
+#查询一个数据库中有多少字段
+SELECT COUNT(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'szdb';
+
+#查询数据库中所以表-字段-字段类型-注释等信息
+SELECT TABLE_NAME, column_name, DATA_TYPE, column_comment FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'szdb' ;
+
+#统计数据库中每个表保存的数据量
+use information_schema;
+SELECT TABLE_NAME, (DATA_LENGTH/1024/1024) as DataM ,(INDEX_LENGTH/1024/1024) as IndexM,((DATA_LENGTH+INDEX_LENGTH)/1024/1024) as AllM,TABLE_ROWS FROM TABLES WHERE TABLE_SCHEMA = 'szdb';
+#数据库总数据量
+SELECT (sum(DATA_LENGTH)/1024/1024) as dataM from `TABLES` WHERE TABLE_SCHEMA = 'szdb';
+
+#查询每张表数量
+select table_name,table_rows from tables where TABLE_SCHEMA = 'szdb' order by table_rows desc;
+
+#数据库总数量
+SELECT sum(table_rows) from tables where TABLE_SCHEMA = 'szdb' order by table_rows desc;

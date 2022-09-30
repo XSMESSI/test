@@ -100,7 +100,9 @@ public class CutomerView {
             if (cust == null) {
                 System.out.println("无法找到指定客户！");
             } else //找到相应编号的客户
+            {
                 break;//结束循环
+            }
         }
 
         //修改客户信息

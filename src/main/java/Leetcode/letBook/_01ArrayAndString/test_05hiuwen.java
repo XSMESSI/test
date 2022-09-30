@@ -9,7 +9,7 @@ public class test_05hiuwen {
     public static void main(String[] args) {
         String string = "babab";
 //        System.out.println(longestPalindrome(string));
-        System.out.println(string.substring(4,5));
+        System.out.println(string.substring(2));
         System.out.println(string.indexOf(2));
     }
 

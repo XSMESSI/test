@@ -1,6 +1,7 @@
 package common.Excel;
 
 
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.ss.usermodel.*;
@@ -12,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Description XSSFWorkbook
@@ -119,4 +121,58 @@ public class OneExcelTwoColorXSSF {
         wb.write(new FileOutputStream( file ));
 
     }
+
+
+//    private static void setValidationDate(Workbook wb, Sheet sheet, List<DataValidationCell> dataValidationCellList) {
+//        if (dataValidationCellList.isEmpty()) {
+//            return;
+//        }
+//        String[] arr = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+//        int index = 0;
+//        Row row;
+//        Sheet sheetHidden = wb.createSheet("Sheet2");
+//        wb.setSheetHidden(1, true);
+//        for (DataValidationCell dataValidationCell : dataValidationCellList) {
+//            List<String> dataList = dataValidationCell.getDataList();
+//            if (CollectionUtils.isEmpty(dataList)) {
+//                continue;
+//            }
+//            if (dataList.size() <= 5) {
+//                sheet.addValidationData(setFewDataValidation(sheet, dataList.toArray(new String[0]),
+//                        dataValidationCell.getStartRow(), dataValidationCell.getEndRow(),
+//                        dataValidationCell.getStartColumn(), dataValidationCell.getEndColumn())); //超过255个报错
+//            } else {
+//                //String strFormula = "Sheet2!$A$1:$A$5000" ; //Sheet2第A1到A5000作为下拉列表来源数据
+//                String strFormula = "Sheet2!$" + arr[index] + "$1:$" + arr[index] + "$" + dataList.size(); //Sheet2第A1到A5000作为下拉列表来源数据
+//                sheet.addValidationData(setMoreDataValidation(wb, sheet, strFormula,
+//                        dataValidationCell.getStartRow(), dataValidationCell.getEndRow(),
+//                        dataValidationCell.getStartColumn(), dataValidationCell.getEndColumn())); //下拉列表元素很多的情况
+//                //2、生成sheet2内容
+//                for (int j = 0; j < dataList.size(); j++) {
+//                    if (index == 0) { //第1个下拉选项，直接创建行、列
+//                        row = sheetHidden.createRow(j); //创建数据行
+//                        //      sheetHidden.setColumnWidth(j, 4000); //设置每列的列宽
+//                        row.createCell(0).setCellValue(dataList.get(j)); //设置对应单元格的值
+//                    } else { //非第1个下拉选项
+//                        int rowCount = sheetHidden.getLastRowNum();
+//                        if (j <= rowCount) { //前面创建过的行，直接获取行，创建列
+//                            //获取行，创建列
+//                            sheetHidden.getRow(j).createCell(index).setCellValue(dataList.get(j)); //设置对应单元格的值
+//                        } else { //未创建过的行，直接创建行、创建列
+//                            //  sheetHidden.setColumnWidth(j, 4000); //设置每列的列宽
+//                            //创建行、创建列
+//                            sheetHidden.createRow(j).createCell(index).setCellValue(dataList.get(j)); //设置对应单元格的值
+//                        }
+//                    }
+//                }
+//                index++;
+//            }
+//        }
+//    }
+//
+//    private static DataValidation setMoreDataValidation(Workbook wb, Sheet sheet, String strFormula, int startRow, int endRow, int startColumn, int endColumn) {
+//    }
+//
+//    private static DataValidation setFewDataValidation(Sheet sheet, String[] toArray, int startRow, int endRow, int startColumn, int endColumn) {
+//    }
 }
