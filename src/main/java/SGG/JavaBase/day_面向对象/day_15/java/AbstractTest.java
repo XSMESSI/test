@@ -10,7 +10,7 @@ package SGG.JavaBase.day_面向对象.day_15.java;
  * abstract关键字的使用：
  *
  * 1.abstract:抽象的
- * 2.abstract可以用来修饰的结构：类，方法
+ * 2.abstract:可以用来修饰的结构：类，方法
  *
  * 3.abstract修饰类，抽象类
  *      >此类不能实例化，

@@ -23,7 +23,7 @@ import java.util.Scanner;
  *              编译时异常（checked）
  *                  IOException
  *                      FileNotFoundException
- *                  ClassNotFoundException
+ *                      ClassNotFoundException
  *              运行时异常(unchecked)
  *                  NullPointerException
  *                  ArraysIndexOutOfBOundsException

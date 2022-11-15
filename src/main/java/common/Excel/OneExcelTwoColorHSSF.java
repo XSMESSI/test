@@ -5,6 +5,9 @@ package common.Excel;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Hyperlink;
+import org.apache.poi.xssf.usermodel.XSSFHyperlink;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 
 import java.io.File;
@@ -26,6 +29,9 @@ public class OneExcelTwoColorHSSF {
         HSSFRow row  = sheet.createRow(5);
 
         HSSFCell cell = row.createCell(5);
+
+        HSSFRow row1 = sheet.createRow(1);
+        HSSFCell cell1 = row1.createCell(2);
 
         CellStyle cellStyle = workbook.createCellStyle();
 
@@ -51,7 +57,20 @@ public class OneExcelTwoColorHSSF {
 
         cellStyle.setFont(font2);
 
-        cell.setCellStyle(cellStyle);
+        cellStyle.setWrapText(true);
+        String str = "于进亮,李萍";
+        String res = str.replace(",","\n");
+        System.out.println(res);
+        cell1.setCellValue(new HSSFRichTextString(res));
+
+        cell1.setCellStyle(cellStyle);
+
+        HSSFCell cellLink = row1.createCell(4);
+        CreationHelper creationHelper = workbook.getCreationHelper();
+        Hyperlink  link = creationHelper.createHyperlink(Hyperlink.LINK_URL);
+        link.setAddress("https://blog.csdn.net/qq_40563534/article/details/121115169");
+        cellLink.setHyperlink(link);
+        cellLink.setCellValue("点击跳转链接");
 
         String txt = "测试数据*必填*数据";
 
@@ -88,6 +107,7 @@ public class OneExcelTwoColorHSSF {
         cell.setCellValue(text);
 
         sheet.autoSizeColumn(5,true);
+        sheet.autoSizeColumn(2);
 
         File file = new File("E:\\AA公司文档\\测试文档\\我要变成红色的字体HSSF.xls");
         System.out.println("导出成功");

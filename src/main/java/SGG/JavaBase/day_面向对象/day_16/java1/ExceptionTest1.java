@@ -39,7 +39,7 @@ import java.io.IOException;
  * }catch（异常类型4 变量名4）{
  *     //处理异常的方式4
  * }
- * 。。。
+ * ...
  * finally{
  *     //一定会执行的代码
  * }

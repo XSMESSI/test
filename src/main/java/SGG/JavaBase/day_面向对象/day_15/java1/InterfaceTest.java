@@ -26,7 +26,7 @@ package SGG.JavaBase.day_面向对象.day_15.java1;
  *
  *  6.java类可以实现多个接口 -->弥补了Java单继承的局限性
  *          格式：class AA entends BB implements CC,DD,EE
- *  7.接口和接口之间可以继承，而且可以多继承，
+ *  7.接口和接口之间可以继承，而且可以多继承
  *
  *  ***************************
  *  8.接口的具体的使用，体现多态性

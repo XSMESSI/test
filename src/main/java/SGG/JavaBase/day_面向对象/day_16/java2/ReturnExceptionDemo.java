@@ -9,7 +9,7 @@ public class ReturnExceptionDemo {
     static void methodA() {
         try {
             System.out.println("进入方法A");
-            throw new RuntimeException("制造异常");
+            throw new RuntimeException("制造异常methodA");
         } finally {
             System.out.println("用A方法的finally");
         }

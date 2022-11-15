@@ -6,6 +6,8 @@ public class TemplateMethodTest {
 		BankTemplateMethod btm = new DrawMoney();
 		btm.process();
 
+        System.out.println(">>>>>>>>>>>");
+
 		BankTemplateMethod btm2 = new ManageMoney();
 		btm2.process();
 	}
@@ -40,7 +42,8 @@ class DrawMoney extends BankTemplateMethod {
 }
 
 class ManageMoney extends BankTemplateMethod {
-	public void transact() {
+	@Override
+    public void transact() {
 		System.out.println("我要理财！我这里有2000万美元!!");
 	}
 }

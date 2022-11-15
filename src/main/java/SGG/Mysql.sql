@@ -2374,7 +2374,7 @@ VALUE();
 	#二/表的管理
 	#1.表的创建
 
-	CREATE table 表名(列名 列的类型(长度) 约束 ,)
+	CREATE TABLE 表名(列名 列的类型(长度) 约束 ,)
 	             表名(列名 列的类型(长度) 约束 ,
 	             表名(列名 列的类型(长度) 约束 ,
 	             表名(列名 列的类型(长度) 约束 ,
@@ -2404,16 +2404,16 @@ DESC author;
 /**
 alter table 表名 add|drop|CHANGE|MODIFY COLUMN 列名 [列类型 约束]
 */
-	#1.修改列名
-	ALTER TABLE book CHANGE COLUMN publishDate pubDate DATETIME;
+#1.修改列名
+ALTER TABLE book CHANGE COLUMN publishDate pubDate DATETIME;
 
-	#2.修改列的类型或约束
+#2.修改列的类型或约束
 ALTER TABLE book MODIFY COLUMN pubDate TIMESTAMP;
-	#3.添加新列
+#3.添加新列
 ALTER TABLE author ADD COLUMN annual DOUBLE;
-	#4.删除列
+#4.删除列
 ALTER TABLE author DROP COLUMN annual;
-	#5.修改表名
+#5.修改表名
 
 ALTER TABLE author RENAME TO book_author;
 
@@ -2421,8 +2421,7 @@ ALTER TABLE author RENAME TO book_author;
 
 DROP TABLE 	IF EXISTS book_author;
 
-
-	SHOW TABLES;
+SHOW TABLES;
 
 通用的写法 
 DROP DATABASE IF EXISTS 旧库名;

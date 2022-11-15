@@ -10,8 +10,7 @@ import com.atguigu.p2.bean.Customer;
  */
 public class CustomerList {
 
-
-   private Customer[] customers;//用来保存客户对象的数组
+    private Customer[] customers;//用来保存客户对象的数组
     private int total = 0                 ;//记录已保存客户对象的数量
 
 

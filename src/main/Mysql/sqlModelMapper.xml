@@ -75,8 +75,8 @@
         LEFT JOIN t_ts_project_template_item d ON d.template_id = a.template_id AND d.delete_flag = 0
         WHERE a.delete_flag = 0
         AND a.id IN
-        <foreach collection="list" item="ids" open="(" close=")" separator=",">
-            #{ids}
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
         </foreach>
     </select>
 

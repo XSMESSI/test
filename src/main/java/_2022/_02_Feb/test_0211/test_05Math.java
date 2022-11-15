@@ -72,7 +72,7 @@ public class test_05Math {
         System.out.println("Math.abs(num63) = " + Math.abs(num63));
 
         //Java ceil() 方法  Java floor() 方法
-        // ceil() 方法可对一个数进行上舍入，返回值大于或等于给定的参数，类型为双精度浮点型。
+        // ceil() 方法可对一个数进行上舍入，返回值大于或等于给定的参数的最小整数，类型为双精度浮点型。
         //floor() 方法可对一个数进行下舍入，返回给定参数最大的整数，该整数小于或等给定的参数。
         System.out.println("Java ceil() 方法 Java floor() 方法");
         double num71 = 100.675;

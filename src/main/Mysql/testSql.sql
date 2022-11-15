@@ -211,3 +211,58 @@ select table_name,table_rows from tables where TABLE_SCHEMA = 'szdb' order by ta
 
 #数据库总数量
 SELECT sum(table_rows) from tables where TABLE_SCHEMA = 'szdb' order by table_rows desc;
+
+
+排序编码实现操作:
+
+beauty
+
+SELECT name,score, @rank:=@rank+1 `rank` from s_score s,(select @rank:=0) q ORDER BY score desc
+
+:= 是赋值的意思,与编程语言赋值有点区别
+
+1.分数变量简单实现名次显示:
+SELECT @rank:=@rank + 1,name,phone,score rank from beauty be,(SELECT @rank:=0) q ORDER BY score desc
+
+
+2.并排名次展示:
+现在还有一个问题,出现分数相同,并列排名,名次应该相同.我们使用一个temp变量来记录前一个分数值,判断前面分数是否与当前相等,相等直接返回上一个排名情况,否则排名+1
+
+
+SELECT
+`name`,score,
+CASE
+		WHEN @temp_score = score THEN
+		@rank
+		WHEN @temp_score := score THEN
+		@rank := @rank + 1
+	END rank
+FROM
+	beauty s,
+	( SELECT @rank := 0, @temp_score := NULL ) q
+ORDER BY
+	score DESC
+
+
+	3.并排名次跳过
+	如果出现并列排名,下一个名词将自动跳过,比如出现两个并列第一,91就变成了第三名,名词和人数相对应
+SELECT
+name,score,
+	rank
+FROM
+	(
+	SELECT
+	name,
+	score,
+	@rank :=
+	IF
+		( @temp_score = score, @rank, @rank_incr ) rank,
+		@rank_incr := @rank_incr + 1,
+		@temp_score := score
+	FROM
+		beauty s,
+		( SELECT @rank := 0, @temp_rank := NULL, @rank_incr := 1 ) q
+	ORDER BY
+		score DESC
+	) a
+

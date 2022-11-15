@@ -17,7 +17,7 @@ package SGG.JavaBase.day_面向对象.day_15.java;
  *
  *
  */
-public class Abstracttest1 {
+public class AbstractTest1 {
     public static void main(String[] args) {
 
     }
