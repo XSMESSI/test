@@ -10,5 +10,6 @@ public class _0719test3_stream {
         Stream<String> stream = list.stream();
         System.out.println(stream);
 
+
     }
 }

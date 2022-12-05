@@ -66,6 +66,8 @@ public class test_1115_01 {
         valueDict.add(new BtoBase("sj","13011_bto"));
         valueDict.add(new BtoBase("sj","13058_bto"));
         valueDict.add(new BtoBase("sj","14240_bto"));
+        valueDict.add(new BtoBase("sj","12324"));
+        valueDict.add(new BtoBase("sj","12324_bto"));
 
         for (BtoBase dict : valueDict) {
             StringBuilder builder = new StringBuilder(dict.getSj());

@@ -39,13 +39,13 @@ public class test_02_ListMap {
 
 
 
-//        for (Map m:list){
-//            Iterator<Map.Entry<Integer,Object>> it = m.entrySet().iterator();
-//            while (it.hasNext()){
-//                Map.Entry<Integer,Object> entry = it.next();
-//                System.out.println(entry.getKey()+"----"+entry.getValue());
-//            }
-//        }
+        for (Map m:list){
+            Iterator<Map.Entry<Integer,Object>> it = m.entrySet().iterator();
+            while (it.hasNext()){
+                Map.Entry<Integer,Object> entry = it.next();
+                System.out.println(entry.getKey()+"----"+entry.getValue());
+            }
+        }
 
         /*map.put(1,"梅西");
         map.put(2,"C罗");
