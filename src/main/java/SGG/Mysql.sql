@@ -2542,6 +2542,1118 @@ SELECT * FROM tab_float;
 
   ******5月4号学习*****END****
 
+********7月4号学习*************
+#三、字符型
+/**
+较短的文本：char,varchar
+较长的文本：text，blob(较大的二进制)
+
+其他：
+binary和varbinary 用于保存较短的二进制
+enum用于保存枚举
+set用于保存集合
+
+特点：
+     写法     M的意思                                      特点                 空间的耗费   效率
+char char(M)   最大的字符数，可以省略，默认1             固定长度的字符         比较耗费    高
+varchar varchar(M) 最大的字符数，不可以省略              可变长度的字符       比较节省    低
+*/
+
+CREATE TABLE tab_char(
+		c1 ENUM('a','b','c')
+);
+
+INSERT INTO tab_char VALUES('a');
+INSERT INTO tab_char VALUES('b');
+INSERT INTO tab_char VALUES('c');
+INSERT INTO tab_char VALUES('A');
+
+CREATE TABLE tab_set(
+		s1 SET('a','b','c','d')
+);
+
+INSERT INTO tab_set VALUES('a');
+INSERT INTO tab_set VALUES('a,b');
+INSERT INTO tab_set VALUES('a,d,c,f');
+INSERT INTO tab_set VALUES('A');
+
+
+四、日期型
+
+
+/**
+TIMESTAMP 保存日期+时间
+特点：
+            字节            范围     时区等的影响
+datetime    8           1000-9999      不受
+timestamp   4           1970-2038       受
+*/
+CREATE TABLE tab_date(
+		t1 DATETIME,
+		t2 TIMESTAMP
+);
+
+INSERT INTO tab_date VALUES(NOW(),NOW());
+
+SELECT * from tab_date;
+
+SHOW VARIABLES LIKE 'time_zone'
+SET time_zone = '+9:00';
+
+
+#常见约束
+
+/**
+含义：一种限制，用于限制表中的数据,为了保证表中的数据的准确和可靠性
+分类：六大约束
+			NOT NULL :非空 ，用于保证该字段的值不能为空
+			比如姓名、学号等
+			DEFAULT :默认，用于保证改字段值有默认值
+			比如：性别，
+			PRIMARY KEY :主键，用于保证改字段值具有唯一性，并且非空
+			比如：学号，员工编号等
+			UNIQUE:唯一，用于保证该字段的值具有唯一性，可以为空
+			比如；座位号
+			CHECK:检查约束【mysql中不支持】
+			FOREIGN KEY : 外键，用于限制两个表的关系，用于保证该字段的值必须来自于主表的关联列的值
+									在从表添加外键约束，用于引用主表中某列的值
+							比如学生表的专业编号，员工表的部门编号，员工表的工种编号；
+
+		添加约束的时机：
+								1.创建表时
+								2.修改表时
+			约束的添加分类：
+								列级约束：
+											六大约束语法上都支持，但外键约束没有效果
+								表级约束
+											除了非空，默认，其他的都支持
+
+
+			主键和唯一的大对比：
+					           保证唯一性      是否允许为空     一个表中可以有多个   是否允许组合
+
+					主键         √                 ×                 至多有1个         允许，但不推荐
+					唯一         √                  ×                可以有多个        允许，但不推荐
+
+
+外键：
+				1.要求在从表设置外键关系
+				2.从表的外键列的类型和主表的关联列的类型要求一致或兼容，名称无要求
+				3.主表的关联列必须是一个key（一般是主键或唯一）
+				4.插入数据，先插入主表，再插入从表
+				删除数据时，先删除从表，再删除主表
+
+				CREATE TABLE major(
+						id INT PRIMARY KEY,
+						majorName VARCHAR(30)
+				)
+
+*/
+
+CREATE TABLE 表名{
+		字段名 字段类型 约束
+}
+
+#一、创建表时添加约束
+#1.添加列级约束
+
+/**
+语法：
+直接在字段名和类型后面追加 约束类型即可：
+只支持：默认，非空，主键，唯一
+
+*/
+
+USE students;
+DROP TABLE stuinfo;
+CREATE TABLE stuinfo(
+				id INT PRIMARY KEY,#主键
+				stuName VARCHAR(20) NOT NULL UNIQUE,#非空
+				gender CHAR(1) CHECK(gender = '男' OR gender = '女'),#检查
+				seat INT UNIQUE,#唯一
+				age INT DEFAULT 18,#默认约束
+				major INT REFERENCES major(id)#外键
+		)
+
+CREATE TABLE major(
+		id INT PRIMARY KEY,
+		majorName VARCHAR(30)
+	)
+
+	DESC stuinfo;
+	#查看stuinfo表中所有的索引，包括主键，外键，唯一
+	SHOW INDEX FROM stuinfo;
+
+	#2.添加表级约束
+
+	/**
+	语法:在各个字段的最下面
+	CONSTRAINT 约束名 约束类型(字段)
+
+	*/
+	DROP TABLE IF EXISTS stuinfo;
+
+	CREATE TABLE stuinfo(
+	id INT,
+	stuName VARCHAR(20),
+	gender CHAR(1),
+	seat INT,
+	age INT,
+	majorid INT,
+	CONSTRAINT pk primary key(id) ,#主键
+	CONSTRAINT uq UNIQUE(seat),#唯一键
+	CONSTRAINT ck CHECK(gender = '男' OR gender = '女'),#检查
+	CONSTRAINT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id) #外键
+		)
+
+		#通用的写法：
+		CREATE TABLE IF NOT EXISTS stuinfo(
+				id INT PRIMARY KEY,
+				stuname VARCHAR(20) NOT NULL,
+				sex CHAR(1),
+				age INT DEFAULT 18,
+				seat INT UNIQUE,
+				majorid INT,
+				CONSTRAINT fk_stuinfo_major FOREIGN KEY(mjorid) REFERENCES major(id)
+		)
+
+
+#二、修改表时添加约束
+
+/**
+1.添加列级约束
+alter table 表名 modify column 字段名 字段类型 新约束;
+2.添加表级约束
+ALTER TABLE 表名 add CONSTRAINT 约束名 约束类型（字段名）外键的引用;
+
+
+
+*/
+
+DROP TABLE IF EXISTS stuinfo;
+
+	CREATE TABLE stuinfo(
+	id INT,
+	stuName VARCHAR(20),
+	gender CHAR(1),
+	seat INT,
+	age INT,
+	majorid INTs
+		)
+
+		DESC stuinfo;
+#1.添加非空约束
+ALTER TABLE stuinfo MODIFY COLUMN stuName MODIFY COLUMN stuName VARCHAR(20) NOT NULL;
+#2.添加默认约束
+ALTER TABLE stuinfo MODIFY COLUMN age INT DEFAULT 18;
+#3.添加主键
+#1.列级约束
+ALTER TABLE stuinfo MODIFY COLUMN id INT PRIMARY KEY;
+#2.表级约束
+ALTER TABLE stuinfo ADD PRIMARY KEY(id);
+
+
+#4.添加唯一
+
+#1.列级约束
+ALTER TABLE stuinfo MODIFY COLUMN seat INT UNIQUE;
+#2.表级约束
+ALTER TABLE stuinfo ADD UNIQUE(seat);
+
+#5.添加外键
+ALTER TABLE stuinfo ADD FOREIGN KEY(majorid) REFERENCES major(id);
+
+#三、修改表时删除约束
+#1.删除非空约束
+ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;
+
+#2.删除默认约束
+ALTER TABLE stuinfo MODIFY COLUMN age INT;
+
+#3.删除主键
+ALTER TABLE stuinfo DROP PRIMARY KEY;
+
+#4.删除唯一
+ALTER TABLE stuinfo DROP INDEX seat;
+
+#5.删除外键
+ALTER TABLE stuinfo DROP FOREIGN KEY majorid;
+
+
+                 位置                       支持的约束类型                是否可以起约束
+ 列级约束       列的后面               语法都支持，但外键没有效果          不可以
+表级约束        所有列的下面           默认和非空都不支持，其他支持         可以（主键没有效果）
+
+#标识列
+/**
+又称为自增长列
+含义：可以不用手动的插入值，系统提供默认的序列值
+
+特点：
+1.标识列必须和主键搭配吗?不一定，但要求是一个key
+2.一个表中可以有多少个标识列。最多一个
+3.标识列的类型 只能是数值型
+4.标识列可以通过 SET auto_increment_increment=3; 设置步长
+可以通过手动插入值，设置起始值
+*/
+
+#一、创建表时设置标识列
+CREATE TABLE tab_identity(
+id INT PRIMARY KEY AUTO_INCREMENT,
+NAME VARCHAR(20)
+);
+
+TRUNCATE TABLE tab_identity;
+INSERT INTO tab_identity VALUES(2,'john');
+
+
+SELECT * FROM tab_identity;
+
+SHOW VARIABLES LIKE "%auto_increment%";
+
+SET auto_increment_increment=3;
+
+#二、修改表时设置标识列
+ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;
+#三、修改表时删除标识列：
+
+ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY ;
+
+#TCL
+/**
+Transaction Control Language  事务控制语言
+事务：
+一个或一组sql语句组成一个执行单元，这个执行单元要么全部执行，要么全部不执行
+
+案例：转账
+
+张三丰 1000
+郭襄   1000
+
+update 表 set 张三丰的余额 = 500 where name = '张三丰'
+意外
+update 表 set 郭襄的余额 = 1500 where name = '郭襄'
+
+事务的特性：
+ACID:
+原子性：一个事务不可再分割，要么都执行，要么都不执行
+一致性：一个事务执行会使数据从一个一致状态切换至另外一个一致状态
+隔离性:一个事务的执行不受其他事务的干扰
+持久性：一个事务一旦提交，则会永久的改变数据库的数据；
+
+事务的创建，
+隐式事务：事务没有明显的开始和结束的痕迹
+比如：insert，update,delete语句
+
+显式事务：事务具有明显的开启和结束的标记
+前提：必须先设置自动提交功能为禁用
+
+set sutocommit = 0
+
+
+开启事务的语句：
+update 表 set 张三丰的余额 = 500 where name = '张三丰'
+意外
+update 表 set 郭襄的余额 = 1500 where name = '郭襄'
+结束事务的语句
+*/
+
+SHOW ENGINES;
+
+##手动设置为0
+set sutocommit = 0
+
+##比如：insert，update,delete语句
+delete from 表 WHERE ID = 1
+
+SHOW VARIABLES LIKE 'autocommoit'
+
+步骤1：开启事务
+SET autocommit = 0
+start transaction;可选的
+步骤2：编写事务中的SQL语句(SELECT，update，insert delete)
+语句1；
+语句2；
+...
+
+步骤3：结束事务
+commit:提交事务
+rollback：回滚事务
+
+SAVEPOINT
+
+事务的隔离级别
+
+read UNCOMMITTED:出现脏读，幻读，不可重复读；
+read COMMIT:避免脏读，出现幻读和不可重复
+REPEATABLE read:避免脏读，不可重复读，出现幻读；
+SERIALIZABLE  ：
+
+mysql中默认，第三个隔离级别 REPEATABLE read
+orcale	 默认第二个隔离级别 read COMMIT
+查看隔离级别
+SELECT @@tx_isolation;
+
+设置隔离级别
+SEt SESSION|GLOBAL TRANSACTION ISOLATION LEVEL 隔离级别;
+
+
+
+##演示事务的使用步骤
+
+#开启事务
+SET autocommit = 0
+START TRANSACTION;
+#编写一组事务的语句
+UPDATE account SET balance = 500 WHERE username = "张无忌";
+UPDATE account SET balance 1500 WHERE username = "赵敏";
+
+#结束事务
+ROLLBACK;
+COMMIT;
+
+#2.delete 和truncate在事务使用时的区别
+#演示delete
+
+SET autocommit = 0
+START TRANSACTION;
+DELETE FROM account;
+ROLLBACK;
+
+#演示truncate
+
+START autocommot =  0;
+START TRANSACTION;
+TRUNCATE TABLE account;
+ROLLBACK;
+
+
+
+#3.演示savepoint的使用
+SET autocommit=  0;
+START TRANSACTION;
+DELETE FROM accOUNT WHERE id = 25;
+SAVEPOINT a;#设置保存点
+DELETE FROM account WHERE id = 28;
+ROLLBACK TO a;#回滚到保存点
+
+SELECT * FROM account;
+
+
+##视图
+
+/**
+含义：虚拟表，和普通表一样使用
+mysql 5.1 版本出现的新特性，是通过表动态生成的数据
+
+比如:舞蹈班和普通班级的对比
+
+		创建语法的关键字:            是否实际占用物理空间             使用
+	视图 CREATE view                  只是保存了sql逻辑            增删改查,但是一般不增删改
+
+	表 CREATE TABLE                    保存了数据                  增删改查
+*/
+
+#案例：查询姓张的学生名和专业名
+SELECT stuname,majorname
+FROM stuinfo s
+INNER JOIN major m ON s.majoris = m.id
+WHERE s.name LIKE '张%';
+
+CREATE VIEW v1
+as
+SELECT stuname,majorname
+FROM stuinfo s
+INNER JOIN major m ON s.majoris = m.id
+
+
+SELECT * FROM V1 WHERE stuname LIKE '张%';
+
+#一、如何创建视图
+/*
+语法：
+CREATE view 视图名
+as
+查询语句;
+*/
+
+##1.查询邮箱中包含a字符的员工名、部门名和工种信息
+#1.创建
+CREATE VIEW myv1
+AS
+SELECT last_name,department_name,job_title
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+JOIN jobs j ON j.job_id = e.job_id;
+
+#2.使用
+SELECT * FROM myv1 where last_name LIKE '%a%';
+
+#2.查询各部门的平均工资级别
+#创建视图的查看每个部门的平均工资
+#
+CREATE VIEW myv2
+AS
+SELECT AVG(salary) ag,department_id
+FROM employees
+GROUP BY department_id;
+
+#2.使用
+SELECT myv2.ag,g.grade_level
+FROM myv2
+JOIN job_grades g
+ON myv2.ag BETWEEN g.grade_level AND g.highest_sal;
+
+#3.查询平均工资最低的部门信息
+
+SELECT * FROM myv2 ORDER BY ag LIMIT 1;
+
+4.查询平均工资最低的部门名和工资
+CREATE VIEW myv3
+AS
+SELECT * FROM myv2 ORDER BY ag LIMIT 1;
+
+
+SELECT d.*,m.ag from
+myv3 m
+join departments d
+ON m.department_id = d.department_id;
+#二、视图的修改
+#方式一：
+/**
+CREATE or REPLACE view 视图名
+as
+查询语句;
+*/
+
+SELECT * FROM myv3;
+
+CREATE OR REPLACE VIEW myv3
+as
+SELECT avg(salary),job_id
+from employees
+GROUP BY job_id;
+
+#方式二：
+/**
+语法：
+alter view 视图名
+as
+查询语句；
+*/
+ALTER VIEW myv3 as SELECT * FROM employees;
+
+#三、删除视图
+/*
+语法：DROP view 视图名,视图名
+
+*/
+DROP VIEW myv1,myv2;
+
+#四.查看视图
+
+DESC myv3;
+
+SHOW CREATE view myv3;
+
+案例讲解：
+#一、创建视图emp_v1,要求查询电话号码'011'开头的员工姓名，和工资，邮箱
+CREATE OR REPLACE VIEW emp_v1
+as
+SELECT last_name,salary,email
+FROM employees
+WHERE phone_number LIKE '011%';
+
+#二创建视图emp_v2,要求查询部门的最高工资高于12000的部门信息；
+
+CREATE OR REPLACE VIEW emp_v2
+AS
+SELECT MAX(salary) mx_dep,department_id
+FROM employees
+GROUP BY department_id
+HAVING MAX(salary) > 12000;
+
+
+SELECT d.*,m.mx_dep
+FROM departments d
+JOIN(
+SELECT MAX(salary) mx_dep,department_id
+FROM employees
+GROUP BY department_id
+HAVING MAX(salary) > 12000
+) m
+ON m.department_id = d.department_id;
+
+
+SELECT d.*,m.mx_dep
+FROM departments d
+JOIN emp_v2 m
+ON m.department_id = d.department_id;
+
+#五.视图的更新
+
+CREATE OR REPLACE VIEW myv1
+AS
+SELECT last_name,email
+FROM employees;
+
+SELECT * FROM myv1;
+#1.插入数据
+
+INSERT INTO myv1 VALUE('张飞',"zf@qq.com");
+
+#2.修改
+UPDATE myv1 SET last_name = '张无忌' WHERE last_name = '张飞';
+
+#3.删除
+DELETE FROM myv1 WHERE last_name = '张无忌'
+
+#具备以下特点的视图不允许更新
+
+#1.包含以下关键字的sql语句：分组函数、distinct、group by、having、union或者union all
+CREATE OR REPLACE VIEW myv1
+AS
+SELECT MAX(salary),department_id
+FROM employees
+GROUP BY department_id;
+
+SELECT * FROM myv1;
+
+#更新:
+
+UPDATE myv1 SET m = 9000 WHERE department_id = 10;
+
+#常量视图
+CREATE OR REPLACE VIEW 	myv2
+AS
+SELECT 'JOHN' name;
+
+SELECT * FROM myv2;
+#更新
+UPDATE myv2 SET `name` = "luck";
+
+#Select中包含子查询
+CREATE OR REPLACE VIEW myv3
+as
+SELECT (SELECT MAX(salary) FROM 	employees) 最高工资;
+
+#更新
+SELECT * FROM myv3;
+UPDATE myv3 SET 最高工资 = 1000;
+
+#join
+CREATE OR REPLACE VIEW myv4
+as
+SELECT last_name,department_name
+FROM employees e
+JOIN departments d
+ON e.department_id = d.department_id;
+
+#更新
+SELECT * FROM myv4;
+UPDATE myv4 SET last_name = "张飞" WHERE last_name = "Whalen";
+INSERT INTO myv4 VALUES('陈真','xxxxx');
+
+#from一个不能更新的视图
+CREATE OR REPLACE VIEW myv5
+as
+SELECT * from myv3;
+
+#更新
+SELECT * FROM myv5;
+UPDATE myv5 SET 最高工资 = 10000 WHERE department_id = 60;
+
+# where子句的子查询引用了from子句中的表
+CREATE OR REPLACE VIEW myv6
+AS
+SELECT last_name,email,salary
+from employees
+where employee_id IN(
+	SELECT manager_id
+	from employees
+	where manager_id IS NOT NULL
+);
+
+SELECT * FROM myv6;
+
+
+SHOW INDEX FROM major
+SHOW INDEX FROM stuinfo;
+ALTER TABLE stuinfo DROP FOREIGN KEY fk_stuinfo_major;
+
+#传统的方式添加外键
+ALTER TABLE stuinfo CONSISTENT fk_stu_major FOREIGN KEY(majorid) REFERENCES major(id);
+
+#方式一：级联删除
+ALTER TABLE stuinfo ADD CONSISTENT fk_stu_major FOREIGN KEY(majorid) REFERENCES major(id) ON DELETE CASCADE;
+
+#方式一：级联置空
+ALTER TABLE stuinfo ADD CONSISTENT fk_stu_major FOREIGN KEY(majorid) REFERENCES major(id) ON DELETE SET NULL;
+
+
+#变量:
+/*
+系统变量：
+					全局变量
+					会话变量
+
+自定义变量
+					用户变量
+					局部变量
+*/
+
+
+#一、系统变量
+说明:变量由系统提供,不是用户定义,属于服务器层面
+使用的语法：
+１.查看所有的系统变量
+SHOW GLOBAL|[SESSION] VARIABLES;
+
+2.满足条件的部分系统变量
+
+SHOW GLOBAL|[SESSION] VARIABLES LIKE '%char';
+
+3.查看指定的某个系统变量的值
+SELECT @@global|[session].系统变量名;
+
+4.为某个系统变量赋值
+方式一：
+SET global|[session] 系 统变量名 = 值；
+方式二：
+set @@global|session.系统变量名 = 值；
+
+如果是全局，需要加global，如果是会话级别，需要加session,如果不写，默认session
+
+###1.全局变量
+#1.查看所有的全局变量
+
+SHOW GLOBAL VARIABLES;
+
+#2.查看部分的全局变量
+SHOW GLOBAL VARIABLES LIKE '%char%';
+
+
+#3.查看指定的全局变量的值
+SELECT @@global.autocommit;
+SELECT @@tx_isolation;
+
+#4.为某个指定的全局变量赋值
+SET @@global.autocommit  =0;
+
+
+
+
+
+#2.会话变量
+/*
+作用域：
+仅仅针对于当前会话(连接有效)
+*/
+
+#1.查看所有的会话变量
+SHOW VARIABLES;
+
+SHOW SESSION VARIABLES;
+
+#2.查看部分的会话变量
+SHOW VARIABLES LIKE '%char%';
+SHOW SESSION VARIABLES LIKE '%char%';
+
+#3.查看某个指定的某个会话变量
+SELECT @@tx_isolation;
+SELECT @@session.tx_isolation
+
+
+#4.为某个会话变量赋值
+方式一：
+SET @@session.tx_isolation = 'read-uncomitted';
+
+#方式二
+SET SESSION tx_isolation = 'read-uncomitted';
+
+
+#二、自定义变量
+/*
+s说明：变量是用户自定义的，不是由系统的
+
+使用步骤:
+声明
+赋值
+使用(查看，比较，运算等)
+*/
+
+#1.用户变量
+/**
+作用域：针对你与当前会话(连接)有效，同于会话变量的作用域
+
+*/
+
+赋值的操作符： =或:=
+#1.声明并初始化
+SET @用户变量名 = 值;或
+SET @用户变量名:=值;或
+SELECT @用户变量名：= 值;
+
+#2.赋值(更新用户变量的值)
+方式一: 通过 SET 或 SELECT
+			SET @用户变量名 = 值;或
+			SET @用户变量名:=值;或
+			SELECT @用户变量名：= 值;
+
+
+###存储过程的相关记录不知道什么原因给删除了，后续可以多次学习了解一下；
+/***
+一、创建 ★
+create procedure 存储过程名(参数模式 参数名 参数类型)
+begin
+		存储过程体
+end
+注意：
+1.参数模式：in、out、inout，其中in可以省略
+2.存储过程体的每一条sql语句都需要用分号结尾
+
+二、调用
+call 存储过程名(实参列表)
+举例：
+调用in模式的参数：call sp1（‘值’）;
+调用out模式的参数：set @name; call sp1(@name);select @name;
+调用inout模式的参数：set @name=值; call sp1(@name); select @name;
+三、查看
+show create procedure 存储过程名;
+四、删除
+drop procedure 存储过程名;
+
+*/
+
+#函数:
+
+/**
+含义:一组预先编译好的SQL语句的集合，理解成批处理语句
+1.提高了代码的重用性
+2.简化操作
+3.减少了编译次数并且减少了和数据库服务器的连接次数,提高了效率
+
+区别
+存储过程：可以有0个返回，也可以有多个返回,是个做批量的插入,批量更新
+函数：有且仅有1个返回,适合做处理数据后返回一个结果
+
+*/
+
+#一、创建语法:
+CREATE FUNCTION 函数名(参数列表) REFERENCES 返回类型
+BEGIN
+			函数体
+END
+
+/**
+注意：参数列表 包含两部分
+参数名 参数类型
+
+函数体：肯定会有return语句，如果没有会报错
+如果return语句没有放在函数体的最后也不报错，但不建议
+
+return 值;
+3.函数体重仅有一句话，这可以省略begin end
+4.使用dlimiter语句设置结束标记
+
+*/
+
+#二、调用语法：
+SELECT 函数名(参数列表);
+
+
+
+#---------------------案例演示-------------------
+#1.无参有返回
+案例:返回公司的员工个数
+CREATE FUNCTION myf1() RETURNS INT
+BEGIN
+			DECLARE c INT DEFAULT 0;#定义变量
+			SELECT COUNT(*) INTO c FROM employees;
+			RETURN c;
+END
+
+
+SELECT myf1();
+
+#2.有参有返回
+#案例1：根据员工名,返回他的工资
+
+CREATE FUNCTION myf2(empName VARCHAR(20)) RETURNS DOUBLE
+BEGIN
+			SET @sal = 0;#定义用户变量
+			SELECT salary INTO @sal FROM employees WHERE last_name = empName;
+			RETURN @sal;
+END
+
+
+SELECT myf2('Kochhar');
+
+#案例2：根据部门名,返回该部门的平均工资:
+CREATE FUNCTION myf3(deptName VARCHAR(20)) RETURNS DOUBLE
+BEGIN
+		DECLARE sal DOUBLE;
+		SELECT AVG(salary) INTO sal
+		FROM employees e
+		JOIN departments d ON e.department_id = d.department_id
+		WHERE d.department_name = deptName;
+		RETURN sal;
+END
+
+SELECT myf3('IT');
+
+
+#三、查看函数
+
+SHOW CREATE FUNCTION myf3;
+
+#四、删除函数
+DROP FUNCTION myf3;
+
+#案例
+#一、创建函数,实现传入两个FLOAT,返回二者之和
+
+CREATE FUNCTION test_fun1(num1 FLOAT,num2 FLOAT) RETURNS FLOAT
+BEGIN
+			DECLARE SUM FLOAT DEFAULT 0;
+			SET SUM = num1 + num2;
+			RETURN SUM;
+END
+SELECT test_fun1(1,2);
+
+
+#流程控制结构
+/**
+顺序结构：程序从上往下依次执行
+分支结构：程序从两条或多条路径中选择一条去执行
+循环结构：程序在满足一定条件的基础上，重复知心一段代码
+
+**/
+
+#一、分支结构
+#1.if函数
+
+/**
+
+功能：实现简单的双分支
+语法：
+SELECT IF(表达式1,表达式2,表达式3)
+执行顺序:
+如果表达式1成立，则if函数返回表达式2的值，否则返回表达式3的值
+应用：任何地方
+*/
+
+
+#2.case结构
+情况1：类似于java中的switch语句，一般用于实现等值判断
+语法：
+		CASE 变量|表达式|字段
+		WHEN 要判断的值 THEN 返回的值1或语句1
+		WHEN 要判断的值 THEN 返回的值2或语句2;
+		...
+		ELSE 	要返回的值n
+		END CASE
+
+情况2：类似于java中的多重IF语句,一般用于实现区间判断
+
+
+语法：
+		CASE
+		WHEN 要判断的值 THEN 返回的值1或语句1
+		WHEN 要判断的值 THEN 返回的值2或语句2;
+		...
+		ELSE 	要返回的值n
+		END CASE
+
+特点:
+1.
+可以作为表达式,嵌套在其他语句中使用，可以放在任何地方，BEGIN END 中或BEGIN END 的外面
+可以作为独立的语句中去使用,只能放在BEGIN END 中
+2.如果WHEN中的值或条件成立，则执行对应的THEN后面的语句，并且结束CASE
+如果都不满足,则执行	ELSE 中的语句或值
+3. ELSE 可以省略,如果ELSE 省略了,并且所有WHEN条件都不安组,则返回NULL
+
+#案例
+#创建存储过程,根据传入的成绩,来显示等级,比如传入的等级：90-100 显示A，80-90 显示 B
+#60-80 C f否则D
+CREATE PROCEDURE test_case(IN score INT)
+BEGIN
+	CASE
+	WHEN score > 90 AND score <= 100 THEN SELECT 'A';
+	WHEN score > 80  THEN SELECT 'B';
+	WHEN score > 60  THEN SELECT 'C';
+	ELSE SELECT 'C';
+	END CASE;
+
+END
+
+
+CALL test_case(95);
+
+
+#3.if结构
+/**
+功能：实现多重分支
+语法
+if 条件1 then 语句1;
+elseif 条件2 then 语句2;
+...
+else 语句n；
+end if;
+
+应用:
+只能应用在begin end中
+
+*/
+
+#案例1：
+#创建函数,根据传入的成绩,来显示等级,比如传入的等级：90-100 返回A，80-90 返回 B
+#60-80 C 否则返回D
+
+CREATE FUNCTION test_if(score INT) RETURNS CHAR
+BEGIN
+			IF score >= 90 AND score <= 100 THEN RETURN 'A';
+			ELSEIF score >= 80 THEN RETURN 'B';
+			ELSEIF score >= 60 THEN RETURN 'C';
+			ELSE RETURN 'D';
+			END IF;
+
+END
+
+SELECT test_if(86);
+
+
+
+#二、循环结构
+/**
+分类：
+while /loop,repeat
+循环控制
+iterator 类似于 continue,继续，结束本次循环,继续下一次
+leave 类似于 break ，跳出,结束当前所在的循环
+
+**/
+
+#1.while
+/**
+语法
+标签 while 循环条件 do
+			循环体;
+end while 标签
+
+
+联想:
+while(循环条件){
+		循环体;
+		}
+*/
+
+#2.loop
+
+/**
+语法
+【标签:】loop
+					循环体;
+	end loop 【标签】;
+
+	可以模拟简单的死循环
+
+*/
+
+
+#3.repeat
+/**
+语法：
+【标签:】repeat
+				循环体;
+	util 结束循环的条件
+	end repeat 【标签】;
+
+**/
+
+
+#案例:批量插入,根据次数插入到admin表中多条记录
+CREATE PROCEDURE pro_while1(IN insertCount INT)
+BEGIN
+		DECLARE i INT DEFAULT 1;
+		while i <= insertCount DO
+					INSERT INTO admin(username,`password`) VALUES(CONCAT('Rose',i),'6666');
+					SET i = i+1;
+		END while;
+END
+CALL pro_while1(100);
+
+
+#2.添加leave语句
+#案例:批量插入,根据次数插入到admin 表中多条记录，如果次数>20则停止
+
+TRUNCATE TABLE admin;
+DROP PROCEDURE test_while1
+CREATE PROCEDURE test_while1(IN insertCount INT)
+BEGIN
+			DECLARE i INT DEFAULT 1;
+			a:WHILE i < insertCount DO
+					INSERT INTO admin(username,`password`) VALUES(CONCAT('LEO',i),'600000');
+					IF i >= 20 THEN LEAVE a;
+				END IF;
+					SET i = i+1;
+					END WHILE a;
+END
+
+CALL test_while1(100)
+
+
+#3.添加iterator语句
+#案例:批量插入,根据次数插入到admin 表中多条记录,只插入偶数次
+
+TRUNCATE TABLE admin;
+DROP PROCEDURE test_while2
+CREATE PROCEDURE test_while2(IN insertCount INT)
+BEGIN
+			DECLARE i INT DEFAULT 0;
+			a:WHILE i < insertCount DO
+					SET i = i+1;
+					IF MOD(i,2) != 0 THEN ITERATE a;
+					END IF;
+					INSERT INTO admin(username,`password`) VALUES(CONCAT('LEO-XS',i),'600000');
+
+			END WHILE a;
+END
+
+CALL test_while2(100)
+
+
+/**
+一。已知表stringcontent
+其中字段
+id 自增长
+content VARCHAR(20)
+向该表插入指定个数的，随机的字符串
+**/
+
+
+CREATE TABLE stringcontent(
+id INT PRIMARY KEY AUTO_INCREMENT,
+content VARCHAR(20));
+
+CREATE PROCEDURE test_randstr_insert(IN insertCount INT)
+BEGIN
+			DECLARE i INT DEFAULT 1;#定义一个循环变量i,表示插入次数
+			DECLARE str VARCHAR(26) DEFAULT 'abcdefGHIKJEES';
+			DECLARE startIndex INT DEFAULT 1;#代表起始索引
+			DECLARE len INT DEFAULT 1;#代表截取的字符长度
+			WHILE i <= insertCount DO
+						SET len = FLOOR(RAND() * (20-startIndex + 1) + 1);#产生一个随机的整数,代表截取长度,1-(26-startIndex -1);
+						SET startIndex = FLOOR(RAND() * 26 + 1);
+							#产生一个随机的整数,代表起始索引1-26
+							INSERT INTO stringcontent(content) VALUES(SUBSTR(str,startIndex,len));
+
+						SET  i=i+1;#循环变量更新
+				END WHILE;
+END
+
+CALL test_randstr_insert(10);
+
 
 
 
