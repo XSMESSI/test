@@ -17,8 +17,9 @@ public class test_1115_01 {
     @Test
     public void test1(){
         StringBuilder str = new StringBuilder("sj");
-        str.append("#").append("11114");
-        str.append("#").append("11114_bto");
+//        str.append("#").append("11114");
+//        str.append("#").append("11114_bto");
+        str.append("#").append("13011_dict");
 //        List<String> value = Arrays.asList(str.toString().split("#"));
 //        System.out.println("value = " + value);
 

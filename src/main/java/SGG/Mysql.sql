@@ -2543,7 +2543,7 @@ SELECT * FROM tab_float;
   ******5月4号学习*****END****
 
 ********7月4号学习*************
-#三、字符型
+#三.字符型
 /**
 较短的文本：char,varchar
 较长的文本：text，blob(较大的二进制)
@@ -2578,7 +2578,7 @@ INSERT INTO tab_set VALUES('a,d,c,f');
 INSERT INTO tab_set VALUES('A');
 
 
-四、日期型
+四.日期型
 
 
 /**
@@ -2632,8 +2632,8 @@ SET time_zone = '+9:00';
 			主键和唯一的大对比：
 					           保证唯一性      是否允许为空     一个表中可以有多个   是否允许组合
 
-					主键         √                 ×                 至多有1个         允许，但不推荐
-					唯一         √                  ×                可以有多个        允许，但不推荐
+					主键         √                 ×             至多有1个         允许，但不推荐
+					唯一         √                 ×             可以有多个        允许，但不推荐
 
 
 外键：
@@ -2654,7 +2654,7 @@ CREATE TABLE 表名{
 		字段名 字段类型 约束
 }
 
-#一、创建表时添加约束
+#一.创建表时添加约束
 #1.添加列级约束
 
 /**
@@ -2681,7 +2681,7 @@ CREATE TABLE major(
 	)
 
 	DESC stuinfo;
-	#查看stuinfo表中所有的索引，包括主键，外键，唯一
+	#查看stuinfo表中所有的索引,包括主键,外键,唯一
 	SHOW INDEX FROM stuinfo;
 
 	#2.添加表级约束
@@ -2706,7 +2706,7 @@ CREATE TABLE major(
 	CONSTRAINT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id) #外键
 		)
 
-		#通用的写法：
+		#通用的写法:
 		CREATE TABLE IF NOT EXISTS stuinfo(
 				id INT PRIMARY KEY,
 				stuname VARCHAR(20) NOT NULL,
@@ -2718,7 +2718,7 @@ CREATE TABLE major(
 		)
 
 
-#二、修改表时添加约束
+#二.修改表时添加约束
 
 /**
 1.添加列级约束
@@ -2741,7 +2741,7 @@ DROP TABLE IF EXISTS stuinfo;
 	majorid INTs
 		)
 
-		DESC stuinfo;
+DESC stuinfo;
 #1.添加非空约束
 ALTER TABLE stuinfo MODIFY COLUMN stuName MODIFY COLUMN stuName VARCHAR(20) NOT NULL;
 #2.添加默认约束
@@ -2763,7 +2763,7 @@ ALTER TABLE stuinfo ADD UNIQUE(seat);
 #5.添加外键
 ALTER TABLE stuinfo ADD FOREIGN KEY(majorid) REFERENCES major(id);
 
-#三、修改表时删除约束
+#三.修改表时删除约束
 #1.删除非空约束
 ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;
 
@@ -2780,9 +2780,9 @@ ALTER TABLE stuinfo DROP INDEX seat;
 ALTER TABLE stuinfo DROP FOREIGN KEY majorid;
 
 
-                 位置                       支持的约束类型                是否可以起约束
- 列级约束       列的后面               语法都支持，但外键没有效果          不可以
-表级约束        所有列的下面           默认和非空都不支持，其他支持         可以（主键没有效果）
+                 位置                       支持的约束类型           是否可以起约束
+列级约束        列的后面              语法都支持,但外键没有效果           不可以
+表级约束        所有列的下面           默认和非空都不支持,其他支持         可以(主键没有效果)
 
 #标识列
 /**
@@ -2797,7 +2797,7 @@ ALTER TABLE stuinfo DROP FOREIGN KEY majorid;
 可以通过手动插入值，设置起始值
 */
 
-#一、创建表时设置标识列
+#一,创建表时设置标识列
 CREATE TABLE tab_identity(
 id INT PRIMARY KEY AUTO_INCREMENT,
 NAME VARCHAR(20)
@@ -2813,9 +2813,9 @@ SHOW VARIABLES LIKE "%auto_increment%";
 
 SET auto_increment_increment=3;
 
-#二、修改表时设置标识列
+#二.修改表时设置标识列
 ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;
-#三、修改表时删除标识列：
+#三.修改表时删除标识列:
 
 ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY ;
 
@@ -2836,19 +2836,19 @@ update 表 set 郭襄的余额 = 1500 where name = '郭襄'
 
 事务的特性：
 ACID:
-原子性：一个事务不可再分割，要么都执行，要么都不执行
-一致性：一个事务执行会使数据从一个一致状态切换至另外一个一致状态
+原子性:一个事务不可再分割，要么都执行，要么都不执行
+一致性:一个事务执行会使数据从一个一致状态切换至另外一个一致状态
 隔离性:一个事务的执行不受其他事务的干扰
-持久性：一个事务一旦提交，则会永久的改变数据库的数据；
+持久性:一个事务一旦提交，则会永久的改变数据库的数据；
 
 事务的创建，
 隐式事务：事务没有明显的开始和结束的痕迹
-比如：insert，update,delete语句
+比如：insert,update,delete语句
 
 显式事务：事务具有明显的开启和结束的标记
 前提：必须先设置自动提交功能为禁用
 
-set sutocommit = 0
+set autocommit = 0
 
 
 开启事务的语句：
@@ -2863,22 +2863,22 @@ SHOW ENGINES;
 ##手动设置为0
 set sutocommit = 0
 
-##比如：insert，update,delete语句
+##比如:insert,update,delete 语句
 delete from 表 WHERE ID = 1
 
 SHOW VARIABLES LIKE 'autocommoit'
 
-步骤1：开启事务
+步骤1:开启事务
 SET autocommit = 0
 start transaction;可选的
-步骤2：编写事务中的SQL语句(SELECT，update，insert delete)
-语句1；
-语句2；
+步骤2:编写事务中的SQL语句(SELECT,update,insert delete)
+语句1;
+语句2;
 ...
 
-步骤3：结束事务
+步骤3:结束事务
 commit:提交事务
-rollback：回滚事务
+rollback:回滚事务
 
 SAVEPOINT
 
@@ -2902,7 +2902,7 @@ SEt SESSION|GLOBAL TRANSACTION ISOLATION LEVEL 隔离级别;
 ##演示事务的使用步骤
 
 #开启事务
-SET autocommit = 0
+SET autocommit = 0;
 START TRANSACTION;
 #编写一组事务的语句
 UPDATE account SET balance = 500 WHERE username = "张无忌";
@@ -2954,7 +2954,7 @@ mysql 5.1 版本出现的新特性，是通过表动态生成的数据
 	表 CREATE TABLE                    保存了数据                  增删改查
 */
 
-#案例：查询姓张的学生名和专业名
+#案例:查询姓张的学生名和专业名
 SELECT stuname,majorname
 FROM stuinfo s
 INNER JOIN major m ON s.majoris = m.id
@@ -3110,7 +3110,7 @@ DELETE FROM myv1 WHERE last_name = '张无忌'
 
 #具备以下特点的视图不允许更新
 
-#1.包含以下关键字的sql语句：分组函数、distinct、group by、having、union或者union all
+#1.包含以下关键字的sql语句:分组函数、distinct、group by、having、union或者union all
 CREATE OR REPLACE VIEW myv1
 AS
 SELECT MAX(salary),department_id
@@ -3506,8 +3506,8 @@ end if;
 
 */
 
-#案例1：
-#创建函数,根据传入的成绩,来显示等级,比如传入的等级：90-100 返回A，80-90 返回 B
+#案例1:
+#创建函数,根据传入的成绩,来显示等级,比如传入的等级:90-100 返回A,80-90 返回 B
 #60-80 C 否则返回D
 
 CREATE FUNCTION test_if(score INT) RETURNS CHAR
@@ -3524,7 +3524,7 @@ SELECT test_if(86);
 
 
 
-#二、循环结构
+#二.循环结构
 /**
 分类：
 while /loop,repeat
@@ -3585,7 +3585,7 @@ CALL pro_while1(100);
 
 
 #2.添加leave语句
-#案例:批量插入,根据次数插入到admin 表中多条记录，如果次数>20则停止
+#案例:批量插入,根据次数插入到admin 表中多条记录,如果次数>20则停止
 
 TRUNCATE TABLE admin;
 DROP PROCEDURE test_while1
