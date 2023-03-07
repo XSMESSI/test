@@ -7,11 +7,14 @@
 --
 -- 查询常量值
 SELECT
-	100 AS num;-- 查询表达式：
+	100 AS num;
+	-- 查询表达式：
 SELECT
-	100 % 98;-- 查询函数：
+	100 % 98;
+	-- 查询函数：
 SELECT
-	VERSION( );-- 起别名：
+	VERSION( );
+	-- 起别名：
 SELECT
 	100 % 98 AS result;
 SELECT
@@ -2969,7 +2972,7 @@ INNER JOIN major m ON s.majoris = m.id
 
 SELECT * FROM V1 WHERE stuname LIKE '张%';
 
-#一、如何创建视图
+#一.如何创建视图
 /*
 语法：
 CREATE view 视图名
@@ -2977,7 +2980,7 @@ as
 查询语句;
 */
 
-##1.查询邮箱中包含a字符的员工名、部门名和工种信息
+##1.查询邮箱中包含a字符的员工名.部门名和工种信息
 #1.创建
 CREATE VIEW myv1
 AS

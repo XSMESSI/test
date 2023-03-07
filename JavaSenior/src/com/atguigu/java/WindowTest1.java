@@ -15,13 +15,20 @@ package com.atguigu.java;
 
 
 class Window1 implements Runnable{
-    private int ticket = 100;
+    private int ticket = 1000;
 
+    @lombok.SneakyThrows
     @Override
     public void run() {
         while (true){
             if (ticket > 0 ){
                 System.out.println(Thread.currentThread().getName() + "卖票：票号为：" + ticket);
+//                try {
+//                    Thread.sleep(10);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+                Thread.sleep(10);
                 ticket--;
             }else{
                 break;

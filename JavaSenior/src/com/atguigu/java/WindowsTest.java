@@ -6,6 +6,8 @@ package com.atguigu.java;
  * @Description:
  */
 
+import lombok.SneakyThrows;
+
 /**
  * 创建三个窗口买票，总票数为100张，使用继承Thread类的方式
  *
@@ -16,7 +18,9 @@ package com.atguigu.java;
 
 class Window extends Thread{
 
-    private static int ticket = 100;
+    private static int ticket = 1000;
+
+    @SneakyThrows
     @Override
     public void run() {
         while (true){

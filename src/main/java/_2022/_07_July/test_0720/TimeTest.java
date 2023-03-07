@@ -65,7 +65,6 @@ public class TimeTest {
             System.out.println("还剩" + hh + "小时" + mm + "分钟" + ss + "秒");
             try {
                 Thread.sleep(1000);
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
