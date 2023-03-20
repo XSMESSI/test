@@ -21,7 +21,7 @@ public class transferDateStr {
 
 
     /**
-     * String 和 DATE互相转换
+     * String 和 Date互相转换
      */
     @Test
     public void testDateStr() throws ParseException {
