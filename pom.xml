@@ -8,6 +8,7 @@
         <module>Project-03</module>
         <module>Project-03Myself</module>
         <module>beforeNew</module>
+        <module>MoreData</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

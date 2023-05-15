@@ -7,13 +7,24 @@ public class CustomerList {
         customers = new Customer[totalCustomer];
     }
 
+    /**
+     * 添加客户
+     * @param customer
+     * @return
+     */
     public boolean addCustomer(Customer customer) {
         if (total >= customers.length) return false;
         
         customers[total++] = customer;
         return true;
     }
-     
+
+    /**
+     * 替换客户数据
+     * @param index
+     * @param cust
+     * @return
+     */
     public boolean replaceCustomer(int index, Customer cust) {
         if (index < 0 || index >= total) return false;
         

@@ -27,15 +27,19 @@ public class TestStringUtils {
      */
     @Test
     public void testEmpty(){
-        String str1 = "Leo";
-        System.out.println("StringUtils.isBlank(str1) = " + StringUtils.isBlank(str1));
-        System.out.println("StringUtils.isEmpty(str1) = " + StringUtils.isEmpty(str1));
-        System.out.println("StringUtils.isNotBlank(str1) = " + StringUtils.isNotBlank(str1));
-        System.out.println("StringUtils.isNotBlank(str1) = " + StringUtils.isNotEmpty(str1));
-        System.out.println("str1 = " + str1);
+//        String str1 = "";
+//        System.out.println("StringUtils.isBlank(str1) = " + StringUtils.isBlank(str1));
+//        System.out.println("StringUtils.isEmpty(str1) = " + StringUtils.isEmpty(str1));
+//        System.out.println("StringUtils.isNotBlank(str1) = " + StringUtils.isNotBlank(str1));
+//        System.out.println("StringUtils.isNotEmpty(str1) = " + StringUtils.isNotEmpty(str1));
+//        System.out.println("str1 = " + str1);
 
-        System.out.println(StringUtils.isNotBlank(""));
-        System.out.println(StringUtils.isNotBlank(null));
+        System.out.println(StringUtils.isBlank("\r"));
+        System.out.println(StringUtils.isEmpty("\r"));
+
+
+        System.out.println(StringUtils.isNotEmpty("  "));
+        System.out.println(StringUtils.isNotEmpty(null));
     }
 
 }
