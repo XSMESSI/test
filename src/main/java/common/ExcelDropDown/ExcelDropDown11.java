@@ -66,29 +66,29 @@ public class ExcelDropDown11 {
         cell = row.createCell(3);
         cell.setCellValue("日期格式");
     }
-    private static CellStyle getTitleStyle(Workbook wb) {
-        CellStyle style = wb.createCellStyle();
-//对齐方式设置
-        style.setAlignment(CellStyle.ALIGN_CENTER);
-//边框颜色和宽度设置
-        style.setBorderBottom(CellStyle.BORDER_THIN);
-        style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-        style.setBorderLeft(CellStyle.BORDER_THIN);
-        style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
-        style.setBorderRight(CellStyle.BORDER_THIN);
-        style.setRightBorderColor(IndexedColors.BLACK.getIndex());
-        style.setBorderTop(CellStyle.BORDER_THIN);
-        style.setTopBorderColor(IndexedColors.BLACK.getIndex());
-        style.setFillBackgroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
-//设置背景颜色
-        style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-//粗体字设置
-        Font font = wb.createFont();
-        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-        style.setFont(font);
-        return style;
-    }
+//    private static CellStyle getTitleStyle(Workbook wb) {
+//        CellStyle style = wb.createCellStyle();
+////对齐方式设置
+//        style.setAlignment(CellStyle.ALIGN_CENTER);
+////边框颜色和宽度设置
+//        style.setBorderBottom(CellStyle.BORDER_THIN);
+//        style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+//        style.setBorderLeft(CellStyle.BORDER_THIN);
+//        style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+//        style.setBorderRight(CellStyle.BORDER_THIN);
+//        style.setRightBorderColor(IndexedColors.BLACK.getIndex());
+//        style.setBorderTop(CellStyle.BORDER_THIN);
+//        style.setTopBorderColor(IndexedColors.BLACK.getIndex());
+//        style.setFillBackgroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+////设置背景颜色
+//        style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+//        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+////粗体字设置
+//        Font font = wb.createFont();
+//        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+//        style.setFont(font);
+//        return style;
+//    }
     public static void creatExcelHidePage(Workbook workbook) {
         Sheet hideInfoSheet = workbook.createSheet(EXCEL_HIDE_SHEET_NAME);//隐藏一些信息
 //在隐藏页设置选择信息

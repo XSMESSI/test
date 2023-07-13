@@ -15,12 +15,12 @@ import java.util.stream.Collectors;
 public class NullAndEmpty {
     public static void main(String[] args) {
         List<People> empty = new ArrayList<>();
-//        empty.add(new People(1,"A",20));
-        Map<Integer,List<People>> map = empty.stream().collect(Collectors.groupingBy(People::getId));
-        System.out.println("map = " + map);
-        List<People> nullList = null;
-        Map<Integer,List<People>> mapT = nullList.stream().collect(Collectors.groupingBy(People::getId));
-        System.out.println("mapT = " + mapT);
+        empty.add(new People(1,"A",20));
+//        Map<Integer,List<People>> map = empty.stream().collect(Collectors.groupingBy(People::getId));
+//        System.out.println("map = " + map);/
+//        List<People> nullList = null;
+//        Map<Integer,List<People>> mapT = nullList.stream().collect(Collectors.groupingBy(People::getId));
+//        System.out.println("mapT = " + mapT);
 
     }
 }

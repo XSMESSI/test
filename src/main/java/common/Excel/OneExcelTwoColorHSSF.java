@@ -67,9 +67,9 @@ public class OneExcelTwoColorHSSF {
 
         HSSFCell cellLink = row1.createCell(4);
         CreationHelper creationHelper = workbook.getCreationHelper();
-        Hyperlink  link = creationHelper.createHyperlink(Hyperlink.LINK_URL);
-        link.setAddress("https://blog.csdn.net/qq_40563534/article/details/121115169");
-        cellLink.setHyperlink(link);
+//        Hyperlink  link = creationHelper.createHyperlink(Hyperlink.LINK_URL);
+//        link.setAddress("https://blog.csdn.net/qq_40563534/article/details/121115169");
+//        cellLink.setHyperlink(link);
         cellLink.setCellValue("点击跳转链接");
 
         String txt = "测试数据*必填*数据";

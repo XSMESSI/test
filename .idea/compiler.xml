@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Project-03Myself" />
+        <module name="MoreData" />
         <module name="Project2" />
         <module name="Project-03" />
         <module name="myProject2" />
@@ -21,6 +22,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Leo" options="" />
+      <module name="MoreData" options="-parameters" />
       <module name="Project-03" options="-parameters" />
       <module name="Project-03Myself" options="-parameters" />
       <module name="Project2" options="-parameters" />
