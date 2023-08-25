@@ -7,7 +7,7 @@
         <module>Project2Myself</module>
         <module>Project-03</module>
         <module>Project-03Myself</module>
-        <module>beforeNew</module>
+<!--        <module>beforeNew</module>-->
         <module>MoreData</module>
     </modules>
     <parent>
@@ -180,11 +180,16 @@
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.deepoove</groupId>
-            <artifactId>poi-tl</artifactId>
-            <version>1.6.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.deepoove</groupId>-->
+<!--            <artifactId>poi-tl</artifactId>-->
+<!--            <version>1.6.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.draco1023</groupId>-->
+<!--            <artifactId>poi-tl-ext</artifactId>-->
+<!--            <version>0.4.2</version>-->
+<!--        </dependency>-->
 
 
         <!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->

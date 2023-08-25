@@ -27,6 +27,7 @@
       <module name="Project-03Myself" options="-parameters" />
       <module name="Project2" options="-parameters" />
       <module name="Project2MySelf" options="-parameters" />
+      <module name="messi" options="" />
       <module name="myProject2" options="-parameters" />
       <module name="test" options="" />
     </option>
