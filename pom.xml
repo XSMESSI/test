@@ -72,6 +72,11 @@
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>3.15</version>
         </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.poi.xwpf.converter.pdf-gae</artifactId>
+            <version>2.0.1</version>
+        </dependency>
         <!-- SpringBoot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
