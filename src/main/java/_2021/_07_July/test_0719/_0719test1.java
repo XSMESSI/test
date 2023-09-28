@@ -39,7 +39,7 @@ public class _0719test1 {
         int a1 = Integer.parseInt(a);
         int a2 = Integer.parseInt("2");
         System.out.println(a1+1);
-        System.out.println("a2 = " + a2);
+        System.out.println("a21 = " + a2);
 
 
     }
