@@ -33,7 +33,7 @@ public class Son extends Father {
 		new Son();
 		System.out.println("************************");
 
-		new Son();
+ 		new Son();
 		System.out.println("************************");
 		new Father();
 	}

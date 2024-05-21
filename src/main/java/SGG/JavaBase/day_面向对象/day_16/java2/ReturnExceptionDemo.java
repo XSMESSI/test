@@ -27,7 +27,7 @@ public class ReturnExceptionDemo {
         try {
             methodA();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("输出异常信息:" + e.getMessage());
         }
         methodB();
     }

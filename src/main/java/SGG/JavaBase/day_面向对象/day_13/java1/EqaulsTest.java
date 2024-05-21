@@ -7,6 +7,7 @@ package SGG.JavaBase.day_面向对象.day_13.java1;
  */
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 面试题：== 和 equals() 区别
@@ -27,7 +28,7 @@ import java.util.Date;
  *     }
  *     说明：Object类中定义的equals（）和 == 的作用是相同的，
  *     比较两个对象的地址值是否相同.即两个引用是否指向同一个对象实体
- *  4.  像String，Date,File,包装类等都重写了Object类中的equals方法。重写以后，比较的不是两个引用的地址
+ *  4.  像String,Date,File,包装类等都重写了Object类中的equals方法。重写以后，比较的不是两个引用的地址
  *  是否相同，而是比较两个对象的"实体内容"是否相同。
  *  5.通常情况下，我们自定义的类，如果使用equals()的话，
  *  也通常是比较两个对象的"实体内容"是否相同。那么，我们
@@ -56,9 +57,11 @@ public class EqaulsTest {
         System.out.println(c1 == c2);//true
 
 
+        System.out.println("对象之间比较");
         Customer cust1 = new Customer("Tom",21);
         Customer cust2 = new Customer("Tom",21);
         System.out.println(cust1 == cust2);
+        System.out.println(Objects.equals(cust1,cust2));
 
 
         String str1 = new String("atguigu");

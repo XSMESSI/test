@@ -110,7 +110,7 @@ SELECT CONCAT(first_name,',',last_name,',',job_id,',',IFNULL(commission_pct,0)) 
 	逻辑运算符  && || !
 							and  or  not
 
-							&& 和and  两个条件都为true,结果为true,反之为false;
+							&& 和 and  两个条件都为true,结果为true,反之为false;
 							|| 和 or  只要有一个条件为true 结果为true,反之为false;
 							! 或 not 如果链接的两个条件本身为false,结果为true,反之为false;
 	3.模糊查询 
@@ -122,7 +122,7 @@ SELECT CONCAT(first_name,',',last_name,',',job_id,',',IFNULL(commission_pct,0)) 
 */
 
 
-1.按条件表达式筛选
+##1.按条件表达式筛选
 
 #案例1 查询工资 > 12000的员工信息
 
@@ -276,7 +276,7 @@ ORDER BY
 	#案例 按年薪的高低显示员工的信息和年薪{按表达式进行排序}
 
 	SELECT *,salary * 12 * (1+IFNULL(commission_pct,0)) 年薪
-	FROM employees ORDER BY salary * 12 * (1+IFNULL(commission_pct,0)) DESC;
+	FROM employees ORDER BY salary * 12 * (1 + IFNULL(commission_pct,0)) DESC;
 
 
 	#案例  
@@ -673,13 +673,14 @@ SELECT COUNT(last_name) from employees;
 3.忽略null
 	SELECT
 		SUM( commission_pct ),
-		avg( commission_pct ),SUM( commission_pct )/ 35,
+		AVG( commission_pct ),
+		SUM( commission_pct )/ 35,
 		SUM( commission_pct )/ 107
 	FROM
 		employees;
 
-SELECT max(commission_pct),min(commission_pct) from employees;
-SELECT COUNT(commission_pct) from employees;
+SELECT MAX(commission_pct),MIN(commission_pct) FROM employees;
+SELECT COUNT(commission_pct) FROM employees;
 
 SELECT commission_pct FROM employees;
 
@@ -904,7 +905,7 @@ GROUP BY job_id;
 如何避免 添加有效的连接条件
 
 分类 
-			按年代分类 
+			按年代分类
 			sql 92标准 仅仅支持内连接
 			sql 99 标准[推荐]支持内连接+外链接(左外 ,右外)+交叉连接
 			按功能分类 
@@ -1060,7 +1061,7 @@ SELECT salary,grade_level,department_id
  #1. 显示所有员工的姓名 ,部门号和部门名称;
  SELECT last_name,d.department_id,department_name
  from employees e,departments d
- WHERE e.department_id = d.department_id
+ WHERE e.department_id = d.department_id;
 
 #2. 查询 90 号部门员工的 job_id 和 90 号部门的 location_id
 SELECT job_id,location_id
@@ -1158,9 +1159,6 @@ AND e.last_name = "kochhar";
 			2 ,inner 可以省略
 			3.筛选条件放在where 后面 ,连接条件放在on后面 ,提高分离性 ,便于阅读
 			4.inner JOIN 连接和sql92语法中的等值连接效果是一样的 ,都是查询交集部门.
-
-
-
 
 			*/
 
@@ -1645,12 +1643,12 @@ WHERE
 	#案例讲解
 
 	#1.查询和Zlotkey相同部门的员工姓名和工资
-		1.查询Zlotkey的部门
+		#1.查询Zlotkey的部门
 		SELECT department_id
 		FROM employees
 		WHERE last_name = "Zlotkey"
 
-		2.查询部门号 = 1的姓名和工资
+		#2.查询部门号 = 1的姓名和工资
 		SELECT last_name,salary
 		FROM 	employees
 		WHERE department_id = (
@@ -1663,7 +1661,7 @@ WHERE
 	#2.查询工资比公司平均工资高的员工的员工号 ,姓名和工资
 		1.查询平均工资
 		SELECT AVG(salary)
-		FROM employees
+		FROM employees;
 
 		2.查询工资 > 1的员工号 ,姓名和工资
 		SELECT last_name,employee_id,salary
@@ -1678,7 +1676,7 @@ WHERE
 		#1.各部门的平均工资
 		SELECT AVG(salary),department_id
 		FROM employees
-		GROUP BY department_id
+		GROUP BY department_id;
 
 		#2.连接1结果集和employees表 ,进行筛选
 		SELECT employee_id,last_name,salary,e.department_id

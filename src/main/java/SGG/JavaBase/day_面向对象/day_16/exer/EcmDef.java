@@ -17,7 +17,7 @@ import io.swagger.models.auth.In;
  * (2)在main()方法中使用异常处理语句进行异常处理。
  * (3)在程序中，自定义对应输入负数的异常类(EcDef)。
  * (4)运行时接受参数 java EcmDef 20 10 //args[0]=“20” args[1]=“10”
- * (5)Interger类的static方法parseInt(String s)将s转换成对应的int值。 如：int a=Interger.parseInt(“314”); //a=314;
+ * (5)Integer类的static方法parseInt(String s)将s转换成对应的int值。 如：int a=Integer.parseInt(“314”); //a=314;
  */
 public class EcmDef {
     public static void main(String[] args) throws EcDef {

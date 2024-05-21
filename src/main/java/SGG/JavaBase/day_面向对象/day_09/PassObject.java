@@ -22,13 +22,13 @@ public class PassObject{
     public static void main(String[] args) {
         PassObject test = new PassObject();
         Circle c = new Circle();
-        test.printAreaa(c,5);
-        test.printAreaa(c,5);
-        System.out.println("now radius is"+c.radius);
+        test.printArea(c,5);
+        test.printArea(c,5);
+        System.out.println("now radius is\t"+c.radius);
     }
 
 
-    public void printAreaa(Circle c,int time){
+    public void printArea(Circle c,int time){
         System.out.println("Radius\t\tArea");
         //设置圆的半径
         for (int i = 0;i<time;i++){

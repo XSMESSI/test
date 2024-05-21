@@ -26,10 +26,10 @@ import java.util.Scanner;
  *                      ClassNotFoundException
  *              运行时异常(unchecked)
  *                  NullPointerException
- *                  ArraysIndexOutOfBOundsException
+ *                  ArraysIndexOutOfBoundsException
  *                  ClassCastException
  *                  NumberFormatException
- *                  InputMissmatchException
+ *                  InputMissMatchException
  *                  ArithmeticException
  *
  * 面试题：常见的异常有哪些？举例说明
